@@ -1,0 +1,17 @@
+{
+    "name": "albi/swap",
+    "description": "Swap project",
+    "authors": [
+        {
+            "name": "Albi Taulla",
+            "email": "albitaulla@yahoo.com"
+        }
+    ],
+    "autoload": {
+    
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "require": {}
+}
