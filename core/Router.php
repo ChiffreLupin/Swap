@@ -1,8 +1,6 @@
-<?php
-
 /**
     Class Router
-    @package app\core
+    @package ${namespace}
  */
 
 namespace app\core;
@@ -68,4 +66,5 @@ class Router {
         include_once Application::$ROOT_DIR."/views/includes/head.php";
         return ob_get_clean();
     }
-} 
+    
+}
