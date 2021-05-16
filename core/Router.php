@@ -17,7 +17,7 @@ class Router {
         $this->response = $response;
 
     }
-
+    
     public function get($path, $callback) {
         $this->routes[$this->request->getMethod()][$path] = $callback;
     }
