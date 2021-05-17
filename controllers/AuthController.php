@@ -9,7 +9,8 @@ namespace app\controllers;
 use app\core\Controller;
 use app\core\Request;
 use app\core\Response;
-use app\models\RegisterModel;
+use app\models\User;
+use app\core\Application;
 
 
 class AuthController extends Controller {
@@ -27,7 +28,7 @@ class AuthController extends Controller {
     }
 
     public function getRegister(Request $req,Response $resp) {
-        $registerModel = new RegisterModel();
+        $registerModel = new User();
 
         $this->setLayout('auth');
         $this->setCurrent('Register');
@@ -36,15 +37,17 @@ class AuthController extends Controller {
             'model' => $registerModel
         ]);
     }
-
+    //register action??
     public function postRegister(Request $req,Response $resp) {
-        $registerModel = new RegisterModel();
+        $registerModel = new User();
         $registerModel->loadData($req->getBody());
       
         // If the data is valid and we successfully stored it inside the database
         // We return success page
-        if($registerModel->validate() && $registerModel->register()) {
-            return "Success";
+        if($registerModel->validate() && $registerModel->save()) {     
+            Application::$app->session->setFlash('success','Thanks for registering');
+            Application::$app->response->redirect('/');
+            exit;
         }
 
        // Else we return to the current page 

@@ -34,7 +34,7 @@ class Field{
             </div>
            
         </div>
-        ', $this->attribute,
+        ', $this->model->labels()[$this->attribute] ?? $this->attribute,
         $this->type,
         $this->model->{$this->attribute},
         $this->model->hasError($this->attribute) ? ' is-invalid':'', 

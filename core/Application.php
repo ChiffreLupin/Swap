@@ -4,7 +4,7 @@
     @package app\core
  */
 
- namespace app\core;
+namespace app\core;
 
  class Application {
 
@@ -14,6 +14,7 @@
     public Router $router;
     public Request $request;
     public Response $response;
+    public Session $session;
     public Database $db;
     
     // Store controller inside application so we can access it anywhere
@@ -26,6 +27,7 @@
 
         $this->request = new Request();
         $this->response = new Response();
+        $this->session = new Session();
         $this->router = new Router($this->request, $this->response);
         $this->db = new Database($config['db']);
     }
