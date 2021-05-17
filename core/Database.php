@@ -26,9 +26,12 @@ class Database {
 
      public function applyMigrations()
      {
+        // Create migrations table before applying to make sure 
+        // the table exists
         $this->createMigrationsTable();
         $appliedMigrations = $this->getAppliedMigrations();                        
         $newMigrations = [];
+        // Returns all files inside directory
         $files = scandir(Application::$ROOT_DIR.'/migrations');                        
         $toApplyMigrations = array_diff($files, $appliedMigrations);        
         
@@ -60,6 +63,7 @@ class Database {
     
      public function createMigrationsTable()
      {
+        // Table with applied migrations
         $this->pdo->exec("CREATE TABLE IF NOT EXISTS migrations(
             id INT AUTO_INCREMENT PRIMARY KEY,
             migration VARCHAR(255),
@@ -69,12 +73,15 @@ class Database {
 
      public function getAppliedMigrations()
      {
+        // Get all migration names from migration table
         $statement = $this->pdo->prepare("SELECT migration FROM migrations");
         $statement->execute();
-        //fetch all the migration column values as a single dimentional array
+        //fetch all the migration column values as a single dimensional array
+        // otherwise the result would be an array where each row is a subarray
         return $statement->fetchAll(\PDO::FETCH_COLUMN);
      }     
 
+     // Since we need to prepare SQL statements we make it a method
      public function prepare($sql)
      {
          return $this->pdo->prepare($sql);

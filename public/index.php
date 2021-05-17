@@ -27,7 +27,7 @@ $config = [
 $app = new Application(dirname(__DIR__), $config);
 
 $app->router->get('/', function() {
-    return "Ta kam lene te minuta 18 e videos 3";
+    return "Hello world";
 });
 $app->router->get('/login', [AuthController::class, 'getLogin']);
 $app->router->post('/login', [AuthController::class, 'postLogin']);
