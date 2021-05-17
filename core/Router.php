@@ -1,6 +1,7 @@
+<?php
 /**
     Class Router
-    @package ${namespace}
+    @package app\core
  */
 
 namespace app\core;
@@ -17,7 +18,11 @@ class Router {
     }
     
     public function get($path, $callback) {
-        $this->routes[$this->request->getMethod()][$path] = $callback;
+        $this->routes['get'][$path] = $callback;
+    }
+
+    public function post($path, $callback) {
+        $this->routes['post'][$path] = $callback;
     }
 
     public function resolve() {
@@ -35,6 +40,7 @@ class Router {
         }
         if(is_array($callback)) {
             $callback[0] = new $callback[0]();
+            Application::$app->controller = $callback[0];
         }
 
         // Array works same way as function callbacl
@@ -60,10 +66,12 @@ class Router {
         return ob_get_clean();
     }
 
-    public function onlyIncludes($layout) {
+    public function onlyIncludes() {
         // Cache instead of return
+        $layout = Application::$app->controller->layout;
+        $current = Application::$app->controller->current;
         ob_start();
-        include_once Application::$ROOT_DIR."/views/includes/head.php";
+        include_once Application::$ROOT_DIR."/views/includes/$layout.php";
         return ob_get_clean();
     }
     
