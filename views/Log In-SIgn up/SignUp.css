@@ -1,0 +1,145 @@
+#LogInHeader{
+    width: 100%;
+    background-color: rgb(41, 39, 39);
+    display: inline;
+    height: 50px;
+    box-shadow: 10px 10px 30px rgb(221, 220, 220);
+}
+#LogInHeader, img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+    padding-top: 8px;
+}
+#Content{
+    display: grid;
+    width: 100%;
+    background-color: #f4f4f4;
+    margin-top: 15px;
+}
+#SignUpBox{
+    border-radius: 35px;
+    background-color: white;
+    box-shadow: 10px 10px 50px rgb(221, 220, 220);
+    display: block;
+    margin-top: 90px;
+    margin-bottom: 140px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid whitesmoke;
+	width: 1020px;
+    height: 545px;
+	padding: 10px;
+    padding-top: 20px;
+}*/
+input[type="text"], input[type="password"], input[type="email"]{
+    border: solid;
+    border-color: whitesmoke;
+    background-color: whitesmoke;
+    padding: 15px;
+    position: relative;
+    left: 40px;
+    height: 20px;
+    padding: 25px, 35px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+a:hover{
+    color: black;
+}
+a:visited{
+    color: #f3cfcf;
+}
+#Block1{
+    float: left;
+    width: 300px;
+    padding-top: 20px;
+    padding-left: 35px;
+}
+#Block2{
+    padding-left: 20px;
+    float:left;
+    width: 350px;
+    padding-top: 20px;
+}
+#inputZip{
+    padding-left: 20px;
+}
+.input-group-text{
+    padding-right: 20px;
+}
+#Footer{
+    width: 100%;
+
+}
+#payment{
+    display: inline;
+}
+#SignUpButton{
+    border-radius: 10px;
+    width: 120px;
+    height: 40px;
+    border: none;
+    background-color: #B79378;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    float: left;
+}
+.navbutton{
+    width: 60px;
+    height: 40px; 
+    margin-right: 50px;
+    border-bottom: 1px solid white;
+    color: white;
+    background-color: rgb(41, 39, 39);
+    font-weight: 500;
+    font-size: medium;
+    font-family: 'Courier New', Courier, monospace;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding-right: 50px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+#center{
+    float: left; 
+    margin-left: 750px;
+}
+#about{
+    float: left;
+    margin-left: 500px;
+}
+h4{
+    padding-left: 260px;
+}
+
+option{
+    background-color: white;
+    color: black;
+}
+.custom-select{
+    height: 100px;
+}
+.text-Inter{
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+
+.black-background{
+    background-color: black;
+    font-weight: 400;
+}
+
+.input-group input{
+    background-color: rgba(54, 54, 54, 1);
+    border: rgba(54, 54, 54, 1);
+    border-radius: 25px;
+}
+.terms-cond{ 
+    font-size: 12px;
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 30px;
+}
