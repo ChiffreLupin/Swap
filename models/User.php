@@ -5,13 +5,15 @@
 */
 
 namespace app\models;
-use app\core\DbModel;
+use app\core\UserModel;
+
 //RegisterModel name changed to User
-class User extends DbModel {
+class User extends UserModel {
     const STATUS_INACTIVE = 0;
     const STATUS_ACTIVE = 1;
     const STATUS_DELETED = 2;
 
+    public int $id = 2;
     public string $firstname = '';
     public string $lastname = '';
     public string $email = '';
@@ -21,7 +23,7 @@ class User extends DbModel {
 
     public function tableName(): string
     {
-        return 'users';
+        return 'user';
     }
 
     public function save() {
@@ -46,9 +48,17 @@ class User extends DbModel {
         return $this->errors[$attribute] ?? false;
     }
 
+    public function primaryKey(): string {
+        return 'id';
+    }
+
     public function attributes():array
     {
         return ['firstname', 'lastname', 'email', 'password', 'status'];
+    }
+
+    public function displayName(): string {
+        return $this->firstname.' '.$this->lastname;
     }
 
     public function labels(): array

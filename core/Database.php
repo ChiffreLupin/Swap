@@ -31,8 +31,11 @@ class Database {
         $this->createMigrationsTable();
         $appliedMigrations = $this->getAppliedMigrations();                        
         $newMigrations = [];
-        // Returns all files inside directory
-        $files = scandir(Application::$ROOT_DIR.'/migrations');                        
+        // Returns all files inside directory - get all migrations that
+        // have been added since last migration application
+        $files = scandir(Application::$ROOT_DIR.'/migrations');  
+        // Substrct from all migrations inside files variables
+        // migrations stored in database that have been already applied
         $toApplyMigrations = array_diff($files, $appliedMigrations);        
         
         foreach($toApplyMigrations as $migration)
@@ -42,18 +45,22 @@ class Database {
                 continue;
             }
 
+            // Include declaration of migration class which we will apply
             require_once Application::$ROOT_DIR.'/migrations/'.$migration;
-            $className = pathinfo($migration, PATHINFO_FILENAME);                                    
+            $className = pathinfo($migration, PATHINFO_FILENAME);  
+            // Create instance of migration                                  
             $instance = new $className();
             $this->log("Applying migration $migration");
+            // Apply migration on database
             $instance->up();
             $this->log("Applied migration $migration");
+            // Store applied migration in array so we can use it later
             $newMigrations[] = $migration;
         }
 
         if(!empty($newMigrations))
         {
-            $this->savedMigrations($newMigrations);            
+            $this->saveMigrations($newMigrations);            
         }
         else
         {
@@ -87,13 +94,10 @@ class Database {
          return $this->pdo->prepare($sql);
      }
 
-     public function savedMigrations(array $migrations)
+     public function saveMigrations(array $migrations)
      {
-        
         $str = implode(",",array_map(fn($m) => "('$m')", $migrations));        
-        $statement = $this->pdo->prepare("INSERT INTO migrations (migration) VALUES
-         $str
-         ");
+        $statement = $this->pdo->prepare("INSERT INTO migrations (migration) VALUES $str");
         $statement->execute();
      }
 
