@@ -6,7 +6,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://kit.fontawesome.com/c355012b63.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" type="text/css" href="Product_Page.css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="Product_Page.css" media="screen"/> 
     </head>
     <body>
         <!--Header-->
@@ -19,7 +19,7 @@
               </div>
             </div>
             <div id="logo">
-                <a href="#"><img src="C:\Users\HP\Documents\SWAP-Project\Swap\views\Log In-SIgn up\Logo.png" alt="SWAP" width="90px" height="30px"></a>
+                <a href="#"><i></i><img src="C:\Users\HP\Documents\SWAP-Project\Swap\views\Log In-SIgn up\Logo.png" alt="SWAP" width="90px" height="30px"></a>
             </div>
             <div class="col-md-2 float-left">
                 <section class="mb-2">
@@ -40,35 +40,43 @@
           </header>
         <!--Body-->
         <div id="Content" >
-           <div id="Block1">
-              <div class="media-object">
-                <img src="C:\Users\HP\Pictures\cute_dress_.jpg">
+          <div id="upper" class="row">
+            <div id="Block1" class="col">
+              <div class="media-object" >
+                <img src="C:\Users\HP\Pictures\cute_dress_.jpg" id="image">
               </div>
            </div>
-           <div id="Block2"> 
-                <h4>Summer dress</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, dolore recusandae natus a beatae iste pariatur laboriosam 
+           <div id="Block2" class="col">
+             <div class="media-right">
+               <h4>Summer dress</h4>
+               <br>
+               <a href="#"><p>User</p></a>
+               <br>
+                <p style="padding-top: 10px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, dolore recusandae<br> natus a beatae iste pariatur laboriosam 
                   laudantium minima dolor illo sapiente inventore sunt commodi enim odio nobis delectus molestias?</p>
-                <div class="checkbox">
-                  <div>
-                    <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="XS" aria-label="...">
+                <div class="row d-flex justify-content-center mt-100" style="visibility: hiddengi;">
+                  <div class="col-md-8">
+                    <div class="card">
+                      <div class="card-body text-center"> 
+                        <label class="check"> <input type="checkbox" checked> <span>XS</span> </label> 
+                        <label class="check"> <input type="checkbox"> <span>S</span> </label> 
+                        <label class="check"> <input type="checkbox"> <span>M</span> </label>
+                        <label class="check"> <input type="checkbox"> <span>L</span> </label>
+                        <label class="check"> <input type="checkbox"> <span>XL</span> </label> 
+                        <label class="check"> <input type="checkbox"> <span>XXL</span> </label>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="S" aria-label="...">
-                  </div>
-                  <div>
-                    <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="M" aria-label="...">
-                  </div>
-                  <div>
-                    <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="L" aria-label="...">
-                  </div>
-                  <div>
-                    <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="XL" aria-label="...">
-                  </div>
-                  <div>
-                    <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="XXL" aria-label="...">
-                  </div>
+                </div> 
+                <br>
+                <div>
+                  <a href="#"><button type="button" id="OfferButton" class="btn btn-primary" data-bs-toggle="button" autocomplete="off" name="Offer" value="offer" 
+                    style="position: relative;left: 150px;">Send an offer</button></a>
                 </div>
+              </div>
+            </div>
+           <div id="lower" class="row" style="margin-top: 40px;">
+            <hr style="visibility: hidden;">
            </div>
         </div>
         <!--Footer-->
