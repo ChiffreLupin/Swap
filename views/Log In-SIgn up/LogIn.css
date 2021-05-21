@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400&display=swap');
+
+#LogInHeader{
+    background-color: rgb(41, 39, 39);
+    display: grid;
+    height: 50px;
+    box-shadow: 5px 5px 10px rgb(228, 226, 226);
+}
+#LogInHeader, img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+    padding-bottom: 0px;
+    padding-top: 8px;
+}
+#LogInContent{
+    display: grid; 
+    width: 100%;
+    height: 870px;
+    background-color: #f4f4f4;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background: url(https://static.vecteezy.com/system/resources/previews/001/738/717/large_2x/cosmetic-white-background-for-product-presentation-free-photo.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    size: 2500px 2000px ;
+}
+/*http://www.trademade-app.com/wp-content/uploads/2017/04/12241717_760997047363420_2434926610564703042_n.png*/
+/*https://static.vecteezy.com/system/resources/previews/001/738/717/large_2x/cosmetic-white-background-for-product-presentation-free-photo.jpg*/
+#form1{
+    background-color: white;
+    box-shadow: 10px 10px 20px rgb(139, 138, 138);
+    display: block;
+    margin-top: auto;
+    margin-top: 180px;
+    margin-bottom: 140px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid whitesmoke; 
+	width: 280px;
+    height: 350px;
+	padding: 10px;
+    border-radius:7px;
+}
+input[type="text"], input[type="password"]{
+    border: solid;
+    border-color: whitesmoke;
+    /**width: 50px;*/
+    background-color: whitesmoke;
+    padding: 15px;
+    position: relative;
+    left: 30px;
+    width: 200px;
+    height: 25px;
+    margin-top: 15px;
+    border-radius: 15px;
+}
+a:hover{
+    color: royalblue;
+}
+a:visited{
+    color: #f3cfcf;
+}
+.link{
+    position: relative;
+    left: 50px;
+}
+#LogInButton{
+    margin-top: -10px;
+    border-radius: 10px;
+    width: 100px;
+    height: 40px;
+    border: none;
+    background-color: #B79378;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+}
+.navbutton{
+    width: 60px;
+    height: 40px; 
+    margin-right: 50px;
+    border-bottom: 1px solid white;
+    color: white;
+    background-color: rgb(41, 39, 39);
+    font-weight: 500;
+    font-size: medium;
+    font-family: 'Courier New', Courier, monospace;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding-right: 50px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+#center{
+    float: left; 
+    margin-left: 750px;
+}
+#about{
+    float: left;
+    margin-left: 500px;
+}
+
+#LogInFooter{
+    display: grid;
+    background-color: black;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.text-Inter{
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+
+.black-background{
+    background-color: black;
+    font-weight: 400;
+}
+
+.input-group input{
+    background-color: rgba(54, 54, 54, 1);
+    border: rgba(54, 54, 54, 1);
+    border-radius: 25px;
+}
+.terms-cond{ 
+    font-size: 12px;
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 30px;
+}
