@@ -1,12 +1,12 @@
 {
-    "name": "albi/swap",
-    "description": "Swap project",
+    "name": "user/swap",
     "authors": [
         {
-            "name": "Albi Taulla",
-            "email": "albitaulla@yahoo.com"
+            "name": "Ersa Doka",
+            "email": "d7.ersa@gmail.com"
         }
     ],
+
     "autoload": {
     
         "psr-4": {
