@@ -1,17 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400&display=swap');
-
-#LogInHeader{
-    background-color: rgb(41, 39, 39);
-    display: grid;
-    height: 50px;
-    box-shadow: 5px 5px 10px rgb(228, 226, 226);
-}
-#LogInHeader, img{
-    display: block;
-    margin-left: auto;
-    margin-right: auto; 
-    padding-bottom: 0px;
-    padding-top: 8px;
+.justify-center {
+    justify-content: center !important;
 }
 #LogInContent{
     display: grid; 
