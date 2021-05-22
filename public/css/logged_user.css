@@ -41,6 +41,12 @@
     transition-delay: 5s;
 }
 
+.product-item-wrapper {
+    position: relative;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
 @media (min-width: 768px) {
 
     /* show 3 items */
