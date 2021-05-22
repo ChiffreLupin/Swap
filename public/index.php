@@ -14,6 +14,7 @@ $dotenv->load();
 // The _ENV stuff come from the .env file
 // There we store data related to database connection
 $config = [
+    'userClass' => \app\models\User::class,
     'db' => [
         'dsn' => $_ENV['DB_DSN'],
         'user' => $_ENV['DB_USER'],
@@ -22,18 +23,21 @@ $config = [
 ];
 
 
-// Proj root
+// Proj rootcd
 // dirname gives directory of current directory specified as arg
 $app = new Application(dirname(__DIR__), $config);
 
 $app->router->get('/', function() {
-    return "Ta kam lene te minuta 18 e videos 3";
+    return "Hello world";
 });
 $app->router->get('/login', [AuthController::class, 'getLogin']);
 $app->router->post('/login', [AuthController::class, 'postLogin']);
 
 $app->router->get('/register', [AuthController::class, 'getRegister']);
 $app->router->post('/register', [AuthController::class, 'postRegister']);
+
+$app->router->post('/logout', [AuthController::class, 'logout']);
+
 // Should allow passing controllers or views to
 // the router
 // $app->router->get('/home', 'home');

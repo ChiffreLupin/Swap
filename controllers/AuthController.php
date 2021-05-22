@@ -11,6 +11,7 @@ use app\core\Request;
 use app\core\Response;
 use app\models\User;
 use app\core\Application;
+use app\models\LoginUser;
 
 
 class AuthController extends Controller {
@@ -18,14 +19,29 @@ class AuthController extends Controller {
     $this->setLayout('auth');
     $this->setCurrent('Login');
 
-    return $this->render('login');
+    $loginUser = new LoginUser();
+
+    return $this->render('login', [
+        'model' => $loginUser
+    ]);
    }
 
    public function postLogin(Request $req, Response $resp) {
-       $body = $req->getBody();
-       return "Handle submitted data from login form!";
+    $this->setLayout('auth');
+    $this->setCurrent('Login');
 
+    $loginUser = new LoginUser();
+    $loginUser->loadData($req->getBody());
+    if($loginUser->validate() && $loginUser->login()) {
+        $resp->redirect('/home');
+        return;
     }
+
+    return $this->render('login', [
+        'model' => $loginUser
+    ]);
+   }
+
 
     public function getRegister(Request $req,Response $resp) {
         $registerModel = new User();
@@ -55,5 +71,10 @@ class AuthController extends Controller {
         return  $this->render('register', [
             'model' => $registerModel
         ]);
+    }
+
+    public function logout(Request $req, Response $res) {
+        Application::$app->logout();
+        $res->redirect('/');
     }
 }
