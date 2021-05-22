@@ -1,0 +1,27 @@
+#notifications-section {
+    margin: 50px 0;
+}
+
+.user-image-wrapper {
+    border-radius: 30px;
+    max-width: 85px;
+}
+
+.notification-item {
+    max-width: 550px !important;
+    margin: auto;
+    align-items: center;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.notification-item .notification-wrapper p{ 
+    padding-left: 15px;
+    margin-bottom: 0px;
+}
+
+
+.notification-action {
+    text-align: center;
+    margin: 10px 0;
+}
