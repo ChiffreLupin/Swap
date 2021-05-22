@@ -13,11 +13,11 @@ class User extends UserModel {
     const STATUS_ACTIVE = 1;
     const STATUS_DELETED = 2;
 
-    public int $id = 2;
+    public int $id = 0;
     public string $firstname = '';
     public string $lastname = '';
+    public string $username = '';
     public string $email = '';
-    public int $status = self::STATUS_INACTIVE;
     public string $password = '';
     public string $confirmPassword = '';
 

@@ -1,25 +1,4 @@
-<!DOCTYPE html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="SignUp.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/c355012b63.js" crossorigin="anonymous"></script>
-     
-    <title> Sign up </title>
-</head>
-<body>
-    <!--Header-->
-    <nav class="navbar navbar-dark justify-center" style="background-color: black;">
-        <div class="container justify-center">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="logo-wrapper">
-                        <img src="C:\Users\HP\Documents\SWAP-Project\Swap\views\Log In-SIgn up\Logo.png" alt="" class="img-fluid">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+
     <!--Webpage content-->
     <div id="Content">
         <!--Log in Box-->
@@ -85,7 +64,7 @@
                             </div>   
                         </div>
                         <br>
-                        <div id="input-group mb-3">
+                        <!-- <div id="input-group mb-3">
                             <select class="custom-select" id="inputGroupSelect01" style="width: 240px; background-color: whitesmoke; height: 37px; border-radius: 4px; border-color: #DEDEDE; border: none;">
                                 <option>Subscription Type</option>
                                 <option value="3">Monthly Subscription</option>
@@ -99,11 +78,11 @@
                             <div class="container" style="display: inline; margin-left: 7px;margin-bottom: -10px;">
                                 <i class="fab fa-cc-paypal" style="color:#9e898b; font-size: 30px;"></i>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="input-group-text" style="background-color: white; border: none; padding-left: 0px; padding-top: 0px; margin-top: 10px;">
                             <input type="checkbox" style="padding-top: 30px; color: #EBDEDF;">
                             <label style="padding-left: 5px;">I agree to all the Terms and Conditions</label>
-                        </div>
+                        </div> 
                         <br>
                          <a href="#"><button id="SignUpButton" type="submit" name="Register" value="Register">Register</button></a>
                          <br>
@@ -114,7 +93,7 @@
                     </div>
                     <!--Column 3-->
                     <div id="Block3">
-                        <img src="undraw_secure_login_pdn4.svg" style="width: 320px; height: 250px;">
+                        <img src="images/undraw_secure_login_pdn4.svg" style="width: 320px; height: 250px;">
                     </div>
                 </form>
         </div>
@@ -185,4 +164,3 @@
             </div>             
         </div>
     </div>
-</body>
