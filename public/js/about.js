@@ -1,5 +1,9 @@
 let to = document.getElementById('scroll-to');
 let by = document.getElementById('scroll-by');
-to.addEventListener('click', (ev)=>{
-    by.scrollIntoView(true);
-})
+to.addEventListener('click', navigateDown, false);
+
+function navigateDown(e){
+    by.scrollIntoView({
+        behavior: "smooth"
+    });
+}

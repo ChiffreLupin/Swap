@@ -10,6 +10,13 @@
     margin: auto;
 }
 
+
+/*Sections*/
+
+#scroll-to{
+    color: #000;
+    text-decoration: none;
+}
 .section-1 {
     position: relative;
     background-color: rgb(245, 245, 245);
