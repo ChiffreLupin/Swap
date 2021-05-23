@@ -20,6 +20,13 @@ class User extends UserModel {
     public string $email = '';
     public string $password = '';
     public string $confirmPassword = '';
+    public string $profile_picture = '';
+    public int $blocked = 0;
+    public string $state = '';
+    public string $city = '';
+    public string $street = '';
+    public string $zip= '';
+    public string $type = 'client';
 
     public function tableName(): string
     {
@@ -36,11 +43,16 @@ class User extends UserModel {
         return  [
             'firstname' => [self::RULE_REQUIRED],
             'lastname' => [self::RULE_REQUIRED],
+            'username' => [self::RULE_REQUIRED, [self::RULE_UNIQUE, 'class' => self::class]],
             'email' => [self::RULE_REQUIRED, self::RULE_EMAIL, [
                 self::RULE_UNIQUE, 'class' => self::class
             ]],
             'password' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 8], [self::RULE_MAX, 'max' => 24]],
-            'confirmPassword' => [self::RULE_REQUIRED, [self::RULE_MATCH, 'match' => 'password']]
+            'confirmPassword' => [self::RULE_REQUIRED, [self::RULE_MATCH, 'match' => 'password']],
+            'state' => [self::RULE_REQUIRED],
+            'street' => [self::RULE_REQUIRED],
+            'city' => [self::RULE_REQUIRED],
+            'zip' => [self::RULE_REQUIRED]
         ];
     }
 
@@ -54,7 +66,7 @@ class User extends UserModel {
 
     public function attributes():array
     {
-        return ['firstname', 'lastname', 'email', 'password', 'status'];
+        return ['username','firstname', 'lastname', 'email', 'password','profile_picture', 'blocked', 'state', 'city', 'street', 'zip','type'];
     }
 
     public function displayName(): string {
@@ -68,7 +80,13 @@ class User extends UserModel {
             'lastname' => 'Last Name',
             'email' => 'Email',
             'password' => 'Password',
-            'confirmPassword' => 'Confirm Password'
+            'confirmPassword' => 'Confirm Password',
+            'blocked' => 'Blocked',
+            'username' => 'Username',
+            'state' => 'State',
+            'city' => 'City',
+            'street' => 'Street',
+            'zip' => 'Zip'
         ];
     }
 }

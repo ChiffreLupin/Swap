@@ -17,7 +17,6 @@
     margin-right: auto;
     border: 1px solid whitesmoke;
 	width: 1020px;
-    height: 545px;
 	padding: 10px;
     padding-top: 20px;
 }*/
@@ -132,3 +131,16 @@ option{
     padding-top: 60px;
     padding-bottom: 30px;
 }
+
+.form-group {
+    width: 100%;
+}
+
+.col-md-6 {
+    width: 100%;
+}
+
+.invalid-feedback {
+    width: 100%;
+}
+

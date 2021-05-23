@@ -8,7 +8,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/c355012b63.js" crossorigin="anonymous"></script>
+        <?php if($current==='Register') { ?>
         <link href="css/SignUp.css" rel="stylesheet">
+        <?php } ?>
+        <?php if($current==='Login') { ?>
+            <link rel="stylesheet" type="text/css" href="css/LogIn.css" media="screen"/>
+        <?php } ?>
 
         <title> Sign up </title>
     </head>

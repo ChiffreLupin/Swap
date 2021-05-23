@@ -28,34 +28,47 @@
     margin-left: auto;
     margin-right: auto;
     border: 1px solid whitesmoke; 
-	width: 280px;
+	width: 320px;
     height: 350px;
 	padding: 10px;
     border-radius:7px;
+    
 }
-input[type="text"], input[type="password"]{
+
+form {
+    width: 100%;
+    position: relative;
+}
+
+.invalid-feedback{
+    width: 78%;
+    margin: 0 auto;
+}
+
+.col-md-6{
+    width: 100%;
+}
+input[type="email"], input[type="password"]{
     border: solid;
     border-color: whitesmoke;
     /**width: 50px;*/
     background-color: whitesmoke;
     padding: 15px;
     position: relative;
-    left: 30px;
-    width: 200px;
+    margin: 0 auto;
+    width: 80%;
     height: 25px;
-    margin-top: 15px;
+    margin-top: 10px;
+    margin-bottom: 5px;
     border-radius: 15px;
 }
 a:hover{
-    color: royalblue;
+    color: #B79378;
 }
 a:visited{
     color: #f3cfcf;
 }
-.link{
-    position: relative;
-    left: 50px;
-}
+
 #LogInButton{
     margin-top: -10px;
     border-radius: 10px;
@@ -122,3 +135,19 @@ a:visited{
     padding-bottom: 30px;
 }
 
+.links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 78%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.link {
+    text-decoration: none;
+    text-transform: none;
+    color: #282828;
+    font-size: 0.7rem;
+}

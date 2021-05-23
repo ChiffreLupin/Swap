@@ -1,41 +1,29 @@
-<!DOCTYPE html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="LogIn.css" media="screen"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> 
-    <script src="https://kit.fontawesome.com/c355012b63.js" crossorigin="anonymous"></script>
-    <title> Log In </title>
-</head>
-<body>
-    <!--Header-->
-    <nav class="navbar navbar-dark justify-center" style="background-color: black;">
-      <div class="container justify-center">
-          <div class="row">
-              <div class="col-md-12">
-                  <div class="logo-wrapper">
-                      <img src="C:\Users\HP\Documents\SWAP-Project\Swap\views\Log In-SIgn up\Logo.png" alt="" class="img-fluid">
-                  </div>
-              </div>
-          </div>
-      </div>
-  </nav>
+
     <!--Webpage content-->
     <div id="LogInContent">
         <div id="LogInBox">
-            <form id="form1">
+            <div id="Form1">
+            <?php $form = app\core\form\Form::begin('', 'post') ?>
               <div>
-                <i class="far fa-user-circle"style="margin-left: 110px;color: black; font-size: 3rem; margin-bottom: 15px;"></i>
+                <i class="far fa-user-circle"style="margin-left: 130px;color: black; font-size: 3rem; margin-bottom: 15px;"></i>
               </div>
                 <h4 style="font-size: 22px; color:black; margin-left: 35px; margin-top: 5px; margin-bottom: -6px;">Log in</h4>
-                <input type="text" name="username" placeholder="username" class="form-control"><br><br>
-                <input type="password" name="password" placeholder="password" class="form-control" style="margin-top: -23px; margin-bottom: 10px;">
-                <a class="link" href="ForgetPass.html" style=" margin-left: -10px; text-decoration: none; font-size: 14px;">Forgot password?</a>
-                <br>
-                <a class="link" href="SignUp.html" style="margin-left: -10px;text-decoration: none; font-size: 14px;">Sign up</a>
+                <div class="form-group">
+                  <?php echo $form->field($model, 'email', 'margin-top: 15px')->email() ?>
+                </div>
+                <div class="form-group">
+                  <?php echo $form->field($model, 'password','margin-top: 20px')->password() ?>
+                </div>
+                <div class="links">
+                  <a class="link" href="ForgetPass.html">Forgot password?</a>
+                  <a class="link" href="SignUp.html">Sign up</a>
+                </div>
+                
                 <br><br>
-                <a href="#"><button type="button" id="LogInButton" class="btn btn-primary" data-bs-toggle="button" autocomplete="off" name="LOGIN" value="Login" 
-                style="position: relative;left: 150px;">Log in</button></a>
-            </form>
+                <a href="#"><button type="submit" id="LogInButton" class="btn btn-primary" data-bs-toggle="button" autocomplete="off" name="LOGIN" value="Login" 
+                style="position: absolute;right: 25px; bottom: 3px;">Log in</button></a>
+            <?php app\core\form\Form::end() ?>
+            </div>
         </div>
     </div>
     <!--Footer-->
@@ -94,7 +82,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 text-Inter terms-cond">
-                    <a href="Files/terms and conditions.pdf" download rel="noopener noreferrer" target="_blank" style="color: white;">
+                    <a href="files/terms and conditions.pdf" download rel="noopener noreferrer" target="_blank" style="color: white;">
                         TERMS & CONDITIONS POLICY
                    </a>
                 </div>
@@ -111,4 +99,3 @@
         var button = new bootstrap.Button(button)
         button.toggle()})
     </script>
-</body>

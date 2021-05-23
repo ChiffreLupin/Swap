@@ -17,7 +17,6 @@
                                 </button>
                             </div>
                         <?php \app\core\form\Form::end() ?>
-
                 </div>
             </div>
         </div>

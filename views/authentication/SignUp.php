@@ -3,38 +3,39 @@
     <div id="Content">
         <!--Log in Box-->
         <div id="SignUpBox">
-                <form>
+            <?php $form = \app\core\form\Form::begin('', 'post') ?>
                     <div class="form-row">
                         <h4 style="font-size: 33px; color:black">Sign Up</h4>
                         <!--Column 1-->
                         <div id="Block1"> 
-                            <div>
-                            <input type="text" class="form-control" placeholder="First name" style="width: 240px; background-color: whitesmoke; border: none;">
+                            <div class="form-group">
+                            <?php echo $form->field( $model, "firstname", "width: 240px; background-color: whitesmoke; border: none;") ?>
                             </div>
                             <br>
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="Last name" style="width: 240px; background-color: whitesmoke; border: none;">
+                            <div class="form-group col">
+                                <?php echo $form->field( $model, "lastname", "width: 240px; background-color: whitesmoke; border: none;") ?>
                             </div>
                             <br>
-                            <div>
-                                <input type="text" class="form-control" placeholder="Username" style="width: 240px; background-color: whitesmoke; border: none;">
-                            </div>
-                            <br>
-                            <div class="form-group col-md-6">
-                                <input type="email" class="form-control" id="inputEmail4" placeholder="Email" style="width: 240px; background-color: whitesmoke; border: none;">
+                            <div  class="form-group">
+                                <?php echo $form->field( $model, "username", "width: 240px; background-color: whitesmoke; border: none;") ?>
                             </div>
                             <br>
                             <div class="form-group col-md-6">
-                                <input type="password" class="form-control" id="inputPassword4" placeholder="Password" style="width: 240px; background-color: whitesmoke; border: none;">
+                                <?php echo $form->field( $model, "email", "width: 240px; background-color: whitesmoke; border: none;")->email() ?>
                             </div>
                             <br>
                             <div class="form-group col-md-6">
-                                <input type="password" class="form-control" id="inputPassword4" placeholder="Confirm password" style="width: 240px; background-color: whitesmoke; border: none;">
+                                <?php echo $form->field( $model, "password", "width: 240px; background-color: whitesmoke; border: none;")->password() ?>
+                            </div>
+                            <br>
+                            <div class="form-group col-md-6">
+                                <?php echo $form->field( $model, "confirmPassword", "width: 240px; background-color: whitesmoke; border: none;")->password() ?>
                             </div>
                             <br>
                             <div class="form-group">
-                            <input type="text" class="form-control" id="inputAddress" placeholder="Address" style="width: 240px; background-color: whitesmoke; border: none;">
-                        </div>
+                            <?php echo $form->field( $model, "street", "width: 240px; background-color: whitesmoke; border: none;") ?>
+
+                            </div>
                         <br>
                         </div>
                     </div>
@@ -42,11 +43,11 @@
                     <div id="Block2">
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control" id="inputCity" placeholder="City" style="width: 240px; background-color: whitesmoke; border: none;">
+                            <?php echo $form->field( $model, "city", "width: 240px; background-color: whitesmoke; border: none;") ?>
                             </div>
                             <br>
                             <div class="input-group mb-3">
-                                <select class="custom-select" id="inputGroupSelect01" style="width: 240px; background-color: whitesmoke; height: 37px; border-radius: 4px; border-color: #DEDEDE; border: none;">
+                                <select name="state" class="custom-select" id="inputGroupSelect01" style="width: 240px; background-color: whitesmoke; height: 37px; border-radius: 4px; border-color: #DEDEDE; border: none;">
                                   <option selected>Albania</option>
                                   <option value="1">England</option>
                                   <option value="2">Danmark</option>
@@ -60,7 +61,8 @@
                                 </select>
                             </div>
                             <div class="form-group col-md-2">
-                                <input type="text" class="form-control" id="inputZip" placeholder="Zip" style="width: 240px; background-color: whitesmoke; height: 37px; margin-top: 25px; border: none;">
+                            <?php echo $form->field( $model, "zip", "width: 240px; background-color: whitesmoke; border: none;") ?>
+
                             </div>   
                         </div>
                         <br>
@@ -95,7 +97,7 @@
                     <div id="Block3">
                         <img src="images/undraw_secure_login_pdn4.svg" style="width: 320px; height: 250px;">
                     </div>
-                </form>
+            <?php \app\core\form\Form::end() ?>
         </div>
     </div>
     <!--Footer-->

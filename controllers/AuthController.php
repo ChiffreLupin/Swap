@@ -21,7 +21,7 @@ class AuthController extends Controller {
 
     $loginUser = new LoginUser();
 
-    return $this->render('login', [
+    return $this->render('authentication/LogIn', [
         'model' => $loginUser
     ]);
    }
@@ -32,12 +32,13 @@ class AuthController extends Controller {
 
     $loginUser = new LoginUser();
     $loginUser->loadData($req->getBody());
+    
     if($loginUser->validate() && $loginUser->login()) {
         $resp->redirect('/home');
         return;
     }
 
-    return $this->render('login', [
+    return $this->render('authentication/LogIn', [
         'model' => $loginUser
     ]);
    }
@@ -56,19 +57,25 @@ class AuthController extends Controller {
     //register action??
     public function postRegister(Request $req,Response $resp) {
         $registerModel = new User();
+       
         $registerModel->loadData($req->getBody());
-      
+        
         // If the data is valid and we successfully stored it inside the database
         // We return success page
         if($registerModel->validate() && $registerModel->save()) {     
             Application::$app->session->setFlash('success','Thanks for registering');
-            Application::$app->response->redirect('/');
-            exit;
+            $user = User::findOne(['email' => $registerModel->email]);
+            Application::$app->login($user);
+            Application::$app->response->redirect('/home');
+            return;
         }
 
        // Else we return to the current page 
        // This time we pass the model with all the errors
-        return  $this->render('register', [
+        $this->setLayout('auth');
+        $this->setCurrent('Register');
+
+        return  $this->render('authentication/SignUp', [
             'model' => $registerModel
         ]);
     }
