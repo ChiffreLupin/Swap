@@ -5,20 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Swap Home Page</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/public/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> 
     <script src="https://kit.fontawesome.com/c355012b63.js" crossorigin="anonymous"></script>
 
 
 </head>
 <body>
-    <!--Navbar About    -->
     <nav class="navbar navbar-dark justify-center" style="background-color: black;">
         <div class="container justify-center">
             <div class="row">
                 <div class="col-md-12">
                     <div class="logo-wrapper">
-                        <img src="C:\Users\HP\Documents\SWAP-Project\Swap\views\Log In-SIgn up\Logo.png" alt="" class="img-fluid">
+                        <img src="/public/images/logo.png" alt="" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -26,6 +25,7 @@
     </nav>
 
     <!--Who are we Section-->
+
     <section class="hero-banner-section section-1">
         <div class="container">
             <div class="row">
@@ -50,7 +50,7 @@
                         or three times.
                     </p>
                     <p>
-                        <b>
+                        <b id="scroll-to">
                             Swipe down and get started...
                         </b>
                     </p>
@@ -77,19 +77,19 @@
                         Swap speaks your language. Click below to learn how.
                     </p>
                     <p>How to use it?
-                    <a href="files/how to use.pdf" download rel="noopener noreferrer" target="_blank">
+                    <a href="/views/files/how to use.pdf" download rel="noopener noreferrer" target="_blank">
                          Click here for Tutorial.
                     </a>
                     </p>
                 </div>
             </div>
             <div class="text-center">
-                <button type="button" class="button-1 btn-1" > <p>GET STARTED</p></button>
+                <button type="button" class="button-1 btn-1" id="scroll-by"> <p>GET STARTED</p></button>
             </div>       
         </div>
     </section>
 
-    <!--Footer-->
+   
     <footer class="text-white" style="background-color: black;">
         <div class="container p-4">
             <div class="row">
@@ -124,19 +124,19 @@
                     </div>
                    
                 </div>
-                <div class="col-md-2" style = "padding-left: 10px ;">
+                <div class="col-md-2 padding-10" style = "padding-left: 10px ;">
                     <section class="mb-2">
-                        <!-- Facebook -->
+                        <!--Facebook-->
                         <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
                           ><i class="fab fa-facebook-f"></i
                         ></a>
                   
-                        <!-- Twitter -->
+                        <!--Twitter-->
                         <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
                           ><i class="fab fa-twitter"></i
                         ></a>
                   
-                        <!-- Instagram -->
+                         <!--Instagram-->
                         <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
                           ><i class="fab fa-instagram"></i
                         ></a>
@@ -146,7 +146,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 text-Inter terms-cond">
-                    <a href="files/terms and conditions.pdf" download rel="noopener noreferrer" target="_blank" style="color: white;">
+                    <a href="views/files/terms and conditions.pdf" download rel="noopener noreferrer" target="_blank" style="color: white;">
                         TERMS & CONDITIONS POLICY
                    </a>
                 </div>
@@ -160,6 +160,6 @@
 
 </body>
 
-<script src="/js/jquery.min.js"></script>
-<script src="/js/bootstrap.js"></script>
+<script src="/public/js/"></script>
 </html>
+
