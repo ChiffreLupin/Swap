@@ -5,6 +5,8 @@
  */
 
 namespace app\core;
+use \PDO;
+
 
  class Application {
 
@@ -64,8 +66,6 @@ namespace app\core;
 
     public function login(DbModel $user) {
         $this->user = $user;
-
-        var_dump($this->user);
         $primaryKey = $user->primaryKey();
         $primaryValue = $user->{$primaryKey};
         $this->session->set('user', $primaryValue);
@@ -76,4 +76,6 @@ namespace app\core;
         $this->user = null;
         $this->session->remove('user');
     }
+
+  
  }

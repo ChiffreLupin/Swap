@@ -18,6 +18,7 @@ class Router {
     }
     
     public function get($path, $callback) {
+
         $this->routes['get'][$path] = $callback;
     }
 
@@ -29,6 +30,7 @@ class Router {
         $path = $this->request->getPath();  
         $method = $this->request->getMethod();
         // Even in case of error this is managed by null op
+        
         $callback = $this->routes[$method][$path] ?? false;
 
         if($callback === false) {

@@ -32,6 +32,7 @@
     height: 350px;
 	padding: 10px;
     border-radius:7px;
+    position: relative;
 }
 .txt{
     border: none;
@@ -95,30 +96,23 @@ a:visited{
     margin-left: 500px;
 }
 
-#LogInFooter{
-    display: grid;
-    background-color: black;
-    width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-.text-Inter{
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-}
-.black-background{
-    background-color: black;
-    font-weight: 400;
+
+.alert {
+    font-size: 0.8rem;
+    padding: 5px;
+    position: absolute;
+    width: 80%;
+    left: 50%;
+    transform: translate(-50%, -75%);
 }
 
-.input-group input{
-    background-color: rgba(54, 54, 54, 1);
-    border: rgba(54, 54, 54, 1);
-    border-radius: 25px;
-}
-.terms-cond{ 
-    font-size: 12px;
+.rules {
+    color: red;
+    position: absolute;
+    width: 75%;
+    left: 50%;
     text-align: center;
-    padding-top: 60px;
-    padding-bottom: 30px;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    bottom: 30%;
 }

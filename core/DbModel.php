@@ -38,7 +38,7 @@ abstract class DbModel extends Model
         $attributes = array_keys($where);
         $sql = implode("AND ",array_map(fn($attr) => "$attr = :$attr", $attributes));
         // SELECT * FROM $tableName WHERE email = :email AND firstname = :firstname
-        $statement = self::prepare("SELECT * from $tableName WHERE $sql");
+        $statement = self::prepare("SELECT * from $tableName WHERE $sql LIMIT 1");
         foreach($where as $key => $item) {
             $statement->bindValue(":$key", $item);
         }

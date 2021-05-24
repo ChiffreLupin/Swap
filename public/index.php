@@ -36,6 +36,12 @@ $app->router->post('/login', [AuthController::class, 'postLogin']);
 $app->router->get('/register', [AuthController::class, 'getRegister']);
 $app->router->post('/register', [AuthController::class, 'postRegister']);
 
+$app->router->get('/resetPassword', [AuthController::class, 'getResetPassword']);
+$app->router->post('/resetPassword', [AuthController::class, 'postResetPassword']);
+
+$app->router->get('/forgotPassword', [AuthController::class, 'getForgotPassword']);
+$app->router->post('/forgotPassword', [AuthController::class, 'postForgotPassword']);
+
 $app->router->post('/logout', [AuthController::class, 'logout']);
 
 // Should allow passing controllers or views to
