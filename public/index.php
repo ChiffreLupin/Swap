@@ -5,6 +5,8 @@
 use app\core\Application;
 use app\controllers\HomeController;
 use app\controllers\AuthController;
+use app\controllers\AboutController;
+
 
 // Any class can be autoloaded using \app\core\
 require_once __DIR__.'/../vendor/autoload.php';
@@ -27,9 +29,7 @@ $config = [
 // dirname gives directory of current directory specified as arg
 $app = new Application(dirname(__DIR__), $config);
 
-$app->router->get('/', function() {
-    return "Hello world";
-});
+$app->router->get('/', [AboutController::class, 'getAbout']);
 $app->router->get('/login', [AuthController::class, 'getLogin']);
 $app->router->post('/login', [AuthController::class, 'postLogin']);
 

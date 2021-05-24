@@ -14,7 +14,6 @@ class Router {
     public function __construct(Request $request,Response $response) {
         $this->request = $request;
         $this->response = $response;
-
     }
     
     public function get($path, $callback) {
@@ -70,8 +69,8 @@ class Router {
 
     public function onlyIncludes() {
         // Cache instead of return
-        $layout = Application::$app->controller->layout;
-        $current = Application::$app->controller->current;
+        $layout = Application::$app->controller->layout ?? "head";
+        $current = Application::$app->controller->current ?? "404";
         ob_start();
         include_once Application::$ROOT_DIR."/views/includes/$layout.php";
         return ob_get_clean();
