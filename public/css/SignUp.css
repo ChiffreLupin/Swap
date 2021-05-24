@@ -4,12 +4,17 @@
 #Content{
     display: grid;
     width: 100%;
-    background-color: #f4f4f4;
+    background: url(https://static.vecteezy.com/system/resources/previews/001/738/717/large_2x/cosmetic-white-background-for-product-presentation-free-photo.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    size: 2500px 2000px ;
 }
 #SignUpBox{
     border-radius: 35px;
     background-color: white;
-    box-shadow: 10px 10px 50px rgb(221, 220, 220);
+    box-shadow: 10px 10px 50px rgb(139, 138, 138);
     display: block;
     margin-top: 90px;
     margin-bottom: 140px;

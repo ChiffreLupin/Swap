@@ -13,7 +13,6 @@ header{
     display:inline;
     margin-left: auto;
     margin-right: 510px; 
-    padding-top: 7px;
 }
 .col-md-2{
     float: right;
@@ -32,17 +31,20 @@ header{
     width: 100%;
     height: 100%;
     display: grid;
-    background: url(https://image.freepik.com/free-vector/watercolor-eucalyptus-leaf-background_61199-432.jpg)no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    size: 1200px 1200px ;
+    background: url(https://i.pinimg.com/originals/0a/a6/f5/0aa6f53f1a24984850a55ccba2a5f522.png)no-repeat center center fixed;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size:contain;
+    background-color: #f6f6f6; 
 }
+/*https://i.pinimg.com/originals/2f/50/9e/2f509ec3f506ef3efe5aff97392632f3.jpg*/
+
+/*https://i.pinimg.com/736x/6f/c7/b4/6fc7b4779b807359c35505a7ed084090.jpg*/
 #upper{
     border-radius: 35px;
-    background-color: white;
-    box-shadow: 10px 10px 50px rgb(221, 220, 220);
+    background-color: transparent;
+    box-shadow: 10px 10px 50px rgb(190, 187, 187);
     margin-top: 90px;
     margin-bottom: 140px;
     margin-left: auto;
@@ -63,19 +65,23 @@ header{
 }
 .media-object{
     background-color: transparent;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     width:460px;
-    height: 460px;
+    height: 470px;
     border: none;
+    border-radius: 10px;
 }
 img{
   width: 100%;
   height: 100%;
-  object-fit: contain; 
+  object-fit: contain;
   margin: auto;
   display: block;  
+  filter: drop-shadow(0px 0px 5px rgba(36, 35, 35, 0.5))
+        drop-shadow(0px 0px 15px rgba(26, 25, 25, 0.5));
+   
 }
 a{
     text-decoration: none;
@@ -87,13 +93,14 @@ a:visited{
 a:hover{
     color: #B79378;
 }
-h5{
+.h h5{
     padding-left: 10px;
     font-weight:lighter;
     font-family:Arial, Helvetica, sans-serif;
 }
-h2{
+.h h2{
     font-family:Arial, Helvetica, sans-serif;
+    color: black;
 }
 #tag{
     display: inline;
@@ -101,6 +108,9 @@ h2{
 ul{
     display: inline;
 
+}
+.h p{
+    color: black;
 }
 /****************************************************************************************************/
 .mt-100{
@@ -157,7 +167,7 @@ label.check span {
 label.check input:checked+span {
     border-color: #cea58a;
     background-color: #cea58a;
-    color: #fff
+    color: black
 }
 /***************************************************************************************************/
 
@@ -172,7 +182,7 @@ label.check input:checked+span {
     color: black;
     font-weight: 500;
     margin-right: auto;
-    margin-left: 150px;
+    margin-left: 175px;
 }
 
 /*Footer*/
