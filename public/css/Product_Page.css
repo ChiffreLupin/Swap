@@ -163,6 +163,7 @@ label.check input:checked+span {
     font-weight: 500;
     margin-right: auto;
     margin-left: 175px;
+    margin-bottom: 30px;
 }
 
 /*Footer*/
