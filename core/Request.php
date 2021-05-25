@@ -12,7 +12,7 @@ class Request {
     }
 
     public function getParam($param) {
-        return $_GET[$param];
+        return $_GET[$param] ?? "";
     }
 
     public function getMethod() {

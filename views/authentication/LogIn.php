@@ -9,17 +9,17 @@
               </div>
                 <h4 style="font-size: 22px; color:black; margin-left: 35px; margin-top: 5px; margin-bottom: -6px;">Log in</h4>
                 <div class="form-group">
-                  <?php echo $form->field($model, 'email', 'margin-top: 15px')->email() ?>
+                  <?php echo $form->field($model, 'email', 'margin-top: 15px', 'login-inp')->email() ?>
                 </div>
                 <div class="form-group">
-                  <?php echo $form->field($model, 'password','margin-top: 20px')->password() ?>
+                  <?php echo $form->field($model, 'password','margin-top: 20px', 'login-inp')->password() ?>
                 </div>
                 <div class="links">
                   <a class="link" href="/forgotPassword">Forgot Password?</a>
                   <a class="link" href="/register">Sign up</a>
                 </div>                
                 <br><br>
-                <a href="#"><button type="submit" id="LogInButton" class="btn btn-primary" data-bs-toggle="button" autocomplete="off" name="LOGIN" value="Login" 
+                <a href="#"><button type="submit" id="LogInButton" class="btn btn-primary" data-bs-toggle="button" autocomplete="off" name="login" value="Login" 
                 style="position: absolute;right: 25px; bottom: 3px;">Log in</button></a>
             <?php app\core\form\Form::end() ?>
             </div>

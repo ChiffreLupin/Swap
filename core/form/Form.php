@@ -18,7 +18,7 @@ use app\core\Model;
         echo '</form>';
     }
 
-    public function field(Model $model, $attribute, $style) {
-        return new Field($model, $attribute, $style);
+    public function field(Model $model, $attribute, $style, $class) {
+        return new Field($model, $attribute, $style, $class);
     }
  }

@@ -27,7 +27,7 @@ class Product extends DbModel {
     }
 
 
-    public function tableName(): string
+    public static function tableName(): string
     {
         return 'product';
     }
@@ -49,11 +49,11 @@ class Product extends DbModel {
         return $this->errors[$attribute] ?? false;
     }
 
-    public function primaryKey(): string {
+    public static function primaryKey(): string {
         return 'id';
     }
 
-    public function attributes():array
+    public static function attributes():array
     {
         return ['name', 'amount', 'imagePath', 'created_at','description'];
     }

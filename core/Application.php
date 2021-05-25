@@ -41,7 +41,8 @@ use \PDO;
         $primaryValue = $this->session->get('user');
         if($primaryValue) {
             $primaryKey = $this->userClass::primaryKey();
-            $this->user = $this->userClass::findOne([$primaryKey => $primaryValue]);
+            $user = $this->userClass::findOne([$primaryKey => $primaryValue]);
+            $this->user = $user ? $user : null;
         } else {
             $this->user = null;
         }

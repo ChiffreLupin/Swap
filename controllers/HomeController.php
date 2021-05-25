@@ -21,21 +21,22 @@ class HomeController extends Controller {
 
         if($product_id) {
             $product = Product::findOne(["id" => $product_id]);
-            $product->user = User::findOne(["id" => $product->user_id]);
+
+            if($product) {
+                $user = User::findOne(["id" => $product->user_id]);
+                $product->user = $user ? $user : null;
+                
+                if($product->user) {
+                    return $this->render('ProductPage', [
+                        "model" => $product
+                    ]);
+                }
+            }
+        } 
             
-            return $this->render('ProductPage', [
-                "model" => $product
-            ]);
-        } else {
-            $resp->redirect("");
-        }
-        
+        $resp->redirect("/");
+    
     }
 
-    public function postHomeProducts(Request $request, Response $reponse) {
-        // Here we deal with the data from the request
-        $body = $request->getBody();
-
-        // Do whatever we want with the data
-    }
+   
 }

@@ -18,23 +18,27 @@ class Field{
     public Model $model;
     public string $attribute;
     public string $style;
+    public string $class;
 
-    public function __construct(Model $model, $attribute,string $style){
+
+    public function __construct(Model $model, $attribute,string $style, string $class){
         $this->type = self::TYPE_TEXT;
         $this->model = $model;
         $this->attribute = $attribute;
         $this->style = $style;
+        $this->class = $class;
     }
 
     public function __toString() {
         return sprintf('
-            <div class="col-md-6">
+            <div class="col-md-6 %s">
                 <input placeholder="%s" type="%s"  value="%s" class="form-control%s" name="%s" style="%s">
                 <div class="invalid-feedback">
                     %s
                 </div>
             </div>
-        ', $this->model->labels()[$this->attribute] ?? $this->attribute,
+        ', $this->class,
+        $this->model->labels()[$this->attribute] ?? $this->attribute,
         $this->type,
         $this->model->{$this->attribute},
         $this->model->hasError($this->attribute) ? ' is-invalid':'', 

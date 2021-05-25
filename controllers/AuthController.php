@@ -26,31 +26,38 @@ require '../vendor/autoload.php';
 
 class AuthController extends Controller {
    public function getLogin(Request $req,Response $resp) {
-    $this->setLayout('auth');
-    $this->setCurrent('Login');
+    if(isset($_GET["login"])) {
+        $this->setLayout('auth');
+        $this->setCurrent('Login');
 
-    $loginUser = new LoginUser();
+        $loginUser = new LoginUser();
 
-    return $this->render('authentication/LogIn', [
-        'model' => $loginUser
-    ]);
+        return $this->render('authentication/LogIn', [
+            'model' => $loginUser
+        ]);
+    }
+    else $resp->redirect("/");
    }
 
    public function postLogin(Request $req, Response $resp) {
-    $this->setLayout('auth');
-    $this->setCurrent('Login');
+    if(isset($_POST["login"])) {
+        $this->setLayout('auth');
+        $this->setCurrent('Login');
 
-    $loginUser = new LoginUser();
-    $loginUser->loadData($req->getBody());
-    
-    if($loginUser->validate() && $loginUser->login()) {
-        $resp->redirect('/home');
-        return;
+        $loginUser = new LoginUser();
+        $loginUser->loadData($req->getBody());
+        
+        if($loginUser->validate() && $loginUser->login()) {
+            $resp->redirect('/home');
+            return;
+        }
+
+        return $this->render('authentication/LogIn', [
+            'model' => $loginUser
+        ]);
+    } else {
+        $resp->redirect("/");
     }
-
-    return $this->render('authentication/LogIn', [
-        'model' => $loginUser
-    ]);
    }
 
 
@@ -66,37 +73,40 @@ class AuthController extends Controller {
     }
 
     public function postRegister(Request $req,Response $resp) {
-        $registerModel = new User();
-       
-        $registerModel->loadData($req->getBody());
+        if(isset($_POST["register"])) {
+            $registerModel = new User();
         
-        // If the data is valid and we successfully stored it inside the database
-        // We return success page
-        if($registerModel->validate() && $registerModel->save()) {     
-            Application::$app->session->setFlash('success','Thanks for registering');
-            $user = User::findOne(['email' => $registerModel->email]);
-            Application::$app->login($user);
-            Application::$app->response->redirect('/home');
-            return;
+            $registerModel->loadData($req->getBody());
+            
+            // If the data is valid and we successfully stored it inside the database
+            // We return success page
+            if($registerModel->validate() && $registerModel->save()) {     
+                Application::$app->session->setFlash('success','Thanks for registering');
+                $user = User::findOne(['email' => $registerModel->email]);
+                Application::$app->login($user);
+                Application::$app->response->redirect('/home');
+                return;
+            }
+
+        // Else we return to the current page 
+        // This time we pass the model with all the errors
+            $this->setLayout('auth');
+            $this->setCurrent('Register');
+
+            return  $this->render('authentication/SignUp', [
+                'model' => $registerModel
+            ]);
+        } else {
+            $resp->redirect("/");
         }
-
-       // Else we return to the current page 
-       // This time we pass the model with all the errors
-        $this->setLayout('auth');
-        $this->setCurrent('Register');
-
-        return  $this->render('authentication/SignUp', [
-            'model' => $registerModel
-        ]);
     }
 
-    public function getResetPassword(Request $req, Response $res) {
+    public function getResetPassword(Request $req, Response $resp) {
         $this->setLayout('auth');
         $this->setCurrent('Reset Password');
 
         $selector = $req->getParam("selector");
         $validator = $req->getParam("validator");
-        
 
         if(!empty($selector) && !empty($validator)) {
             // Check these are hexadecimals
@@ -107,7 +117,7 @@ class AuthController extends Controller {
                 ]);
             }
         } else {
-            return $this->render("/");
+            return $resp->redirect("/");
         }
     }
 

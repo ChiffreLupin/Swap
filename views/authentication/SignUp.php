@@ -9,31 +9,31 @@
                         <!--Column 1-->
                         <div id="Block1"> 
                             <div class="form-group">
-                            <?php echo $form->field( $model, "firstname", "width: 240px; background-color: whitesmoke; border: none;") ?>
+                            <?php echo $form->field( $model, "firstname", "width: 240px; background-color: whitesmoke; border: none;","") ?>
                             </div>
                             <br>
                             <div class="form-group col">
-                                <?php echo $form->field( $model, "lastname", "width: 240px; background-color: whitesmoke; border: none;") ?>
+                                <?php echo $form->field( $model, "lastname", "width: 240px; background-color: whitesmoke; border: none;","") ?>
                             </div>
                             <br>
                             <div  class="form-group">
-                                <?php echo $form->field( $model, "username", "width: 240px; background-color: whitesmoke; border: none;") ?>
+                                <?php echo $form->field( $model, "username", "width: 240px; background-color: whitesmoke; border: none;","") ?>
                             </div>
                             <br>
                             <div class="form-group col-md-6">
-                                <?php echo $form->field( $model, "email", "width: 240px; background-color: whitesmoke; border: none;")->email() ?>
+                                <?php echo $form->field( $model, "email", "width: 240px; background-color: whitesmoke; border: none;","")->email() ?>
                             </div>
                             <br>
                             <div class="form-group col-md-6">
-                                <?php echo $form->field( $model, "password", "width: 240px; background-color: whitesmoke; border: none;")->password() ?>
+                                <?php echo $form->field( $model, "password", "width: 240px; background-color: whitesmoke; border: none;","")->password() ?>
                             </div>
                             <br>
                             <div class="form-group col-md-6">
-                                <?php echo $form->field( $model, "confirmPassword", "width: 240px; background-color: whitesmoke; border: none;")->password() ?>
+                                <?php echo $form->field( $model, "confirmPassword", "width: 240px; background-color: whitesmoke; border: none;","")->password() ?>
                             </div>
                             <br>
                             <div class="form-group">
-                            <?php echo $form->field( $model, "street", "width: 240px; background-color: whitesmoke; border: none;") ?>
+                            <?php echo $form->field( $model, "street", "width: 240px; background-color: whitesmoke; border: none;","") ?>
 
                             </div>
                         <br>
@@ -43,7 +43,7 @@
                     <div id="Block2">
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                            <?php echo $form->field( $model, "city", "width: 240px; background-color: whitesmoke; border: none;") ?>
+                            <?php echo $form->field( $model, "city", "width: 240px; background-color: whitesmoke; border: none;","") ?>
                             </div>
                             <br>
                             <div class="input-group mb-3">
@@ -61,7 +61,7 @@
                                 </select>
                             </div>
                             <div class="form-group col-md-2">
-                            <?php echo $form->field( $model, "zip", "width: 240px; background-color: whitesmoke; border: none;") ?>
+                            <?php echo $form->field( $model, "zip", "width: 240px; background-color: whitesmoke; border: none;","") ?>
 
                             </div>   
                         </div>
@@ -86,11 +86,11 @@
                             <label style="padding-left: 5px;">I agree to all the Terms and Conditions</label>
                         </div> 
                         <br>
-                         <a href="#"><button id="SignUpButton" type="submit" name="Register" value="Register">Register</button></a>
+                         <a href="#"><button id="SignUpButton" type="submit" name="register" value="Register">Register</button></a>
                          <br>
                          <br>
                         <div class="input-group-text" style="background-color: white; border: none;">
-                            <a href="/login" style="margin-right: 120px; margin-top: 5px; padding-right: 10px;text-decoration: none;">Already have an account?</a>
+                            <a href="/login?login=1" style="margin-right: 120px; margin-top: 5px; padding-right: 10px;text-decoration: none;">Already have an account?</a>
                         </div> 
                     </div>
                     <!--Column 3-->

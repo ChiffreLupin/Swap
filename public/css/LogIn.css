@@ -43,9 +43,6 @@ form {
     margin: 0 auto;
 }
 
-.col-md-6{
-    width: 100%;
-}
 input[type="email"], input[type="password"]{
     border: solid;
     border-color: whitesmoke;
@@ -131,4 +128,8 @@ a:visited{
     background: none;
     border: none;
     outline: none;
+}
+
+.login-inp {
+    width: 100%;
 }
