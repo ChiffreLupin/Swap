@@ -32,13 +32,19 @@
               </div>
             </div>
             <div>
-              <a href="#"><button type="button" id="OfferButton" class="btn btn-primary" data-bs-toggle="button"
-                  autocomplete="off" name="Offer" value="offer" style="position: relative;">Send an offer</button></a>
+              <button type="button" id="OfferButton" class="btn btn-primary" data-bs-toggle="button" 
+              onclick="loadOffers(<?php echo Application::$app->user->id ?>)"
+                  autocomplete="off" name="Offer" value="offer" style="position: relative;">Send an offer</button>
             </div>
           </div>
         </div>
-      </div>
-      <div id="lower" class="row" style="margin-top: 40px;">
-        <hr style="visibility: hidden;">
-      </div>
+      </div>     
     </div>
+  </div>
+  <div id="lower" class="container hidden" style="margin-top: 40px;">
+    <div class="row">
+      <h1  class="col-md-12 offset-md-2 offers-title">Choose one of your products to offer</h1>
+    </div>
+    <div class="row offers">
+    </div>
+  </div>

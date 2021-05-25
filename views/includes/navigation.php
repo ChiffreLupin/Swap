@@ -7,6 +7,7 @@
     <title><?php echo $current ?></title>
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    
     <script defer async src="https://kit.fontawesome.com/c355012b63.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="/css/style.css">
@@ -127,4 +128,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <script src="/js/logged_user.js"></script>
+<script src="/js/productDetails.js"></script>
 </html>
