@@ -8,8 +8,7 @@ class m0003_category{
         $SQL = "CREATE TABLE category(
             category_id INT PRIMARY KEY,
             category_name VARCHAR(70) NOT NULL,
-            description VARCHAR(140) NOT NULL,
-            image BLOB
+            description VARCHAR(140) NOT NULL
             )  ENGINE = INNODB;";        
         $db->pdo->exec($SQL);
     }

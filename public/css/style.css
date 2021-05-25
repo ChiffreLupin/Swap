@@ -164,3 +164,28 @@ body{
     border-radius: 15px !important;
 }
 
+.get-started {
+    color: white;
+    text-transform: none;
+    text-decoration: none;
+}
+
+.get-started:hover {
+    text-transform: none;
+    text-decoration: none;
+    color: white;
+}
+
+/* .section-2 {
+    margin-bottom: 40px;
+}
+
+.btn-start {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+} */
+
+.btn-1:hover {
+    background-color: #806653;
+}

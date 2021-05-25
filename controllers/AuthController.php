@@ -114,7 +114,6 @@ class AuthController extends Controller {
     public function postResetPassword(Request $req, Response $res) {
         if(isset($_POST["reset-password"])) {
             $this->setLayout('auth');
-            var_dump("Here");
 
             $body = $req->getBody();
             

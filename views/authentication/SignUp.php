@@ -90,7 +90,7 @@
                          <br>
                          <br>
                         <div class="input-group-text" style="background-color: white; border: none;">
-                            <a href="LogIn.html" style="margin-right: 120px; margin-top: 5px; padding-right: 10px;text-decoration: none;">Already have an account?</a>
+                            <a href="/login" style="margin-right: 120px; margin-top: 5px; padding-right: 10px;text-decoration: none;">Already have an account?</a>
                         </div> 
                     </div>
                     <!--Column 3-->

@@ -57,8 +57,8 @@
                     </p>
                 </div>
             </div>
-            <div class="text-center">
-                <button type="button" class="button-1 btn-1" ><a href="/register"><p>GET STARTED</p></a></button>
+            <div class="text-center btn-start">
+                <button type="button start" class="button-1 btn-1" ><a class="get-started" href="/register"><p>GET STARTED</p></a></button>
             </div>       
         </div>
     </section>
