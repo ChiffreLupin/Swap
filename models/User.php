@@ -28,7 +28,7 @@ class User extends UserModel {
     public string $zip= '';
     public string $type = 'client';
 
-    public function tableName(): string
+    public static function tableName(): string
     {
         return 'user';
     }
@@ -60,11 +60,11 @@ class User extends UserModel {
         return $this->errors[$attribute] ?? false;
     }
 
-    public function primaryKey(): string {
+    public static function primaryKey(): string {
         return 'id';
     }
 
-    public function attributes():array
+    public static function attributes():array
     {
         return ['username','firstname', 'lastname', 'email', 'password','profile_picture', 'blocked', 'state', 'city', 'street', 'zip','type'];
     }

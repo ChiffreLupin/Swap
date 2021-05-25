@@ -11,11 +11,11 @@ namespace app\core;
  */
 abstract class DbModel extends Model
 {
-    abstract public function tableName(): string;
+    abstract public  static function tableName(): string;
 
-    abstract public function attributes(): array;
+    abstract public static function attributes(): array;
 
-    abstract public function primaryKey(): string;
+    abstract public static function primaryKey(): string;
 
     public function save()
     {
@@ -33,12 +33,12 @@ abstract class DbModel extends Model
         return true;
     }
 
-    public function findOne($where) {
+    public static function findOne($where) {
         $tableName = static::tableName();
         $attributes = array_keys($where);
         $sql = implode("AND ",array_map(fn($attr) => "$attr = :$attr", $attributes));
         // SELECT * FROM $tableName WHERE email = :email AND firstname = :firstname
-        $statement = self::prepare("SELECT * from $tableName WHERE $sql");
+        $statement = self::prepare("SELECT * from $tableName WHERE $sql LIMIT 1");
         foreach($where as $key => $item) {
             $statement->bindValue(":$key", $item);
         }

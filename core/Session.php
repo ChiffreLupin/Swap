@@ -9,11 +9,14 @@ class Session
     {
         session_start();
         $flashMessages = $_SESSION[self::FLASH_KEY] ?? [];
+        // When session is constructed all flash messages from previous requests are there
+        // We must mark existing flash messages to be removed
         foreach($flashMessages as $key => &$flashMessage)
         {
             //Mark to be removed
             $flashMessage['remove'] = true;
         }
+
         
         $_SESSION[self::FLASH_KEY] = $flashMessages;                
     }
@@ -45,14 +48,18 @@ class Session
 
     public function __destruct()
     {
+        // At the end of the request all flash messages that have been read must be removed
+       
         $flashMessages = $_SESSION[self::FLASH_KEY] ?? [];
+      
         foreach($flashMessages as $key => &$flashMessage)
         {
             if($flashMessage['remove'])
             {
-                unset($flashMessage[$key]);
+                unset($flashMessages[$key]);
             }
         }
+      
         $_SESSION[self::FLASH_KEY] = $flashMessages;                                        
     }
 }

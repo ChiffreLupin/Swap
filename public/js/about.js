@@ -7,3 +7,4 @@ function navigateDown(e){
         behavior: "smooth"
     });
 }
+

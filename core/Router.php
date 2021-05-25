@@ -14,10 +14,10 @@ class Router {
     public function __construct(Request $request,Response $response) {
         $this->request = $request;
         $this->response = $response;
-
     }
     
     public function get($path, $callback) {
+
         $this->routes['get'][$path] = $callback;
     }
 
@@ -29,6 +29,7 @@ class Router {
         $path = $this->request->getPath();  
         $method = $this->request->getMethod();
         // Even in case of error this is managed by null op
+        
         $callback = $this->routes[$method][$path] ?? false;
 
         if($callback === false) {
@@ -68,8 +69,8 @@ class Router {
 
     public function onlyIncludes() {
         // Cache instead of return
-        $layout = Application::$app->controller->layout;
-        $current = Application::$app->controller->current;
+        $layout = Application::$app->controller->layout ?? "head";
+        $current = Application::$app->controller->current ?? "404";
         ob_start();
         include_once Application::$ROOT_DIR."/views/includes/$layout.php";
         return ob_get_clean();

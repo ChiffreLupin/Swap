@@ -5,6 +5,8 @@
  */
 
 namespace app\core;
+use \PDO;
+
 
  class Application {
 
@@ -39,7 +41,8 @@ namespace app\core;
         $primaryValue = $this->session->get('user');
         if($primaryValue) {
             $primaryKey = $this->userClass::primaryKey();
-            $this->user = $this->userClass::findOne([$primaryKey => $primaryValue]);
+            $user = $this->userClass::findOne([$primaryKey => $primaryValue]);
+            $this->user = $user ? $user : null;
         } else {
             $this->user = null;
         }
@@ -64,8 +67,6 @@ namespace app\core;
 
     public function login(DbModel $user) {
         $this->user = $user;
-
-        var_dump($this->user);
         $primaryKey = $user->primaryKey();
         $primaryValue = $user->{$primaryKey};
         $this->session->set('user', $primaryValue);
@@ -76,4 +77,6 @@ namespace app\core;
         $this->user = null;
         $this->session->remove('user');
     }
+
+  
  }
