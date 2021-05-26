@@ -1,0 +1,197 @@
+/*Navbari me search bar dhe ikona*/
+.width-100{
+    width: 100%;
+    --bs-gutter-x: 6.5rem !important;
+}
+
+.border-none{
+    border: none !important;
+}
+
+.text-align-center{
+    text-align: center;
+}
+
+.margin-top-5{
+    margin-top: 5px;
+}
+
+.height-45{
+    height: 55px !important;
+}
+
+
+.dropdown-menu input[type="radio"]{
+    opacity: 0;
+    width: 0;
+}
+
+.dropdown-menu{
+    display: inline-block;
+    background-color: #ddd;
+    padding: 10px 20px;
+    font-family: sans-serif, Arial;
+    font-size: 16px;
+    border: none;
+}
+
+.dropdown-menu input[type="radio"]:hover + label{
+    background-color: rgb(226, 184, 145);
+  }
+
+
+.dropdown-menu input[type="radio"]:checked + label{
+    background-color: rgb(182, 138, 97);
+    border-color: rgb(182, 138, 97);
+}
+
+.label{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-item{
+    height: -webkit-fill-available;
+}
+
+@media (max-width: 1000){
+    /*rregullo ikonat*/
+}
+
+
+/*Section*/
+
+.user-image{
+    padding: 10px 50px;
+}
+
+.width-30{
+    width: 30% !important;
+}   
+
+.user{
+    margin-left: 40px;
+    padding-top: 50px;
+}
+
+.row-fix{
+    margin-top: 50px !important;
+}
+/*
+.form-control, .custom-select{
+    width: 240px !important; 
+    background-color: whitesmoke !important;
+    border: none !important;
+}
+
+.form-css{
+    height: 37px !important; 
+}
+
+.custom-select{
+    height: 37px !important; 
+    border-radius: 4px !important; 
+}
+
+.country{
+    margin-top: 25px !important;
+}
+
+.label-default{
+    padding-left: 5px !important;
+}
+
+*/
+
+.myprofile{
+    font-family: 'Merriweather', serif;
+    font-size: 30px;
+    line-height: 40px;
+    color: rgb(104, 76, 62);
+    text-align: center;
+    align-items: center;
+    
+}
+
+.label-default{
+    border: 1px solid rgb(218, 194, 173);
+    border-radius: 20px;
+    padding: 10px;
+    background-color: rgb(218, 194, 173);
+}
+
+
+.format-col{
+    padding: 10px 0px;
+}
+
+.data-username{
+    color: rgb(104, 76, 62);
+    font-size: 20px;
+}
+
+.explanation, .edit-profile-btn{
+    text-align: center !important;
+    padding: 10px 0px !important;
+}
+
+.input-group-text{
+    width: fit-content;
+    text-align: center;
+    background-color: none;
+    border: none !important;
+    border-radius: 15px !important;
+    color: rgb(104, 76, 62) !important;
+}
+
+.username{
+    text-align: center !important;
+    padding: 10px 0px !important;
+    display: flex;
+    justify-content: center;
+}
+
+
+/*My products Section*/
+
+#product-sections{
+    margin-top: 50px;
+}
+
+.row-margin{
+    margin-left: 80px !important;
+    padding-bottom: 30px;
+    max-height: 250px;
+}
+
+.product-details{
+    margin: auto;
+    align-items: flex-start;
+    display: flex;
+    margin-bottom: 20px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.img-wrapper img{
+    max-height: 150px !important;
+}
+
+.btn-div{
+    margin: auto !important;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: auto;
+
+}
+
+.col-action{
+    padding: 5px !important;
+}
+
+
+
+

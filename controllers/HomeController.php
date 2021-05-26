@@ -48,8 +48,5 @@ class HomeController extends Controller {
         } 
             
         $resp->redirect("/");
-    
     }
-
-   
 }

@@ -195,3 +195,39 @@ footer{
     padding-top: 20px;
     padding-bottom: 10px;
 }
+
+.hidden {
+    display: none;
+}
+
+.card-img-top {
+    width: 180px;
+    height: 180px;
+}
+
+.card-body {
+   padding: 5px;
+   border-radius: 14px;
+   text-align: center;
+}
+
+#lower {
+    margin-top: 40px;
+}
+
+
+.offers-title {
+    font-size: 2.6rem;
+    color: #cea58a;
+    margin-bottom: 25px;
+}
+
+.btn-card {
+    background-color: #cea58a;
+    border: none;
+    outline: none;
+}
+
+.btn-card:hover {
+    background-color: #a3836d;
+}
