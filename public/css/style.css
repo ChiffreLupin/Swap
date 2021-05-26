@@ -6,7 +6,7 @@
 }
 
 .logo-wrapper {
-    max-width: 220px;
+    max-width: 80px;
     margin: auto;
 }
 
@@ -231,4 +231,69 @@ header{
     border: 0.5px solid red !important;
     background-color: rgb(231, 179, 179) !important;
     border-radius: 10px !important;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+/*Navbari me search bar dhe ikona*/
+.width-100{
+    width: 100%;
+    --bs-gutter-x: 6.5rem !important;
+}
+
+.border-none{
+    border: none !important;
+}
+
+.text-align-center{
+    text-align: center;
+}
+
+.margin-top-5{
+    margin-top: 5px;
+}
+
+.height-45{
+    height: 55px !important;
+}
+
+
+.dropdown-menu input[type="radio"]{
+    opacity: 0;
+    width: 0;
+}
+
+.dropdown-menu{
+    background-color: #ddd;
+    padding: 10px 20px;
+    font-family: sans-serif, Arial;
+    font-size: 16px;
+    border: none;
+}
+
+.dropdown-menu input[type="radio"]:hover + label{
+    background-color: rgb(226, 184, 145);
+  }
+
+
+.dropdown-menu input[type="radio"]:checked + label{
+    background-color: rgb(182, 138, 97);
+    border-color: rgb(182, 138, 97);
+}
+
+.label{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-item{
+    height: -webkit-fill-available;
+}
+
+@media (max-width: 1000){
+    /*rregullo ikonat*/
 }

@@ -7,29 +7,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $current ?></title>
     
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://kit.fontawesome.com/c355012b63.js" crossorigin="anonymous"></script>
 
     <?php if($current === "Product Details") { ?>
     <link rel="stylesheet" type="text/css" href="/css/Product_Page.css" media="screen" />
+
     <?php } ?>
+    <?php if($current === "My Profile") { ?>
+        <link rel="stylesheet" type="text/css" href="/css/myProfile.css" media="screen" />
+    <?php  } ?>
 </head>
 
 <body>
     <!--Navbar About    -->
     <nav class="navbar navbar-dark justify-center height-45" style="background-color: black;" role="navigation">
-        <div class="container justify-center">
-            <div class="row width-100">
-                <div class="col">
-                    <form class="form-inline" action="">
-                        <div class="input-group mb-3">
+        <div class="container-fluid justify-center align-items-center">
+            <div class="row width-100 align-items-center">
+                <div class="col align-items-center">
+                    <form class="form-inline align-items-center" action="">
+                        <div class="input-group mb-1">
                             <div class="input-group-prepend">
                                 <button class="btn btn-dark dropdown-toggle" type="button" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false"></button>
+                                     aria-expanded="false"></button>
                                 <div id="list" class="dropdown-menu">
-                                    <input type="radio" name="option" class="dropdown-item" id="productSelected"
+                                    <input type="radio" name="option" class="dropdown-menu" id="productSelected"
                                         value="product" checked></input>
                                     <label class="label" for="productSelected">Product</label>
 
@@ -40,7 +44,6 @@
                                     <input type="radio" name="option" class="dropdown-item" id="userSelected"
                                         value="user"></input>
                                     <label class="label" for="userSelected">User</label>
-
                                 </div>
                             </div>
                             <input type="text" class="form-control" aria-label="Search input with dropdown button"
@@ -54,13 +57,13 @@
                 </div>
 
                 <div class="col">
-                    <div class="logo-wrapper text-center margin-top-5">
-                        <img src="/views/images/logo.png" alt="" class="img-fluid">
+                    <div class="logo-wrapper text-center">
+                        <img src="/images/logo.png" alt="" class="img-fluid">
                     </div>
                 </div>
 
                 <div class="col">
-                    <section class="text-center">
+                    <section class="d-flex justify-content-end">
                         <!--Chat icon-->
                         <a class="btn btn-outline-light btn-floating m-1 border-none" href="Chat_Page.html"
                             role="button" data-toggle="tooltip" data-placement="bottom" title="Chat">
