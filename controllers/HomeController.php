@@ -35,24 +35,6 @@ class HomeController extends Controller {
         
     }
 
-        if($product_id) {
-            $product = Product::findOne(["id" => $product_id]);
-
-            if($product) {
-                $user = User::findOne(["id" => $product->user_id]);
-                $product->user = $user ? $user : null;
-                
-                if($product->user) {
-                    return $this->render('ProductPage', [
-                        "model" => $product
-                    ]);
-                }
-            }
-        } 
-            
-        $resp->redirect("/");
-    }
-
     public function getUserProducts(Request $req, Response $resp) {
 
         $sql = "SELECT * FROM product WHERE user_id = ?";
