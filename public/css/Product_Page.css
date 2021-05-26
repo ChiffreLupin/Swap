@@ -196,8 +196,8 @@ footer{
     padding-bottom: 10px;
 }
 
+
 .hidden {
-    display: none;
 }
 
 .card-img-top {
@@ -213,6 +213,7 @@ footer{
 
 #lower {
     margin-top: 40px;
+    display: none;
 }
 
 

@@ -44,8 +44,11 @@ $app->router->post('/forgotPassword', [AuthController::class, 'postForgotPasswor
 $app->router->post('/logout', [AuthController::class, 'logout']);
 
 $app->router->get('/', [AboutController::class, 'getAbout']);
+$app->router->get('/userProducts', [HomeController::class, 'getUserProducts']);
+
 
 $app->router->get('/productDetails', [HomeController::class, 'getProductDetails']);
+$app->router->post('/createSwap', [HomeController::class, 'createSwap']);
 
 // Should allow passing controllers or views to
 // the router

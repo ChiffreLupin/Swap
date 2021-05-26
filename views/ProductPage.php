@@ -1,4 +1,6 @@
-<?php use app\core\Application; ?>
+<?php 
+use app\core\Application; 
+?>
   <!--Body-->
   <div id="Content">
     <div id="upper" class="row">
@@ -48,3 +50,30 @@
     <div class="row offers">
     </div>
   </div>
+  <!-- Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirm SWAP?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to send this Swap request?
+      </div>
+      <div class="modal-footer">
+      <form action="/createSwap" method="POST">
+        <input type="hidden" name="product_received_id" value="<?php echo $model->id?>" >
+        <input type="hidden" class="sentInputHidden" name="product_sent_id" value="">
+        <input type="hidden" name="sender_id" value="<?php echo Application::$app->user->id ?>" >
+        <input type="hidden" name="receiver_id" value="<?php echo $model->user_id ?>" >
+
+        <button type="submit" class="btn btn-success">Confirm</button>
+      </form>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

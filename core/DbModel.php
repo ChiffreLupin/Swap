@@ -48,6 +48,72 @@ abstract class DbModel extends Model
         return $statement->fetchObject(static::class);
     }
 
+    public static function find($where) {
+        $tableName = static::tableName();
+        $attributes = array_keys($where);
+        $sql = implode("AND ",array_map(fn($attr) => "$attr = :$attr", $attributes));
+        // SELECT * FROM $tableName WHERE email = :email AND firstname = :firstname
+        $statement = self::prepare("SELECT * from $tableName WHERE $sql");
+        foreach($where as $key => $item) {
+            $statement->bindValue(":$key", $item);
+        }
+        $statement->execute();
+
+        // Kthe objekt sipas tipit te klases
+        $statement->setFetchMode( PDO::FETCH_CLASS ,self::class );
+        $rows = $statement->fetchAll();
+    }
+
+    public static function deleteOne($where) {
+        $tableName = static::tableName();
+        $attributes = array_keys($where);
+        $sql = implode("AND ",array_map(fn($attr) => "$attr = :$attr", $attributes));
+        // SELECT * FROM $tableName WHERE email = :email AND firstname = :firstname
+        $toBeDeleted = $this->findOne($where);
+        $statement = self::prepare("DELETE from $tableName WHERE $sql LIMIT 1");
+        foreach($where as $key => $item) {
+            $statement->bindValue(":$key", $item);
+        }
+        $statement->execute();
+
+        // Kthe objekt sipas tipit te klases
+        return $toBeDeleted;
+    }
+
+    public static function delete($where) {
+        $tableName = static::tableName();
+        $attributes = array_keys($where);
+        $sql = implode("AND ",array_map(fn($attr) => "$attr = :$attr", $attributes));
+        // SELECT * FROM $tableName WHERE email = :email AND firstname = :firstname
+        $statement = self::prepare("DELETE from $tableName WHERE $sql");
+        foreach($where as $key => $item) {
+            $statement->bindValue(":$key", $item);
+        }
+        $statement->execute();
+
+        // Kthe objekt sipas tipit te klases
+        return true;
+    }
+
+    public static function updateOne($where, $updates) {
+        $tableName = static::tableName();
+        $attributes = array_keys($where);
+        $updateAttributes = array_keys($where);
+        $sql1 = implode(", ",array_map(fn($attr) => "$attr = :$attr", $attributes));
+        $sql2 = implode("AND ",array_map(fn($attr) => "$attr = :$attr", $attributes));
+        // SELECT * FROM $tableName WHERE email = :email AND firstname = :firstname
+        $statement = self::prepare("UPDATE $tableName SET $sql1 WHERE $sql2");
+        foreach($where as $key => $item) {
+            $statement->bindValue(":$key", $item);
+        }
+        
+        $statement->execute();
+
+        // Kthe objekt sipas tipit te klases
+        return true;
+    }
+
+
     public static function prepare($sql)
     {
         return Application::$app->db->pdo->prepare($sql);
