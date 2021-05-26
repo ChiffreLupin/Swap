@@ -21,6 +21,19 @@ class HomeController extends Controller {
 
         if($product_id) {
             $product = Product::findOne(["id" => $product_id]);
+            $product->user = User::findOne(["id" => $product->user_id]);
+            
+            return $this->render('ProductPage', [
+                "model" => $product
+            ]);
+        } else {
+            $resp->redirect("");
+        }
+        
+    }
+
+        if($product_id) {
+            $product = Product::findOne(["id" => $product_id]);
 
             if($product) {
                 $user = User::findOne(["id" => $product->user_id]);
