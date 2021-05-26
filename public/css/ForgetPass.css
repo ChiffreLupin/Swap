@@ -70,6 +70,18 @@ a:visited{
     color: white;
     font-weight: 500;
 }
+#ResetButton{
+    margin-top: -10px;
+    margin-left: 100px;
+    border-radius: 10px;
+    width: 150px;
+    height: 40px;
+    border: none;
+    background-color: #B79378;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+}
 .navbutton{
     width: 60px;
     height: 40px; 

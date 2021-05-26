@@ -194,7 +194,8 @@ body{
     background-color: #806653;
 }
 
-/*Header*/
+
+/*Header i brendshem*/
 header{
     background-color: black;
     display: inline-flex;
@@ -215,4 +216,19 @@ header{
     margin-top: 10px;
     margin-left: 20px;
     display: inline;
+}
+
+
+/*Buttons Edit and Delete*/
+
+.btn-edit{
+    border: 0.5px solid #806653 !important;
+    background-color: aliceblue !important;
+    border-radius: 10px !important;
+}
+
+.btn-delete{
+    border: 0.5px solid red !important;
+    background-color: rgb(231, 179, 179) !important;
+    border-radius: 10px !important;
 }

@@ -19,9 +19,7 @@
                   }
                 ?>
              </div>
-              <button type="submit" id="ContinueButton" class="btn btn-primary" data-bs-toggle="button" name="reset-password"
-              style="position: relative;left: 150px;">Reset Password</button>
-
+              <button type="submit" id="ResetButton" class="btn btn-primary" data-bs-toggle="button" name="reset-password">Reset Password</button>
             </form>
             
         </div>
