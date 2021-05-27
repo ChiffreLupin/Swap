@@ -11,7 +11,6 @@ class m0005_swaps{
             product_sent_id INT NOT NULL,
             sender_id INTEGER,
             receiver_id INTEGER,
-            isApprovedBySender BOOLEAN,
             isApprovedByReceiver BOOLEAN,
             CONSTRAINT fk_swaps_prod_rec_id FOREIGN KEY (product_received_id) REFERENCES product(id)
             ON DELETE CASCADE

@@ -101,22 +101,24 @@ abstract class DbModel extends Model
     public static function updateOne($where, $updates) {
         $tableName = static::tableName();
         $attributes = array_keys($where);
-        $updateAttributes = array_keys($where);
-        $sql1 = implode(", ",array_map(fn($attr) => "$attr = :$attr-1", $attributes));
+        $updateAttributes = array_keys($updates);
+        $sql1 = implode(", ",array_map(fn($attr) => "$attr = :$attr", $updateAttributes));
         $sql2 = implode(" AND ",array_map(fn($attr) => "$attr = :$attr", $attributes));
         // SELECT * FROM $tableName WHERE email = :email AND firstname = :firstname
         $statement = self::prepare("UPDATE $tableName SET $sql1 WHERE $sql2 LIMIT 1");
+
         foreach($where as $key => $item) {
             $statement->bindValue(":$key", $item);
         }
         foreach($updates as $key => $item) {
-            $statement->bindValue(":$key-1", $item);
+            $statement->bindValue(":$key", $item);
         }
         
         $statement->execute();
 
         // Kthe objekt sipas tipit te klases
         return true;
+
     }
 
     public static function update($where, $updates) {

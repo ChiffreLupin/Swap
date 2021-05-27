@@ -71,7 +71,15 @@ class HomeController extends Controller {
             $request->receiver_id = $body["receiver_id"];
             $sender_name = $sender->displayName();
             $request->message = "$sender_name has sent you a SWAP request.";
-            $swap = Swap::findOne(["sender_id" => $swap->sender_id, "receiver_id" => $swap->receiver_id]);
+
+            // Get last inserted swap
+            $stmnt = Application::$app->db->pdo->prepare("SELECT LAST_INSERT_ID()");
+            $stmnt->execute();
+            $last_inserted_id = $stmnt->fetchAll()[0][0];
+           
+            $swap = Swap::findOne(["id" => $last_inserted_id]);
+
+
             $request->swap_id = $swap->id;
             $request->save();
         } 
@@ -96,10 +104,38 @@ class HomeController extends Controller {
         // $stmt->setFetchMode(PDO::FETCH_ASSOC);
         // $notifications = $stmt->fetchAll();
         $notifications = RequestNotification::find(["receiver_id" => Application::$app->user->id]);
+        foreach($notifications as $key => $notif) {
+            $notif->swap = Swap::findOne(["id" => $notif->swap_id]);
+        }
         
         return $this->render("notifications",[
             "notifications" => $notifications
         ]
         );
     }
+
+    public function acceptSwap(Request $req, Response $resp) {
+        if(isset($_POST["swap_id"]) && isset($_POST["notif_id"])) {
+            $swap_id = $_POST["swap_id"];
+            $notification_id = $_POST["notif_id"];
+
+            // $stmnt = Application::$app->db->pdo->prepare("UPDATE swaps SET isApprovedByReceiver = 1 WHERE id=$swap_id");
+            // $stmnt->execute();
+            $st =Swap::updateOne(["id" => $swap_id], ["isApprovedByReceiver" => 1]);
+            $notification  = RequestNotification::findOne(["id" => $notification_id]);
+            $approver = User::findOne(["id" => $notification->receiver_id]);
+            $approverName = $approver->displayName();
+         
+
+            $newRequest = new RequestNotification();
+            $newRequest->sender_id = $notification->receiver_id;
+            $newRequest->receiver_id = $notification->sender_id;
+            $newRequest->message = "$approverName has accepted your SWAP request";
+            $newRequest->swap_id = $notification->swap_id;
+            $newRequest->save();
+
+            return $st;
+        }
+        else $resp->redirect("/notifications");
+    } 
 }

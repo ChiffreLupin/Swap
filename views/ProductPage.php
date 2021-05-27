@@ -2,7 +2,12 @@
 use app\core\Application; 
 ?>
   <!--Body-->
-  <div id="Content">
+  <div id="Content" class="fill-page">
+    <?php if(Application::$app->session->getFlash("swap_sent_success")) { ?>
+          <div class="flash alert alert-success">
+            <?php echo Application::$app->session->getFlash("swap_sent_success") ?>
+          </div>
+    <?php } ?>
     <div id="upper" class="row">
       <div id="Block1" class="col">
         <div style="margin-top: 40px; margin-left: 40px;">

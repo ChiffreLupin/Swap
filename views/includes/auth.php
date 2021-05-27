@@ -37,7 +37,7 @@
         </nav>
         {{content}}
          <!--Footer-->
-        <footer class="text-white" style="background-color: black;" id="LogInFooter">
+        <footer class="text-white height-footer" style="background-color: black;" id="LogInFooter">
             <div class="container p-4">
                 <div class="row">
                     <div class="col-md-7">

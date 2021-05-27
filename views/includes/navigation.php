@@ -98,21 +98,21 @@
     {{content}}
 
     <!--Footer-->
-    <footer class="text-white" style="background-color: black;">
+    <footer class="text-white height-footer" style="background-color: black;">
         <div class="container p-4">
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-7 d-flex align-items-center">
                     <section class="">
                         <form action="">
-                            <div class="row d-flex">
-                            <div class="col-auto">
-                                <p class="pt-2 text-Inter">
+                            <div class="row ">
+                            <div class="col-auto d-flex align-items-center">
+                                <p class="mb-0  text-Inter">
                                 <strong>SUBSCRIBE TO OUR NEWSLETTER</strong> 
                                 </p>
                             </div>
                             
-                            <div class="col-md-5 col-12" style="width: 450px;">
-                                <div class="input-group mb-3">
+                            <div class="col-md-5 col-12 " style="width: 450px;">
+                                <div class="input-group ">
                                 <input type="text" class="form-control" placeholder="Enter your e-mail adress here" aria-label="Email" aria-describedby="button-addon2">
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">
@@ -175,4 +175,5 @@
 <script src="/js/myProfile.js"></script>
 <script src="/js/logged_user.js"></script>
 <script src="/js/productDetails.js"></script>
+<script src="/js/notifications.js"></script>
 </html>

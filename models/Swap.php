@@ -16,7 +16,6 @@ class Swap extends DbModel {
     public int $product_sent_id = -1;
     public int $sender_id = -1;
     public int $receiver_id = -1;
-    public int $isApprovedBySender = self::IS_NOT_APPROVED;
     public int $isApprovedByReceiver = self::IS_NOT_APPROVED;
     public ?Product $productReceived = null;
     public ?Product $productSent = null;
@@ -44,6 +43,6 @@ class Swap extends DbModel {
 
     public static function attributes():array
     {
-        return ['id','product_received_id', 'product_sent_id', 'sender_id', 'receiver_id','isApprovedBySender', 'isApprovedByReceiver'];
+        return ['id','product_received_id', 'product_sent_id', 'sender_id', 'receiver_id', 'isApprovedByReceiver'];
     }
 }
