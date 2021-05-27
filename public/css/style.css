@@ -255,7 +255,7 @@ header{
     margin-top: 5px;
 }
 
-.height-45{
+.height-55{
     height: 55px !important;
 }
 
@@ -296,4 +296,12 @@ header{
 
 @media (max-width: 1000){
     /*rregullo ikonat*/
+}
+
+#list {
+    padding: 0;
+}
+
+.height-footer {
+    height: 300px;
 }

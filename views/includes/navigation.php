@@ -19,11 +19,14 @@
     <?php if($current === "My Profile") { ?>
         <link rel="stylesheet" type="text/css" href="/css/myProfile.css" media="screen" />
     <?php  } ?>
+    <?php if($current === "Notifications") { ?>
+        <link rel="stylesheet" href="/css/notifications.css">
+    <?php } ?>
 </head>
 
 <body>
     <!--Navbar About    -->
-    <nav class="navbar navbar-dark justify-center height-45" style="background-color: black;" role="navigation">
+    <nav class="navbar navbar-dark justify-center height-55" style="background-color: black;" role="navigation">
         <div class="container-fluid justify-center align-items-center">
             <div class="row width-100 align-items-center">
                 <div class="col align-items-center">
@@ -58,7 +61,7 @@
 
                 <div class="col">
                     <div class="logo-wrapper text-center">
-                        <img src="/images/logo.png" alt="" class="img-fluid">
+                        <a href="/home"><img src="/images/logo.png" alt="" class="img-fluid"></a>
                     </div>
                 </div>
 
@@ -70,7 +73,7 @@
                             <i class="fas fa-location-arrow"></i>
                         </a>
                         <!--Notification icon-->
-                        <a class="btn btn-outline-light btn-floating m-1 border-none" href="Notif_Page.html"
+                        <a class="btn btn-outline-light btn-floating m-1 border-none" href="/notifications"
                             role="button" data-toggle="tooltip" data-placement="bottom" title="Notifications">
                             <i class="fas fa-bell"></i>
                         </a>

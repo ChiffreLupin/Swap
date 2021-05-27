@@ -33,12 +33,12 @@ function processData(response) {
 
     offerables.forEach(offer => {
         offersContainer.insertAdjacentHTML('beforeend',`
-        <div class="card col-md-3" style='width: 18rem;'>
+        <div class="card col-md-3">
             <img src="${offer.imagePath}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">${offer.name}</h5>
                 <p class="card-text">${offer.description}</p>
-                <a href="#" onclick="setSelectedSent(${offer.id})"class="btn btn-primary btn-card" data-toggle="modal" data-target="#confirmModal">Send Offer</a>
+                <a href="#" onclick="setSelectedSent(${offer.id})"class="btn btn-card" data-toggle="modal" data-target="#confirmModal">Send Offer</a>
             </div>
         </div>
         `);

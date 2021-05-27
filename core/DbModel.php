@@ -1,6 +1,7 @@
 <?php
 
 namespace app\core;
+use \PDO;
 
 // Every model must have these
 /**
@@ -36,12 +37,13 @@ abstract class DbModel extends Model
     public static function findOne($where) {
         $tableName = static::tableName();
         $attributes = array_keys($where);
-        $sql = implode("AND ",array_map(fn($attr) => "$attr = :$attr", $attributes));
+        $sql = implode(" AND ",array_map(fn($attr) => "$attr = :$attr", $attributes));
         // SELECT * FROM $tableName WHERE email = :email AND firstname = :firstname
         $statement = self::prepare("SELECT * from $tableName WHERE $sql LIMIT 1");
         foreach($where as $key => $item) {
             $statement->bindValue(":$key", $item);
         }
+
         $statement->execute();
 
         // Kthe objekt sipas tipit te klases
@@ -51,7 +53,7 @@ abstract class DbModel extends Model
     public static function find($where) {
         $tableName = static::tableName();
         $attributes = array_keys($where);
-        $sql = implode("AND ",array_map(fn($attr) => "$attr = :$attr", $attributes));
+        $sql = implode(" AND ",array_map(fn($attr) => "$attr = :$attr", $attributes));
         // SELECT * FROM $tableName WHERE email = :email AND firstname = :firstname
         $statement = self::prepare("SELECT * from $tableName WHERE $sql");
         foreach($where as $key => $item) {
@@ -60,14 +62,15 @@ abstract class DbModel extends Model
         $statement->execute();
 
         // Kthe objekt sipas tipit te klases
-        $statement->setFetchMode( PDO::FETCH_CLASS ,self::class );
+        $statement->setFetchMode( PDO::FETCH_CLASS , static::class );
         $rows = $statement->fetchAll();
+        return $rows;
     }
 
     public static function deleteOne($where) {
         $tableName = static::tableName();
         $attributes = array_keys($where);
-        $sql = implode("AND ",array_map(fn($attr) => "$attr = :$attr", $attributes));
+        $sql = implode(" AND ",array_map(fn($attr) => "$attr = :$attr", $attributes));
         // SELECT * FROM $tableName WHERE email = :email AND firstname = :firstname
         $toBeDeleted = $this->findOne($where);
         $statement = self::prepare("DELETE from $tableName WHERE $sql LIMIT 1");
@@ -83,7 +86,7 @@ abstract class DbModel extends Model
     public static function delete($where) {
         $tableName = static::tableName();
         $attributes = array_keys($where);
-        $sql = implode("AND ",array_map(fn($attr) => "$attr = :$attr", $attributes));
+        $sql = implode(" AND ",array_map(fn($attr) => "$attr = :$attr", $attributes));
         // SELECT * FROM $tableName WHERE email = :email AND firstname = :firstname
         $statement = self::prepare("DELETE from $tableName WHERE $sql");
         foreach($where as $key => $item) {
@@ -100,7 +103,7 @@ abstract class DbModel extends Model
         $attributes = array_keys($where);
         $updateAttributes = array_keys($where);
         $sql1 = implode(", ",array_map(fn($attr) => "$attr = :$attr-1", $attributes));
-        $sql2 = implode("AND ",array_map(fn($attr) => "$attr = :$attr", $attributes));
+        $sql2 = implode(" AND ",array_map(fn($attr) => "$attr = :$attr", $attributes));
         // SELECT * FROM $tableName WHERE email = :email AND firstname = :firstname
         $statement = self::prepare("UPDATE $tableName SET $sql1 WHERE $sql2 LIMIT 1");
         foreach($where as $key => $item) {
@@ -121,7 +124,7 @@ abstract class DbModel extends Model
         $attributes = array_keys($where);
         $updateAttributes = array_keys($where);
         $sql1 = implode(", ",array_map(fn($attr) => "$attr = :$attr-1", $attributes));
-        $sql2 = implode("AND ",array_map(fn($attr) => "$attr = :$attr", $attributes));
+        $sql2 = implode(" AND ",array_map(fn($attr) => "$attr = :$attr", $attributes));
         // SELECT * FROM $tableName WHERE email = :email AND firstname = :firstname
         $statement = self::prepare("UPDATE $tableName SET $sql1 WHERE $sql2");
         foreach($where as $key => $item) {

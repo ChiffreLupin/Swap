@@ -13,6 +13,7 @@ use app\core\Response;
 use app\models\User;
 use app\models\Product;
 use app\models\Swap;
+use app\models\RequestNotification;
 use \PDO;
 
 class HomeController extends Controller {
@@ -58,20 +59,47 @@ class HomeController extends Controller {
 
         // Create swap model and save it to the database
         $swap = new Swap();
+        $sender = User::findOne(["id" => $body["sender_id"]]);
 
         $swap->loadData($body);
-        
 
 
         // Create user_notification about the swap that has been created
-        if($swap->save()) {
-
-        }
+        if($sender && $swap->save()) {
+            $request = new RequestNotification();
+            $request->sender_id = $body["sender_id"];
+            $request->receiver_id = $body["receiver_id"];
+            $sender_name = $sender->displayName();
+            $request->message = "$sender_name has sent you a SWAP request.";
+            $swap = Swap::findOne(["sender_id" => $swap->sender_id, "receiver_id" => $swap->receiver_id]);
+            $request->swap_id = $swap->id;
+            $request->save();
+        } 
+        else $resp->redirect("/home");
 
 
         // Set flash message that swap has been created
+        Application::$app->session->setFlash("swap_sent_success","Your SWAP request has been sent successfully!");
     
         // Redirect user to current page where swap success message will be displayed
+        $resp->redirect("/productDetails?productId=$swap->product_sent_id");
+    }
+
+    public function getNotifications(Request $req, Response $res) {
+        $this->setLayout("navigation");
+        $this->setCurrent("Notifications");
+
+        // $id = Application::$app->user->id;
+        // $stmt = Application::$app->db->pdo->prepare("SELECT * FROM requestNotifications WHERE receiver_id = $id");
+        // $stmt->execute();
+
+        // $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        // $notifications = $stmt->fetchAll();
+        $notifications = RequestNotification::find(["receiver_id" => Application::$app->user->id]);
         
+        return $this->render("notifications",[
+            "notifications" => $notifications
+        ]
+        );
     }
 }

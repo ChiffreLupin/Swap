@@ -45,7 +45,7 @@ use app\core\Application;
   </div>
   <div id="lower" class="container hidden" style="margin-top: 40px;">
     <div class="row">
-      <h1  class="col-md-12 offset-md-2 offers-title">Choose one of your products to offer</h1>
+      <h1  class="col-md-8 offset-md-2 offers-title">Choose one of your products to offer</h1>
     </div>
     <div class="row offers">
     </div>

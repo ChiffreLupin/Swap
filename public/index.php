@@ -50,6 +50,9 @@ $app->router->get('/userProducts', [HomeController::class, 'getUserProducts']);
 $app->router->get('/productDetails', [HomeController::class, 'getProductDetails']);
 $app->router->post('/createSwap', [HomeController::class, 'createSwap']);
 
+$app->router->get('/notifications', [HomeController::class, 'getNotifications']);
+
+
 // Should allow passing controllers or views to
 // the router
 // $app->router->get('/home', 'home');

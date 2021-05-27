@@ -229,6 +229,17 @@ footer{
     outline: none;
 }
 
+.btb-card::selection {
+    background-color: #a3836d;
+}
 .btn-card:hover {
     background-color: #a3836d;
+}
+
+a.btn .fas {
+    color: white;
+}
+
+a.btn:hover .fas {
+    color: black;
 }

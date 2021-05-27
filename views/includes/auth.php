@@ -24,7 +24,7 @@
     </head>
     <body>
         <!--Header-->
-        <nav class="navbar navbar-dark justify-center" style="background-color: black;">
+        <nav class="navbar navbar-dark justify-center height-55" style="background-color: black;">
             <div class="container justify-center">
                 <div class="row">
                     <div class="col-md-12">

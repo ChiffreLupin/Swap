@@ -1,5 +1,9 @@
+body {
+    min-height: 100vh;
+}
 #notifications-section {
     margin: 50px 0;
+    height: 100vh;
 }
 
 .user-image-wrapper {
