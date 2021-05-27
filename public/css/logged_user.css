@@ -54,6 +54,7 @@
     .carouselPrograms .carousel-inner .active + .carousel-item,
     .carouselPrograms .carousel-inner .active + .carousel-item + .carousel-item {
         display: block;
+        margin-right: 0 !important;
     }
 
     .carouselPrograms .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
@@ -73,7 +74,7 @@
         top: 0;
         right: -33.333%;
         z-index: -1;
-        display: block;
+        display: block !important;
         visibility: visible;
     }
 
@@ -87,7 +88,7 @@
         visibility: visible;
     }
 
-    /* farthest right hidden item must be abso position for animations */
+    /* farthest right hidden item must be also position for animations */
     .carouselPrograms .carousel-inner .carousel-item-prev.carousel-item-right {
         position: absolute;
         top: 0;

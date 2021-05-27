@@ -3,7 +3,6 @@ body {
 }
 #notifications-section {
     margin: 50px 0;
-    height: 100vh;
 }
 
 .user-image-wrapper {
@@ -28,4 +27,12 @@ body {
 .notification-action {
     text-align: center;
     margin: 10px 0;
+}
+
+.flash {
+    position: fixed;
+    top: 55px;
+    width: 60%;
+    left:50%;
+    transform: translateX(-50%);
 }

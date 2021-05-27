@@ -49,6 +49,8 @@ $app->router->get('/userProducts', [HomeController::class, 'getUserProducts']);
 
 $app->router->get('/productDetails', [HomeController::class, 'getProductDetails']);
 $app->router->post('/createSwap', [HomeController::class, 'createSwap']);
+$app->router->post('/acceptSwap', [HomeController::class, 'acceptSwap']);
+
 
 $app->router->get('/notifications', [HomeController::class, 'getNotifications']);
 
