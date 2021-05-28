@@ -107,7 +107,7 @@ class AuthController extends Controller {
 
         $selector = $req->getParam("selector");
         $validator = $req->getParam("validator");
-
+        
         if(!empty($selector) && !empty($validator)) {
             // Check these are hexadecimals
             if(ctype_xdigit($selector) !== false && ctype_xdigit($validator) !== false) {

@@ -210,41 +210,22 @@ header{
 #logo{
     display:inline;
     margin-left: auto;
-    margin-right: 510px; 
+    margin-right: auto; 
 }
-.col-md-2{
+.col{
     float: right;
     border: none;
-    padding-top: 10px;
+    padding-top: 5px;
+    padding-right: 0px;
 }
 #search-bar{
-    margin-top: 10px;
-    margin-left: 20px;
+    margin-top: 7px;
     display: inline;
+    margin-right: auto;
 }
-
-
-/*Buttons Edit and Delete*/
-
-.btn-edit{
-    border: 0.5px solid #806653 !important;
-    background-color: aliceblue !important;
-    border-radius: 10px !important;
-}
-
-.btn-delete{
-    border: 0.5px solid red !important;
-    background-color: rgb(231, 179, 179) !important;
-    border-radius: 10px !important;
-}
-
-.width-100 {
-    width: 100%;
-}
-
 /*Navbari me search bar dhe ikona*/
 .width-100{
-    width: 100%;
+    width: 100%; 
     --bs-gutter-x: 6.5rem !important;
 }
 
@@ -257,7 +238,7 @@ header{
 }
 
 .margin-top-5{
-    margin-top: 5px;
+    margin-top: -5px;
 }
 
 .height-55{
@@ -271,6 +252,7 @@ header{
 }
 
 .dropdown-menu{
+    display: block;
     background-color: #ddd;
     padding: 10px 20px;
     font-family: sans-serif, Arial;
@@ -295,9 +277,11 @@ header{
     cursor: pointer;
 }
 
-.dropdown-item{
-    height: -webkit-fill-available;
+.width-100 {
+    width: 100%;
 }
+
+
 
 @media (max-width: 1000){
     /*rregullo ikonat*/

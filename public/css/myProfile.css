@@ -1,5 +1,12 @@
 
-
+section{
+/*    background-color: white; */
+    background-image: url(https://i0.wp.com/getwallpapers.com/wallpaper/full/1/4/a/526791.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size:cover;
+}
 /*Section*/
 
 .user-image{
@@ -54,6 +61,15 @@
     
 }
 
+ .btn-edit{
+    border-radius: 70px;
+    border: none;
+    background-color: #9b7c65;
+    width: 65%;
+    margin-bottom: 5%;
+    color: black;
+}
+
 .label-default{
     border: 1px solid rgb(218, 194, 173);
     border-radius: 20px;
@@ -72,17 +88,22 @@
 }
 
 .explanation, .edit-profile-btn{
-    text-align: center !important;
-    padding: 10px 0px !important;
+   text-align: center !important;
+    padding: 5px 0px !important;
 }
 
+.btn-white{
+    height: 20px;
+    font-size: medium;
+    margin-bottom: 10px; 
+}
 .input-group-text{
     width: fit-content;
     text-align: center;
-    background-color: none;
+    background-color: transparent;
     border: none !important;
     border-radius: 15px !important;
-    color: rgb(104, 76, 62) !important;
+    color: #B79378 !important;
 }
 
 .username{
@@ -91,7 +112,9 @@
     display: flex;
     justify-content: center;
 }
-
+.username p{
+    color: black;
+}
 
 /*My products Section*/
 
@@ -114,6 +137,10 @@
     justify-content: center;
 }
 
+#product-options{
+    background-color: whitesmoke;
+}
+
 .img-wrapper img{
     max-height: 150px !important;
 }
@@ -131,6 +158,87 @@
     padding: 5px !important;
 }
 
+ h5{
+    margin-top: 2%;
+    margin-left: 2%;
+}
 
+.form{
+    border: none;
+    box-shadow: 0px 5px 10px rgb(207, 206, 206);
+    border-radius: 10px;
+    position:sticky;
+    top: 0;
+    left: 0;
+    max-height: 700px !important;
+    background-color: rgb(218, 194, 173);
+    margin-bottom: 2%;
+    max-width: 24%;
+}
+ 
 
+/*lista e produkteve*/
+.sw-item-flex-end{
+    color: rgb(104, 76, 62);
+    margin-bottom: 2%;
+    margin-top: 0;
+}
+.col-8{
+    border: none;
+/*    box-shadow: 5px 5px 10px rgb(207, 206, 206); */
+    border-radius: 10px;
+    margin-left: 3%;
+    justify-content: center;
+    background-color: transparent;
+    margin-bottom: 3%;
+}
+
+ .col-9{
+/*    border: 0.2px solid; */
+    box-shadow: 5px 5px 15px rgb(194, 191, 191); 
+    margin-left: 9.5%;
+    border-radius: 5px;
+    justify-content: center;
+    margin-bottom: 4%;
+    background-color: white;
+    overflow: hidden;
+}
+
+.media-object1{
+    margin-left: auto;
+    margin-right: auto;
+    width:460px;
+    height: 460px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    box-shadow: none;
+}
+
+.desription, .margin-left{
+    padding: 5%;
+    border-top: 0.2px solid whitesmoke;
+    padding-top: 10px;
+    background-color: whitesmoke;
+    margin-bottom: 0;
+    
+}
+
+.background-whitesmoke{
+    background-color: whitesmoke;
+}
+
+/*butonni add produkt*/
+.border-rad{
+    border-radius: 150px;
+    background-color: whitesmoke;
+    color: #B79378;
+    font-weight: bold;
+}
+.center{
+    margin-left: 45%;
+    margin-right: auto;
+    margin-bottom: 5%;
+    margin-top: 3%;
+    
+}
 
