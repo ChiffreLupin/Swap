@@ -46,6 +46,10 @@ $app->router->post('/logout', [AuthController::class, 'logout']);
 $app->router->get('/', [AboutController::class, 'getAbout']);
 $app->router->get('/userProducts', [HomeController::class, 'getUserProducts']);
 
+$app->router->get('/category', [HomeController::class, 'getCategory']);
+// $app->router->post('/category', [HomeController::class, 'postCategories']);
+$app->router->get('/loadProducts', [HomeController::class, 'loadProducts']);
+
 
 $app->router->get('/productDetails', [HomeController::class, 'getProductDetails']);
 $app->router->post('/createSwap', [HomeController::class, 'createSwap']);

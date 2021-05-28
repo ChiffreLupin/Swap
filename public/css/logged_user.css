@@ -60,7 +60,7 @@
     .carouselPrograms .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
     .carouselPrograms .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item,
     .carouselPrograms .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
-        transition: none;
+        transition: none;        
     }
 
     .carouselPrograms .carousel-inner .carousel-item-next,
@@ -111,3 +111,17 @@
     }
 }
 
+/*Per butonat e previous next carousel edhe kategorite*/
+.control{
+
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+form{    
+    background-color: transparent;
+}

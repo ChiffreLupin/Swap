@@ -7,11 +7,10 @@
 namespace app\models;
 use app\models\User;
 use app\core\DbModel;
+use \PDO;
 
 //RegisterModel name changed to User
 class Product extends DbModel {
- 
-
     public int $id = 0;
     public string $name = '';
     public int $amount = 0;
@@ -44,6 +43,38 @@ class Product extends DbModel {
             "description" => [self::RULE_REQUIRED]
         ];
     }
+
+    // public function getProducts($where)
+    // {
+    //     $tableName = static::tableName();
+    //     $attributes = array_keys($where);
+    //     $sql = implode("AND ",array_map(fn($attr) => "$attr = :$attr", $attributes));
+    //     // SELECT * FROM $tableName WHERE email = :email AND firstname = :firstname
+    //     $statement = self::prepare("SELECT * from $tableName WHERE $sql");
+    //     foreach($where as $key => $item) {
+    //         $statement->bindValue(":$key", $item);
+    //     }
+    //     $statement->execute();
+
+    //     // Kthe objekt sipas tipit te klases
+    //     return $statement->fetchAll(PDO::FETCH_CLASS, static::class);
+    // }
+
+    // public function getProductsToAdd($where,$lim)
+    // {
+    //     $tableName = static::tableName();
+    //     $attributes = array_keys($where);
+    //     $sql = implode("AND ",array_map(fn($attr) => "$attr = :$attr", $attributes));
+    //     // SELECT * FROM $tableName WHERE email = :email AND firstname = :firstname
+    //     $statement = self::prepare("SELECT * from $tableName WHERE $sql LIMIT $lim");
+    //     foreach($where as $key => $item) {
+    //         $statement->bindValue(":$key", $item);
+    //     }
+    //     $statement->execute();
+
+    //     // Kthe objekt sipas tipit te klases
+    //     return $statement->fetchAll(PDO::FETCH_CLASS, static::class);
+    // }
 
     public function hasError($attribute) {
         return $this->errors[$attribute] ?? false;

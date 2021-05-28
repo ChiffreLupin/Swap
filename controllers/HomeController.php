@@ -12,6 +12,7 @@ use app\core\Request;
 use app\core\Response;
 use app\models\User;
 use app\models\Product;
+use app\models\Category;
 use app\models\Swap;
 use app\models\RequestNotification;
 use \PDO;
@@ -138,4 +139,70 @@ class HomeController extends Controller {
         }
         else $resp->redirect("/notifications");
     } 
+    public function getCategory(Request $req,Response $resp) {
+        $this->setLayout('auth');
+        $this->setCurrent('Category');    
+        $kategorite = Category::findAll();           
+        $products = "";
+
+        if(!isset($_GET["categoryId"])) {
+            $products = Product::findAll();
+        } else {
+            $cat_id = $_GET["categoryId"];
+            $products = Product::find(["category_id" => $cat_id]);
+            $products = array_slice($products,0, 7);
+        }
+        
+        
+        // $products = new Product();
+        // $products = $products->getProducts(['category_id' => 1]);
+        
+        // $name = [];
+        // $name['cid'] = 1;
+        //     $j = 0;
+
+        //     foreach($products as $key => $value)
+        //     {
+        //         $name['product'][$j] = $value;                
+        //     $j++; 
+        //     }
+        
+        
+        // $i = 0;
+        // foreach($kategoria as $key =>$value)
+        // {
+        //     $name['name'][$i] = $value;
+        //     $i++;
+        // }
+
+        $selected = $_GET["categoryId"];
+        if($selected)
+            $selected -= 1;
+                
+        return $this->render('authentication/logged_user', [
+            "categories" => $kategorite,
+            "products" => $products,
+            "selectedCategory" => $selected ?? 0
+        ]);
+    }
+
+  
+    
+    public function loadProducts(Request $req,Response $resp) {
+        if(isset($_GET["categoryId"]) && isset($_GET["limit"])) {
+            $categoryId = $_GET["categoryId"];
+            $limit = $_GET["limit"];
+
+
+            $stmnt = Application::$app->db->pdo->prepare("SELECT * FROM product WHERE category_id = $categoryId LIMIT $limit");
+            $stmnt->bindValue(":$categoryId", $categoryId);
+            $stmnt->execute();
+
+            $stmnt->setFetchMode(PDO::FETCH_ASSOC);
+            $rows = $stmnt->fetchAll();
+
+            return json_encode($rows);
+        }
+        else return false;
+    }
 }

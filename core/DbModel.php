@@ -50,6 +50,20 @@ abstract class DbModel extends Model
         return $statement->fetchObject(static::class);
     }
 
+    public static function findAll() {
+        $tableName = static::tableName();
+        // SELECT * FROM $tableName WHERE email = :email AND firstname = :firstname
+        $statement = self::prepare("SELECT * FROM $tableName LIMIT 7");
+        $statement->execute();
+        
+
+        // Kthe objekt sipas tipit te klases
+        $statement->setFetchMode( PDO::FETCH_CLASS ,static::class);
+        $rows = $statement->fetchAll();
+        
+        return $rows;
+    }
+
     public static function find($where) {
         $tableName = static::tableName();
         $attributes = array_keys($where);
@@ -60,12 +74,14 @@ abstract class DbModel extends Model
             $statement->bindValue(":$key", $item);
         }
         $statement->execute();
-
         // Kthe objekt sipas tipit te klases
         $statement->setFetchMode( PDO::FETCH_CLASS , static::class );
+
+        $statement->setFetchMode( PDO::FETCH_CLASS ,static::class );                
         $rows = $statement->fetchAll();
         return $rows;
     }
+    
 
     public static function deleteOne($where) {
         $tableName = static::tableName();
