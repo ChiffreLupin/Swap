@@ -22,7 +22,7 @@ class CarouselItem{
         $id = $name->category_id;
       echo  "<div class='carousel-item col-md-4 col-sm-6 col-xs-12 $activeClass'>
                        <div class='panel panel-default  text-center'>
-                           <a href='/category?categoryId=$id'>
+                           <a href='/home?categoryId=$id'>
                                <span class='category-item'>
                                     $categoryName
                                </span>
@@ -52,7 +52,7 @@ public function productItem(Product $product)
 {
     //ndrroi thonjzat
     $id = $product->id;
-    $image = $product->image_Path;
+    $image = $product->imagePath;
     $description = $product->description;
     echo "<div class='col-md-4 '>
             <div class='product-item-wrapper'>

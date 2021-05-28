@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://kit.fontawesome.com/c355012b63.js" crossorigin="anonymous"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <?php if($current === "Product Details") { ?>
     <link rel="stylesheet" type="text/css" href="/css/Product_Page.css" media="screen" />
@@ -21,6 +22,9 @@
     <?php if($current === "Notifications") { ?>
         <link rel="stylesheet" href="/css/notifications.css">
     <?php } ?>
+    <?php if($current === "Home") { ?>
+            <link rel="stylesheet" href="/css/logged_user.css">            
+        <?php } ?>
 </head>
 
 <body>
@@ -175,4 +179,5 @@
 <script src="/js/logged_user.js"></script>
 <script src="/js/productDetails.js"></script>
 <script src="/js/notifications.js"></script>
+<script src="/js/products.js"></script>
 </html>

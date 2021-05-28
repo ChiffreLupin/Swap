@@ -6,6 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="icon" href="/images/logo-icon.png" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/c355012b63.js" crossorigin="anonymous"></script>
@@ -18,12 +19,6 @@
         <?php } ?>
         <?php if($current === 'Reset Password' || $current === "Forgot Password") { ?>
         <link rel="stylesheet" type="text/css" href="/css/ForgetPass.css" media="screen"/>
-        <?php } ?>
-        <?php if($current === 'Category') { ?>
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-            <link rel="stylesheet" href="/css/style.css">
-            <link rel="stylesheet" href="/css/logged_user.css">            
         <?php } ?>
 
         <title> <?php echo $current ?> </title>

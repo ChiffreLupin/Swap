@@ -141,9 +141,10 @@ class HomeController extends Controller {
     } 
 
     public function getHomepage(Request $req,Response $resp) {
-        $this->setLayout('auth');
-        $this->setCurrent('Category');    
-        $kategorite = Category::findAll();           
+        $this->setLayout('navigation');
+        $this->setCurrent('Home');    
+        $kategorite = Category::findAll(); 
+          
         $products = "";
 
         if(!isset($_GET["categoryId"])) {
@@ -176,7 +177,7 @@ class HomeController extends Controller {
         //     $i++;
         // }
 
-        $selected = $_GET["categoryId"];
+        $selected = $_GET["categoryId"] ?? false;
         if($selected)
             $selected -= 1;
                 
