@@ -29,10 +29,3 @@ body {
     margin: 10px 0;
 }
 
-.flash {
-    position: fixed;
-    top: 55px;
-    width: 60%;
-    left:50%;
-    transform: translateX(-50%);
-}

@@ -46,7 +46,7 @@ $app->router->post('/logout', [AuthController::class, 'logout']);
 $app->router->get('/', [AboutController::class, 'getAbout']);
 $app->router->get('/userProducts', [HomeController::class, 'getUserProducts']);
 
-$app->router->get('/category', [HomeController::class, 'getCategory']);
+$app->router->get('/home', [HomeController::class, 'getHomepage']);
 // $app->router->post('/category', [HomeController::class, 'postCategories']);
 $app->router->get('/loadProducts', [HomeController::class, 'loadProducts']);
 
@@ -57,6 +57,7 @@ $app->router->post('/acceptSwap', [HomeController::class, 'acceptSwap']);
 
 
 $app->router->get('/notifications', [HomeController::class, 'getNotifications']);
+$app->router->post('/deleteNotification', [HomeController::class, 'deleteRequestNotification']);
 
 
 // Should allow passing controllers or views to

@@ -139,7 +139,8 @@ class HomeController extends Controller {
         }
         else $resp->redirect("/notifications");
     } 
-    public function getCategory(Request $req,Response $resp) {
+
+    public function getHomepage(Request $req,Response $resp) {
         $this->setLayout('auth');
         $this->setCurrent('Category');    
         $kategorite = Category::findAll();           
@@ -179,15 +180,13 @@ class HomeController extends Controller {
         if($selected)
             $selected -= 1;
                 
-        return $this->render('authentication/logged_user', [
+        return $this->render('logged_user', [
             "categories" => $kategorite,
             "products" => $products,
             "selectedCategory" => $selected ?? 0
         ]);
     }
 
-  
-    
     public function loadProducts(Request $req,Response $resp) {
         if(isset($_GET["categoryId"]) && isset($_GET["limit"])) {
             $categoryId = $_GET["categoryId"];
@@ -204,5 +203,14 @@ class HomeController extends Controller {
             return json_encode($rows);
         }
         else return false;
+    }
+
+    public function deleteRequestNotification(Request $req, Response $resp) {
+        if(isset($_POST["notif_id"])) {
+            $request_id = $_POST["notif_id"];
+            RequestNotification::deleteOne(["id" => $request_id]);
+
+            return "Request notification successfully deleted!";
+        }
     }
 }

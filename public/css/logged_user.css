@@ -54,7 +54,6 @@
     .carouselPrograms .carousel-inner .active + .carousel-item,
     .carouselPrograms .carousel-inner .active + .carousel-item + .carousel-item {
         display: block;
-        margin-right: 0 !important;
     }
 
     .carouselPrograms .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),

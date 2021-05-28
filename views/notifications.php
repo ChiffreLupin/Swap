@@ -88,7 +88,7 @@
             </div>
         </div> -->
         <?php foreach($notifications as $key=> $notif) { ?>
-        <div class="row ">
+        <div class="row row-<?php echo $notif->id ?>">
             <div class="notification-item ">
                 <div class="col-md-2">
                     <div class="user-image-wrapper">
@@ -102,11 +102,11 @@
                             <?php echo $notif->message ?>
                         </p>
                         <?php if($notif->swap->isApprovedByReceiver === 0) { ?>
-                            <div class="notification-action">
+                            <div class="notification-action actions-<?php echo $notif->id?>">
                                 <button class="btn btn-accept" onclick="acceptSwap(<?php echo $notif->swap_id ?>, <?php echo $notif->id ?>)">
                                     Accept
                                 </button>
-                                <button class="btn btn-decline">
+                                <button class="btn btn-decline" onclick="deleteNotification(<?php echo $notif->id?>)">
                                     Decline
                                 </button>
                             </div>
