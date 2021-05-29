@@ -50,10 +50,12 @@ abstract class DbModel extends Model
         return $statement->fetchObject(static::class);
     }
 
-    public static function findAll() {
+    public static function findAll($lim) {
         $tableName = static::tableName();
         // SELECT * FROM $tableName WHERE email = :email AND firstname = :firstname
-        $statement = self::prepare("SELECT * FROM $tableName LIMIT 7");
+        $limit = $lim ? "LIMIT $lim": "";
+
+        $statement = self::prepare("SELECT * FROM $tableName $limit");
         $statement->execute();
         
 

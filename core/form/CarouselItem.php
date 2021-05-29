@@ -58,16 +58,17 @@ public function productItem(Product $product)
             <div class='product-item-wrapper'>
                 <div class='image-wrapper'>
                     <form action='' method='POST'>
-                    <a href='/productDetails?productId=$id' name='butoniProdukt' value='$id'>
-                    <img id='images' class='img-fluid' src='$image' alt=''>
-                    </a>
+                        <img id='images' class='img-fluid' src='$image' alt=''>
                     </form>
                 </div>
-                <div class='product-description'>
-                    <p class='product-text'>
-                    $description;
-                    </p>
-                </div>
+                <a href='/productDetails?productId=$id' name='butoniProdukt' value='$id'>
+                    <div class='product-description'>
+                        <p class='product-text'>
+                        $description;
+                        </p>
+                    </div>
+                </a>
+
             </div>
         </div>
     ";

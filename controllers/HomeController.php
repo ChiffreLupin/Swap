@@ -91,7 +91,7 @@ class HomeController extends Controller {
         Application::$app->session->setFlash("swap_sent_success","Your SWAP request has been sent successfully!");
     
         // Redirect user to current page where swap success message will be displayed
-        $resp->redirect("/productDetails?productId=$swap->product_sent_id");
+        $resp->redirect("/productDetails?productId=$swap->product_received_id");
     }
 
     public function getNotifications(Request $req, Response $res) {
@@ -143,18 +143,22 @@ class HomeController extends Controller {
     public function getHomepage(Request $req,Response $resp) {
         $this->setLayout('navigation');
         $this->setCurrent('Home');    
-        $kategorite = Category::findAll(); 
+        $kategorite = Category::findAll(false); 
           
         $products = "";
+        $noOfProducts;
 
         if(!isset($_GET["categoryId"])) {
-            $products = Product::findAll();
+            $products = Product::findAll(7);
+            $allProducts = Product::findAll(false);
+            $noOfProducts = count($allProducts);
+
         } else {
             $cat_id = $_GET["categoryId"];
             $products = Product::find(["category_id" => $cat_id]);
+            $noOfProducts = count($products);
             $products = array_slice($products,0, 7);
         }
-        
         
         // $products = new Product();
         // $products = $products->getProducts(['category_id' => 1]);
@@ -184,7 +188,8 @@ class HomeController extends Controller {
         return $this->render('logged_user', [
             "categories" => $kategorite,
             "products" => $products,
-            "selectedCategory" => $selected ?? 0
+            "selectedCategory" => $selected ?? 0,
+            "noOfProducts" => $noOfProducts
         ]);
     }
 
@@ -192,9 +197,14 @@ class HomeController extends Controller {
         if(isset($_GET["categoryId"]) && isset($_GET["limit"])) {
             $categoryId = $_GET["categoryId"];
             $limit = $_GET["limit"];
+            $totalDisplayed = $_GET["totalDisplayed"];
+            $where = "";
+            
+            if($categoryId != -1) {
+                $where = "WHERE category_id = :$categoryId";
+            }
 
-
-            $stmnt = Application::$app->db->pdo->prepare("SELECT * FROM product WHERE category_id = $categoryId LIMIT $limit");
+            $stmnt = Application::$app->db->pdo->prepare("SELECT * FROM product $where LIMIT $totalDisplayed,$limit");
             $stmnt->bindValue(":$categoryId", $categoryId);
             $stmnt->execute();
 
