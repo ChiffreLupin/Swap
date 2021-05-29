@@ -224,4 +224,21 @@ class HomeController extends Controller {
             return "Request notification successfully deleted!";
         }
     }
+
+    public function getMyProfile(Request $req, Response $resp) {
+        $this->setLayout("navigation");
+        $this->setCurrent("My Profile");
+        $userModel = new User();
+        $productModel = new Product();
+        $categories = Category::findAll(false);
+
+        $products = Product::find(["user_id" => Application::$app->user->id]);
+
+        return $this->render("my_profile", [
+            "myProducts" => $products,
+            "userModel" => $userModel,
+            "productModel" => $productModel,
+            "categories" => $categories
+         ]);
+    }
 }

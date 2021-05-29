@@ -12,6 +12,7 @@ class Field{
     public const TYPE_PASS = 'password';
     public const TYPE_NUMBER = 'number';
     public const TYPE_EMAIL = 'email';
+    public const TYPE_FILE = "file";
 
 
     public string $type;
@@ -54,6 +55,16 @@ class Field{
 
     public function email() {
         $this->type = self::TYPE_EMAIL;
+        return $this;
+    }
+
+    public function file() {
+        $this->type = self::TYPE_FILE;
+        return $this;
+    }
+
+    public function number() {
+        $this->type = self::TYPE_NUMBER;
         return $this;
     }
 }
