@@ -1,20 +1,25 @@
 let lim = 7;
+let totalNow = 7;
 let productContainer = document.querySelector("#productRows");
-function loadProducts(id)
+let allProducts = $(".btn-white").val();
+
+function loadProducts(id, isCatChosen)
 { 
-    productContainer.innerHTML = '<div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>';
-    lim += 7;
-    setTimeout(() => theAjax(id, lim),3000);
+    console.log(allProducts);
+    if(totalNow < allProducts) {
+        productContainer.insertAdjacentHTML("beforeend",'<div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>');
+        theAjax(id, lim, isCatChosen, totalNow);
+    }
 }
 
-function theAjax( catId, limit)
+function theAjax( catId, limit, isCatChosen, totalDisplayed)
 {
+        let id = isCatChosen ? catId : -1;
         return $.ajax({
             url:  '/loadProducts',
             type: 'GET',
-            data: {categoryId: catId, limit: limit}
+            data: {categoryId: id, limit: limit, totalDisplayed: totalDisplayed}
         }).done(processData);
-        
 }
 
 // function doAjax()
@@ -33,8 +38,11 @@ function processData(response) {
     {
         alert("is not set");
     }
+    totalNow += response.length;
     //nuk ka response
-    productContainer.innerHTML = "";
+    let spinner = document.querySelector(".spinner-border");
+    productContainer.removeChild(spinner);
+
     response.forEach(product =>{
         productContainer.insertAdjacentHTML('beforeend',`
         <div class="col-md-4">
@@ -42,13 +50,13 @@ function processData(response) {
                 <div class="image-wrapper">
                     <form action="" method="POST">
                     <a href="" name="butoniProdukt" value="${product.id}">
-                    <img id="images" class="img-fluid" src="${product.image_Path}" alt="">
+                    <img id="images" class="img-fluid" src="${product.imagePath}" alt="">
                     </a>
                     </form>
                 </div>
                 <div class="product-description">
                     <p class="product-text">
-                    ${product.description}                    
+                     ${product.description}                    
                     </p>
                 </div>
             </div>

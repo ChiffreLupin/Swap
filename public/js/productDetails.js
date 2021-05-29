@@ -20,7 +20,7 @@ let loadOffers = function(id) {
             type: "GET",
             data: {"id": id}
         })
-        .done(processData);
+        .done(processProducts);
     }
     else {
         $("#lower").slideToggle("slow");
@@ -28,8 +28,10 @@ let loadOffers = function(id) {
     }
 }
 
-function processData(response) {
+function processProducts(response) {
     let offerables = JSON.parse(response);
+    if(!offerables)
+        return;
 
     offerables.forEach(offer => {
         offersContainer.insertAdjacentHTML('beforeend',`

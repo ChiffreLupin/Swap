@@ -41,7 +41,7 @@ $app->router->post('/resetPassword', [AuthController::class, 'postResetPassword'
 $app->router->get('/forgotPassword', [AuthController::class, 'getForgotPassword']);
 $app->router->post('/forgotPassword', [AuthController::class, 'postForgotPassword']);
 
-$app->router->post('/logout', [AuthController::class, 'logout']);
+$app->router->get('/logout', [AuthController::class, 'logout']);
 
 $app->router->get('/', [AboutController::class, 'getAbout']);
 $app->router->get('/userProducts', [HomeController::class, 'getUserProducts']);
