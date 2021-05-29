@@ -228,7 +228,7 @@ class HomeController extends Controller {
     public function getMyProfile(Request $req, Response $resp) {
         $this->setLayout("navigation");
         $this->setCurrent("My Profile");
-        $userModel = new User();
+        $userModel = Application::$app->user;
         $productModel = new Product();
         $categories = Category::findAll(false);
 
