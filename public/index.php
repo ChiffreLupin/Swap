@@ -60,6 +60,10 @@ $app->router->get('/notifications', [HomeController::class, 'getNotifications'])
 $app->router->post('/deleteNotification', [HomeController::class, 'deleteRequestNotification']);
 
 $app->router->get('/myProfile', [HomeController::class, 'getMyProfile']);
+$app->router->post('/myProfile', [HomeController::class, 'postMyProfile']);
+
+$app->router->post('/deleteProduct', [HomeController::class, 'postDeleteProduct']);
+
 
 // Should allow passing controllers or views to
 // the router

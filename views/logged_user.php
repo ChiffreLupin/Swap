@@ -5,7 +5,6 @@
 
 <script>
 //jQuery code
-
 /*
 $(document).ready(function() {
     var productCount = 7;
@@ -22,7 +21,6 @@ $(document).ready(function() {
     });
 });   
 */
-
 </script>
 
 <section class="fill-page">
@@ -64,7 +62,7 @@ $(document).ready(function() {
         </div>
     </section>
 
-    <section id="products-section">
+    <section id="products-section" class="fill-page">
         <div class="container">
             <div class="row" id="productRows">                
             <?php 
@@ -73,12 +71,14 @@ $(document).ready(function() {
             // $products = new Product();
             // $products = $products->getProducts(['category_id' => $cid]);
 
-            foreach($products as $key => $product) {
-                $carousel->productItem($product);
-            }   
-            
+            if($products) {
+                foreach($products as $key => $product) {
+                    $carousel->productItem($product);
+                }   
+            }
             ?>            
             </div>            
+            <?php if($noOfProducts > 7) { ?>
             <div class="row">
                 <div class="col-md-12 text-center">
                     <div class="button-wrapper">
@@ -89,6 +89,7 @@ $(document).ready(function() {
                     </div>
                 </div>
             </div>
+            <?php } ?>
         </div>
 
     </section>

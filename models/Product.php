@@ -22,7 +22,7 @@ class Product extends DbModel {
     public ?User $user = null;
 
     public function __construct() {
-        $created_at = date("Y.m.d");
+        $created_at = date("Y.m.d h:i:s");
     }
 
 

@@ -41,26 +41,26 @@
                         <form class="form-inline align-items-center" action="">
                             <div class="input-group mb-1">
                                 <div class="input-group-prepend">
-                                    <button class="btn btn-dark dropdown-toggle" type="button" data-toggle="dropdown"
+                                    <button class="btn btn-dark dropdown-toggle nav-drop" type="button" data-toggle="dropdown"
                                         aria-expanded="false"></button>
                                     <div id="list" class="dropdown-menu">
-                                        <input type="radio" name="option" class="dropdown-menu" id="productSelected"
+                                        <input type="radio"  name="option" class="dropdown-menu radio-nav" id="productSelected"
                                             value="product" checked></input>
                                         <label class="label" for="productSelected">Product</label>
 
-                                        <input type="radio" name="option" class="dropdown-item" id="categorySelected"
+                                        <input type="radio" name="option" class="dropdown-item radio-nav" id="categorySelected"
                                             value="category"></input>
                                         <label class="label" for="categorySelected">Category</label>
 
-                                        <input type="radio" name="option" class="dropdown-item" id="userSelected"
+                                        <input type="radio"  name="option" class="dropdown-item radio-nav" id="userSelected"
                                             value="user"></input>
                                         <label class="label" for="userSelected">User</label>
                                     </div>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Search input with dropdown button"
+                                <input type="text" class="form-control searchbar" aria-label="Search input with dropdown button"
                                     href="#" placeholder="Search product">
                                 <div class="input-group-append">
-                                    <button class="btn btn-dark" type="button"><i class="fa fa-search"></i></button>
+                                    <button class="btn btn-dark" type="button" onclick="performSearch()"><i class="fa fa-search"></i></button>
                                 </div>
                             </div>
                         </form>
@@ -183,7 +183,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
 
         <script src="/js/myProfile.js"></script>
+        <?php if($current === "Home") { ?>
         <script src="/js/logged_user.js"></script>
+        <?php } ?>
         <script src="/js/productDetails.js"></script>
         <script src="/js/notifications.js"></script>
         <script src="/js/products.js"></script>

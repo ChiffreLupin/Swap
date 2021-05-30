@@ -50,12 +50,13 @@ abstract class DbModel extends Model
         return $statement->fetchObject(static::class);
     }
 
-    public static function findAll($lim) {
+    public static function findAll($lim, $descending = false) {
         $tableName = static::tableName();
         // SELECT * FROM $tableName WHERE email = :email AND firstname = :firstname
         $limit = $lim ? "LIMIT $lim": "";
+        $order = $descending ? "ORDER BY $descending DESC" : "";
 
-        $statement = self::prepare("SELECT * FROM $tableName $limit");
+        $statement = self::prepare("SELECT * FROM $tableName $limit $order");
         $statement->execute();
         
 
@@ -66,12 +67,13 @@ abstract class DbModel extends Model
         return $rows;
     }
 
-    public static function find($where) {
+    public static function find($where, $descending = false) {
         $tableName = static::tableName();
         $attributes = array_keys($where);
         $sql = implode(" AND ",array_map(fn($attr) => "$attr = :$attr", $attributes));
+        $order = $descending ? "ORDER BY $descending DESC" : "";
         // SELECT * FROM $tableName WHERE email = :email AND firstname = :firstname
-        $statement = self::prepare("SELECT * from $tableName WHERE $sql");
+        $statement = self::prepare("SELECT * from $tableName WHERE $sql $order");
         foreach($where as $key => $item) {
             $statement->bindValue(":$key", $item);
         }

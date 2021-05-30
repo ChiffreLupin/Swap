@@ -1,5 +1,6 @@
 <?php 
 use app\core\Application; 
+
 ?>
   <!--Body-->
   <div id="Content" class="fill-page">

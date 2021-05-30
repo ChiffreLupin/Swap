@@ -89,4 +89,22 @@ class User extends UserModel {
             'zip' => 'Zip'
         ];
     }
+
+    public function stateValue($state) {
+      
+        $valueStates = [
+            "Albania" => 1,
+            "England" => 2,
+            "Danmark" => 3,
+            "Germany" => 4,
+            "Greece" => 5,
+            "France" => 6,
+            "Kosovo" => 7,
+            "Norway" => 8,
+            "New Zeland"  => 9,
+            "Montenegro" => 10
+        ];
+
+        return $valueStates[$state];
+    }
 }

@@ -15,6 +15,7 @@ use app\models\Product;
 use app\models\Category;
 use app\models\Swap;
 use app\models\RequestNotification;
+use app\models\Password;
 use \PDO;
 
 class HomeController extends Controller {
@@ -71,17 +72,24 @@ class HomeController extends Controller {
             $request->sender_id = $body["sender_id"];
             $request->receiver_id = $body["receiver_id"];
             $sender_name = $sender->displayName();
-            $request->message = "$sender_name has sent you a SWAP request.";
+            $message = "$sender_name has sent you a SWAP request.";
 
             // Get last inserted swap
             $stmnt = Application::$app->db->pdo->prepare("SELECT LAST_INSERT_ID()");
             $stmnt->execute();
             $last_inserted_id = $stmnt->fetchAll()[0][0];
-           
+
             $swap = Swap::findOne(["id" => $last_inserted_id]);
-
-
+            $swap->productSent = Product::findOne(["id" => $swap->product_sent_id]);
+            $swap->productReceived = Product::findOne(["id" => $swap->product_received_id]);
+         
+            $productReceivedName = $swap->productReceived->name;
+            $productSentName = $swap->productSent->name;
+            $id = $swap->productSent->id;
+            $message.="\n He'd like to know if you are interested in exchanging your $productReceivedName with his $productSentName\n";
+            $message.="<a href='productDetails?productId=$id'>Click here to check his product!</a>";
             $request->swap_id = $swap->id;
+            $request->message = $message;
             $request->save();
         } 
         else $resp->redirect("/home");
@@ -104,7 +112,9 @@ class HomeController extends Controller {
 
         // $stmt->setFetchMode(PDO::FETCH_ASSOC);
         // $notifications = $stmt->fetchAll();
-        $notifications = RequestNotification::find(["receiver_id" => Application::$app->user->id]);
+        $notifications = RequestNotification::find(["receiver_id" => Application::$app->user->id], "sent_at");
+        
+
         foreach($notifications as $key => $notif) {
             $notif->swap = Swap::findOne(["id" => $notif->swap_id]);
         }
@@ -148,16 +158,57 @@ class HomeController extends Controller {
         $products = "";
         $noOfProducts;
 
-        if(!isset($_GET["categoryId"])) {
-            $products = Product::findAll(7);
-            $allProducts = Product::findAll(false);
-            $noOfProducts = count($allProducts);
+        if(isset($_GET["categoryId"])) {
 
-        } else {
             $cat_id = $_GET["categoryId"];
-            $products = Product::find(["category_id" => $cat_id]);
+            $products = Product::find(["category_id" => $cat_id], "created_at");
+            $products = array_filter($products,function ($product) {
+                return $product->user_id !== Application::$app->user->id;
+            });
             $noOfProducts = count($products);
             $products = array_slice($products,0, 7);
+        } 
+        else if(isset($_GET["searchValue"]) && isset($_GET["searchBy"])) {
+            $searchValue = $_GET["searchValue"];
+            $searchBy = $_GET["searchBy"];
+            $statement = "";
+            $regex ="'^.*".$searchValue.".*$'";
+            $u_id = Application::$app->user->id;
+
+            if($searchBy === "user") {
+                $statement = Application::$app->db->pdo->prepare("SELECT P.id, P.name, P.amount,P.imagePath, P.created_at, P.description, P.category_id, P.user_id
+                 FROM product P INNER JOIN user U ON P.user_id = U.id AND P.user_id != $u_id
+                WHERE U.firstname REGEXP $regex OR U.lastname REGEXP $regex 
+                OR U.username REGEXP $regex  ORDER BY P.created_at DESC");
+               
+            }
+            else if($searchBy === "category") {
+                $statement = Application::$app->db->pdo->prepare("SELECT P.id, P.name, P.amount,P.imagePath, P.created_at, P.description, P.category_id, P.user_id
+                FROM product P INNER JOIN category C ON P.category_id = C.category_id AND P.user_id != $u_id
+                WHERE C.category_name REGEXP $regex  ORDER BY P.created_at DESC");
+            }
+            else if($searchBy === "product") {
+                $statement = Application::$app->db->pdo->prepare("SELECT P.id, P.name, P.amount,P.imagePath, P.created_at, P.description, P.category_id, P.user_id
+                FROM product P  WHERE (P.name REGEXP $regex OR description REGEXP $regex) AND P.user_id != $u_id ORDER BY P.created_at DESC");
+            }
+
+
+            $statement->execute();
+            $statement->setFetchMode(PDO::FETCH_CLASS, Product::class);
+            $rows = $statement->fetchAll();
+          
+            $products = $rows;
+            $noOfProducts = 0;
+
+        }
+        else {
+            // $products = Product::findAll(7);
+            $allProducts = Product::findAll(false, "created_at");
+            $allProducts = array_filter($allProducts,function ($product) {
+                return $product->user_id !== Application::$app->user->id;
+            });
+            $noOfProducts = count($allProducts);
+            $products = array_slice($allProducts,0, 7);
         }
         
         // $products = new Product();
@@ -181,6 +232,10 @@ class HomeController extends Controller {
         //     $i++;
         // }
 
+        $products = array_filter($products,function ($product) {
+            return $product->user_id !== Application::$app->user->id;
+        });
+
         $selected = $_GET["categoryId"] ?? false;
         if($selected)
             $selected -= 1;
@@ -201,16 +256,20 @@ class HomeController extends Controller {
             $where = "";
             
             if($categoryId != -1) {
-                $where = "WHERE category_id = :$categoryId";
+                $where = "AND category_id = :$categoryId";
             }
 
-            $stmnt = Application::$app->db->pdo->prepare("SELECT * FROM product $where LIMIT $totalDisplayed,$limit");
+            $u_id = Application::$app->user->id;
+            $stmnt = Application::$app->db->pdo->prepare("SELECT * FROM product WHERE user_id != $u_id $where LIMIT $totalDisplayed,$limit");
             $stmnt->bindValue(":$categoryId", $categoryId);
-            $stmnt->execute();
 
+            $stmnt->execute();
             $stmnt->setFetchMode(PDO::FETCH_ASSOC);
             $rows = $stmnt->fetchAll();
-
+            
+            // $rows = array_filter($rows,function ($product) {
+            //     return $product->user_id !== Application::$app->user->id;
+            // });
             return json_encode($rows);
         }
         else return false;
@@ -218,8 +277,25 @@ class HomeController extends Controller {
 
     public function deleteRequestNotification(Request $req, Response $resp) {
         if(isset($_POST["notif_id"])) {
-            $request_id = $_POST["notif_id"];
-            RequestNotification::deleteOne(["id" => $request_id]);
+            $notification_id = $_POST["notif_id"];
+            $notification  = RequestNotification::findOne(["id" => $notification_id]);
+            RequestNotification::deleteOne(["id" => $notification_id]);
+
+            $swap_id = $_POST["swap_id"];
+
+            // $stmnt = Application::$app->db->pdo->prepare("UPDATE swaps SET isApprovedByReceiver = 1 WHERE id=$swap_id");
+            // $stmnt->execute();
+            $st =Swap::updateOne(["id" => $swap_id], ["isDeclinedByReceiver" => 1]);
+            $decliner = User::findOne(["id" => $notification->receiver_id]);
+            $declinerName = $decliner->displayName();
+         
+
+            $newRequest = new RequestNotification();
+            $newRequest->sender_id = $notification->receiver_id;
+            $newRequest->receiver_id = $notification->sender_id;
+            $newRequest->message = "$declinerName has declined your SWAP request";
+            $newRequest->swap_id = $notification->swap_id;
+            $newRequest->save();
 
             return "Request notification successfully deleted!";
         }
@@ -230,6 +306,7 @@ class HomeController extends Controller {
         $this->setCurrent("My Profile");
         $userModel = Application::$app->user;
         $productModel = new Product();
+        $passwordModel = new Password();
         $categories = Category::findAll(false);
 
         $products = Product::find(["user_id" => Application::$app->user->id]);
@@ -238,7 +315,70 @@ class HomeController extends Controller {
             "myProducts" => $products,
             "userModel" => $userModel,
             "productModel" => $productModel,
-            "categories" => $categories
+            "categories" => $categories,
+            "passwordModel" => $passwordModel,
+            "isPassModalOpen" => false
          ]);
     }
+
+    // private function searchByUsers(Request $req, Response $resp) {
+    //         $searchBy = $_GET["searchValue"];
+            
+    //         $regex ="'^.*".$searchBy.".*$'";
+    //         $statement = Application::$app->db->pdo->prepare("SELECT * FROM product P INNER JOIN user U ON P.user_id = U.id
+    //         WHERE U.firstname REGEXP $regex OR U.lastname REGEXP $regex 
+    //         OR U.username REGEXP $regex");
+    //         $statement->execute();
+
+    //         $statement->setFetchMode(PDO::FETCH_ASSOC);
+    //         $rows = $statement->fetchAll();
+    //         return json_encode($rows);
+    // }
+
+    public function postMyProfile(Request $req, Response $resp) {
+        if(isset($_POST['currentPassword']) && isset($_POST['newPassword']) && isset($_POST['repeatNewPassword'])) {
+            $body = $req->getBody();
+
+            $passwordModel = new Password();
+            $passwordModel->loadData($body);
+
+            if($passwordModel->validate()) {
+                if(password_verify($passwordModel->currentPassword, Application::$app->user->password)) {
+                    $password = password_hash($passwordModel->newPassword, PASSWORD_DEFAULT);
+                    User::updateOne(["id" => Application::$app->user->id], ["password" => $password]);
+                    Application::$app->user = User::findOne(["id" => Application::$app->user->id]);
+                    Application::$app->session->setFlash("success_pass_change", "Password has been changed successfully!");
+                    $resp->redirect("/myProfile");
+                    return;
+                } else {
+                    $passwordModel->addError('currentPassword', "Password is incorrect!");
+                }
+            }
+
+
+            $this->setLayout("navigation");
+            $this->setCurrent("My Profile");
+            $userModel = Application::$app->user;
+            $productModel = new Product();
+            $categories = Category::findAll(false);
+            $products = Product::find(["user_id" => Application::$app->user->id]);
+
+            return $this->render("my_profile", [
+                "myProducts" => $products,
+                "userModel" => $userModel,
+                "productModel" => $productModel,
+                "categories" => $categories,
+                "passwordModel" => $passwordModel,
+                "isPassModalOpen" => true
+            ]);
+        }
+    }
+
+    public function postDeleteProduct(Request $req, Response $resp) {
+        if(isset($_POST["product_id"])) {
+            Product::deleteOne(["id" =>$_POST['product_id']]);
+            return true;
+        }
+    }
 }
+

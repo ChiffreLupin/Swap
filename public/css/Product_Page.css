@@ -245,10 +245,3 @@ a.btn:hover .fas {
     color: black;
 }
 
-.flash {
-    position: absolute;
-    top: 55px;
-    width: 100%;
-    text-align: center;
-}
-

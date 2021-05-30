@@ -17,6 +17,8 @@ class Swap extends DbModel {
     public int $sender_id = -1;
     public int $receiver_id = -1;
     public int $isApprovedByReceiver = self::IS_NOT_APPROVED;
+    public int $isDeclinedByReceiver = self::IS_NOT_APPROVED;
+
     public ?Product $productReceived = null;
     public ?Product $productSent = null;
     public ?User $sender = null;

@@ -12,11 +12,11 @@ function acceptSwap(swap_id, notif_id) {
     });
 }
 
-function deleteNotification(req_id) {
+function deleteNotification(req_id, swap_id) {
     $.ajax({
         url: "/deleteNotification",
         type: "POST",
-        data: {"notif_id": req_id}
+        data: {"notif_id": req_id, "swap_id": swap_id}
     })
     .done((res) => { 
         console.log(res);

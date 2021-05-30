@@ -31,3 +31,18 @@ $(document).ready(function() {
         $(".modal-profile").modal({show:true});
     });
 });
+
+$(".nav-drop").click(() => {
+    let dropdown = document.getElementById("list");
+    dropdown.classList.toggle("show");
+});
+
+
+let radios = document.querySelectorAll(".radio-nav");
+
+radios.forEach((el) => {
+    el.addEventListener('click', () => {
+        let dropdown = document.getElementById("list");
+        dropdown.classList.toggle("show");
+    });
+});

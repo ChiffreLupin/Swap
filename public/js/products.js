@@ -5,7 +5,6 @@ let allProducts = $(".btn-white").val();
 
 function loadProducts(id, isCatChosen)
 { 
-    console.log(allProducts);
     if(totalNow < allProducts) {
         productContainer.insertAdjacentHTML("beforeend",'<div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>');
         theAjax(id, lim, isCatChosen, totalNow);
@@ -33,12 +32,16 @@ function theAjax( catId, limit, isCatChosen, totalDisplayed)
 // }
 
 function processData(response) {
-    response = JSON.parse(response);
     if(!response)
     {
-        alert("is not set");
+        return;
     }
+    response = JSON.parse(response);
+   
     totalNow += response.length;
+
+    if(allProducts <= totalNow)
+     $("#showMore").hide();
     //nuk ka response
     let spinner = document.querySelector(".spinner-border");
     productContainer.removeChild(spinner);
@@ -47,18 +50,18 @@ function processData(response) {
         productContainer.insertAdjacentHTML('beforeend',`
         <div class="col-md-4">
             <div class="product-item-wrapper">
-                <div class="image-wrapper">
-                    <form action="" method="POST">
-                    <a href="" name="butoniProdukt" value="${product.id}">
-                    <img id="images" class="img-fluid" src="${product.imagePath}" alt="">
-                    </a>
+                <div class='image-wrapper'>
+                    <form action='' method='POST'>
+                        <img id='images' class='img-fluid' src='${product.imagePath}' alt='${product.description}'>
                     </form>
                 </div>
-                <div class="product-description">
-                    <p class="product-text">
-                     ${product.description}                    
-                    </p>
-                </div>
+                <a href='/productDetails?productId=${product.id}' name='butoniProdukt' value='$id'>
+                    <div class='product-description'>
+                        <p class='product-text'>
+                        ${product.description}
+                        </p>
+                    </div>
+                </a>
             </div>
         </div>`);
     });

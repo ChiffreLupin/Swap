@@ -46,6 +46,15 @@ body {
     text-align: center; /*shtese nga ersa*/
  }
 
+ 
+.flash {
+    position: absolute;
+    top: 55px;
+    width: 100%;
+    text-align: center;
+}
+
+
 
 @media  (max-width: 1200px) {
     
@@ -295,5 +304,5 @@ header{
 }
 
 .fill-page {
-    min-height: calc(100vh - 415px);
+    min-height: calc(100vh - 405px);
 }

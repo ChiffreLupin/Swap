@@ -84,11 +84,13 @@ abstract class Model {
             // Use the key to find the placeholder
             $message = str_replace("{{$key}}", $value, $message);
         }
+
+        
         // Adds it to the array
         $this->errors[$attribute][] = $message;
     }
 
-    protected function addError(string $attribute, string $message) {
+    public function addError(string $attribute, string $message) {
         $this->errors[$attribute][] = $message;
     }
 

@@ -8,3 +8,6 @@ function navigateDown(e){
     });
 }
 
+setTimeout(() =>  {
+    $(".flash").hide();
+},3000);

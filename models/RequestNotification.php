@@ -24,7 +24,7 @@ class RequestNotification extends DbModel {
     public ?User $receiver = null;
 
     public function __construct() {
-        $this->sent_at = date("Y.m.d");
+        $this->sent_at = date("Y.m.d h:i:s");
     }
 
     public static function tableName(): string
