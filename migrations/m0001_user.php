@@ -17,7 +17,8 @@ class m0001_user{
             city VARCHAR(30),
             street VARCHAR(50),
             zip VARCHAR(10),
-            type ENUM('client','admin') 
+            type ENUM('client','admin'),
+            description VARCHAR(255) DEFAULT ''
         )   ENGINE = INNODB;";
         $db->pdo->exec($SQL);
     }

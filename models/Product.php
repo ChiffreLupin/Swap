@@ -16,13 +16,13 @@ class Product extends DbModel {
     public int $amount = 0;
     public string $imagePath = '';
     public string $description = '';
-    public $created_at = "";
+    public string $created_at = "";
     public int $category_id = -1;
     public int $user_id = -1;
     public ?User $user = null;
 
     public function __construct() {
-        $created_at = date("Y.m.d h:i:s");
+        $this->created_at = date("Y.m.d h:i:s");
     }
 
 

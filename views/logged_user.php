@@ -34,6 +34,13 @@ $(document).ready(function() {
                         
                     $carousel = new CarouselItem();
                     $theSelectedCategory = $selectedCategory;
+
+                    foreach($categories as $key=> $category) {
+                        if($category->category_id == $selectedCategory) {
+                            $selectedCategory = $key;
+                            break;
+                        }
+                    }
                     $c = $_GET['categoryId'] ?? false;
                     
                     if($selectedCategory > 3) {

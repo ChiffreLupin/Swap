@@ -10,7 +10,7 @@ use app\core\Model;
  class Form{
 
     public static function begin($action, $method) {
-        echo sprintf('<form action="%s" method="%s">', $action, $method);
+        echo sprintf('<form enctype="multipart/form-data" action="%s" method="%s">', $action, $method);
         return new Form();
     }
 

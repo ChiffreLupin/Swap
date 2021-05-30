@@ -55,4 +55,22 @@ class Category extends DbModel
         return $categories;
     }
 
+    
+    public function valueToState() {
+      
+        $valueStates = [
+            "1" => "Albania" ,
+            "2" =>"England" ,
+            "3" => "Danmark",
+            "4" => "Germany",
+            "5" => "Greece",
+            "6" => "France",
+            "7" =>"Kosovo",
+            "8" => "Norway",
+            "9" => "New Zeland",
+            "10" =>"Montenegro" 
+        ];
+
+        return $valueStates;
+    }
 }

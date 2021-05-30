@@ -8,7 +8,13 @@
             <?php echo Application::$app->session->getFlash("success_pass_change") ?>
           </div>
     <?php } ?>
+    <?php if(Application::$app->session->getFlash("edited_product_success")) { ?>
+          <div class="flash alert alert-success">
+            <?php echo Application::$app->session->getFlash("edited_product_success") ?>
+          </div>
+    <?php } ?>
     <div class="background-image">
+
         <div class="container">
             <div class="row row-fix">
                 <div class="col-md-5 justify-center width-30 form">
@@ -27,8 +33,8 @@
                         <p><?php echo Application::$app->user->displayName() ?></p>
                     </div>
                     <div class="edit-profile-btn">
-                        <button data-bs-toggle="modal" data-bs-target="#editProfileModal" class="btn btn-edit">Edit Profile</button>
-                        <button data-bs-toggle="modal" data-bs-target="#changePasswordModal" class="btn btn-edit">Change Password</button>
+                        <button  data-bs-toggle="modal" data-bs-target="#editProfileModal" class="btn btn-edit">Edit Profile</button>
+                        <button type="submit" name="editModal" data-bs-toggle="modal" data-bs-target="#changePasswordModal" class="btn btn-edit">Change Password</button>
 
                     </div>
                     <div>
@@ -46,6 +52,7 @@
                         $imagePath = $product->imagePath;
                         $description = $product->description;
                         $id = $product->id;
+                        $prod_json = json_encode($product);
                        echo "<div class='col-9 inner-div prod-$id'>
                         <!--Siper fotos nje buton dropdown me opsionet edit dhe delete-->
                         <div id='product-options'>
@@ -55,7 +62,7 @@
                                 <div id='list' class='dropdown-menu'>
                                     <input type='radio' name='option' class='dropdown-item' id='productSelected'
                                         value='product' checked ></input>
-                                    <label class='label' for='productSelected'>Edit</label>
+                                    <label class='label' data-bs-toggle='modal' onclick='setIdForModal($id, $prod_json)' data-bs-target='#editProductModal' for='productSelected'>Edit</label>
 
                                     <input type='radio' name='option' class='dropdown-item' id='categorySelected'
                                         value='category'></input>
@@ -223,10 +230,9 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Add Product</button>
+            <button type="submit" class="btn btn-primary">Add Product</button>
         </div>
       <?php \app\core\form\Form::end() ?>
-
     </div>
   </div>
 </div>
@@ -239,7 +245,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <?php $form = \app\core\form\Form::begin('', 'post') ?>
-        <div class="modal-body">
+       <div class="modal-body">
              <div id="SignUpBox">
                     <div class="form-row">
                         <!--Column 1-->
@@ -262,13 +268,11 @@
                     <!--Column 2-->
                 </div>
         </div>
-      </div>
-      <div class="modal-footer">
+       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="submit" onclick="addProduct()" value="<?php echo $isPassModalOpen ?>" class="btn btn-primary pass-btn">Change Password</button>
-      </div>
-      <?php \app\core\form\Form::end() ?>
-
+       </div>
+       <?php \app\core\form\Form::end() ?>
     </div>
   </div>
 </div>
@@ -284,7 +288,7 @@
       </div>
       <?php $form = \app\core\form\Form::begin('', 'post') ?>
       <div class="modal-body">
-      <div id="SignUpBox">            
+      <div id="EditBox">            
                     <div class="form-row">
                         <!--Column 1-->
                         <div id="Block1"> 
@@ -294,17 +298,14 @@
                             <br>
                             <div class="form-group col-md-8 offset-md-2">
                             <div class="col-md-12 %s">
-                            <select name="category" class="custom-select" placeholder="--Select a category" id="inputGroupSelect01" style="width: 100%; background-color: whitesmoke; height: 37px; border-radius: 4px; border-color: #DEDEDE; border: none;">
-                                  <option value="" disabled selected>Select your option</option>
+                            <select name="category_id" class="custom-select" placeholder="--Select a category" id="inputGroupSelect01" style="width: 100%; background-color: whitesmoke; height: 37px; border-radius: 4px; border-color: #DEDEDE; border: none;">
                                   <?php 
                                     foreach($categories as $key => $category) {
-                                        $id = $category->id;
+                                        $id = $category->category_id;
                                         $category_name = $category->category_name;
                                         echo "<option value='$id'>$category_name</option>";
                                     }
                                   ?>
-                                 
-
                                 </select>
                             </div>
                             </div>
@@ -319,7 +320,7 @@
                             <br>
                             <div class="form-group col-md-8 offset-md-2">
                                 <div class="form-group">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description"></textarea>
+                                    <textarea class="form-control prod-description" name="description" id="exampleFormControlTextarea1" rows="3" placeholder="Description"></textarea>
                                 </div>
                              </div>
                             <br>
@@ -332,8 +333,9 @@
       </div>      
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" onclick="editProduct(productId)" class="btn btn-primary">Edit Product</button>
+        <button type="submit" name="editModal" value="<?php echo $isProductEditModalOpen ?>" class="btn btn-primary edit-product-btn">Edit Product</button>
       </div>
+      <input type="hidden" value="" name="product_id" class="product_id">
       <?php \app\core\form\Form::end() ?>
     </div>
   </div>

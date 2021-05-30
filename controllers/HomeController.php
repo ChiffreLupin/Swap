@@ -317,7 +317,8 @@ class HomeController extends Controller {
             "productModel" => $productModel,
             "categories" => $categories,
             "passwordModel" => $passwordModel,
-            "isPassModalOpen" => false
+            "isPassModalOpen" => false,
+            "isProductEditModalOpen" => false
          ]);
     }
 
@@ -369,7 +370,80 @@ class HomeController extends Controller {
                 "productModel" => $productModel,
                 "categories" => $categories,
                 "passwordModel" => $passwordModel,
-                "isPassModalOpen" => true
+                "isPassModalOpen" => true,
+                "isProductEditModalOpen" =>false
+            ]);
+        }
+        else if(isset($_POST["editModal"])) {
+            $body = $req->getBody();
+            $productModel = new Product();
+            $productModel->loadData($body);
+            
+            $tmpName = $_FILES["imagePath"]["tmp_name"];
+            $imageName = $_FILES["imagePath"]["name"];
+            $fileError = $_FILES["imagePath"]["error"];
+            $fileType = $_FILES["imagePath"]["type"];
+            $fileSize = $_FILES["imagePath"]["size"];
+            $productModel->imagePath= "cccc";
+            $id = $_POST["product_id"];
+
+
+            if($productModel->validate()) {
+                if($fileError != 4) {
+                    $extarr = explode(".",$imageName );
+                    $fileExt = strtolower(end($extarr));
+                    $allowed = array("jpeg", "jpg", "png", "svg");
+                    if(in_array($fileExt, $allowed)) {
+                        if($fileError === 0) {
+                            if($fileSize < 2000000) {
+                                $newImageName = $body["product_id"]."_".$body["name"]."_".uniqid('', true).$fileExt;
+                                $fileDestination = "../public/images/products/".$newImageName;
+                                move_uploaded_file($tmpName, $fileDestination);
+                                
+                                $imagePath="/images/products/".$newImageName;
+
+                                Product::updateOne(["id" => $id], ["name" => $productModel->name,
+                                                                "amount" => $productModel->amount,
+                                                                "imagePath" => $imagePath,
+                                                                "description" => $productModel->description]);
+                                Application::$app->session->setFlash("edited_product_success","Product with id $id has been edited successfully!");
+                                $resp->redirect("/myProfile");
+                                
+                            } else {
+                                $productModel->addError("imagePath", "Image must have a maximal size of 2MB!");
+                            }
+                        } else {
+                            $productModel->addError("imagePath", "There was some error while uploading your image!");
+                        }
+                    }
+                    else {
+                        $productModel->addError("imagePath", "Image type must jpeg, jpg, png or svg!");
+                    }
+                }
+                else {
+                    Product::updateOne(["id" => $id], ["name" => $productModel->name,
+                                                                "amount" => $productModel->amount,
+                                                                "description" => $productModel->description]);
+                    Application::$app->session->setFlash("edited_product_success","Product with id $id has been edited successfully!");
+                    $resp->redirect("/myProfile");
+                }
+            }
+
+            $this->setLayout("navigation");
+            $this->setCurrent("My Profile");
+            $userModel = Application::$app->user;
+            $passwordModel = new Password();
+            $categories = Category::findAll(false);
+            $products = Product::find(["user_id" => Application::$app->user->id]);
+
+            return $this->render("my_profile", [
+                "myProducts" => $products,
+                "userModel" => $userModel,
+                "productModel" => $productModel,
+                "categories" => $categories,
+                "passwordModel" => $passwordModel,
+                "isPassModalOpen" => false,
+                "isProductEditModalOpen" => true
             ]);
         }
     }

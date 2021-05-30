@@ -26,6 +26,9 @@ $(document).ready(() => {
     if($(".pass-btn").val()) {
         $('#changePasswordModal').modal('show');
     }
+    if($(".edit-product-btn").val()) {
+        $('#editProductModal').modal('show');
+    }
 });
 
 function deleteProduct(prod_id) {
@@ -39,4 +42,14 @@ function deleteProduct(prod_id) {
             productsContainer.removeChild(toRemove);
         }
     });
+}
+
+function setIdForModal(id, product) {
+    console.log(product);
+    $("#EditBox input[name = name]").val(product.name);
+    $("#EditBox input[name = category_id]").val(product.categoy_id);
+    $("#EditBox input[name = amount]").val(product.amount);
+    $(".prod-description").val(product.description);    
+    
+    $(".product_id").val(id);
 }

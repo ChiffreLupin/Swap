@@ -27,6 +27,7 @@ class User extends UserModel {
     public string $street = '';
     public string $zip= '';
     public string $type = 'client';
+    public string $description = '';
 
     public static function tableName(): string
     {
@@ -66,7 +67,7 @@ class User extends UserModel {
 
     public static function attributes():array
     {
-        return ['username','firstname', 'lastname', 'email', 'password','profile_picture', 'blocked', 'state', 'city', 'street', 'zip','type'];
+        return ['username','firstname', 'lastname', 'email', 'password','profile_picture', 'blocked', 'state', 'city', 'street', 'zip','type', 'description'];
     }
 
     public function displayName(): string {
