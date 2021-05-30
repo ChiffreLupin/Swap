@@ -46,7 +46,6 @@
                         $description = $product->description;
                         $id = $product->id;
                        echo "<div class='col-9 inner-div prod-$id'>
-                        
                         <!--Siper fotos nje buton dropdown me opsionet edit dhe delete-->
                         <div id='product-options'>
                             <div class='input-group-prepend'>
@@ -158,11 +157,13 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Edit Profile</button>
+        <button type="button" onclick="editProfile()" class="btn btn-primary">Edit Profile</button>
       </div>
     </div>
   </div>
 </div>
+
+<!--                Modali i Add Product-->
 
 <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -259,11 +260,79 @@
                     <!--Column 2-->
                 </div>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" value="<?php echo $isPassModalOpen ?>" class="btn btn-primary pass-btn">Change Password</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" onclick="addProduct()" value="<?php echo $isPassModalOpen ?>" class="btn btn-primary pass-btn">Change Password</button>
+      </div>
+      <?php \app\core\form\Form::end() ?>
+
+    </div>
+  </div>
+</div>
+
+<!--                Modali i Edit Product-->
+
+<div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <?php $form = \app\core\form\Form::begin('', 'post') ?>
+      <div class="modal-body">
+      <div id="SignUpBox">            
+                    <div class="form-row">
+                        <!--Column 1-->
+                        <div id="Block1"> 
+                            <div class="form-group col-md-8 offset-md-2">
+                            <?php echo $form->field( $productModel, "name", "width: 100%; background-color: whitesmoke; border: none;","col-md-12") ?>
+                            </div>
+                            <br>
+                            <div class="form-group col-md-8 offset-md-2">
+                            <div class="col-md-12 %s">
+                            <select name="category" class="custom-select" placeholder="--Select a category" id="inputGroupSelect01" style="width: 100%; background-color: whitesmoke; height: 37px; border-radius: 4px; border-color: #DEDEDE; border: none;">
+                                  <option value="" disabled selected>Select your option</option>
+                                  <?php 
+                                    foreach($categories as $key => $category) {
+                                        $id = $category->id;
+                                        $category_name = $category->category_name;
+                                        echo "<option value='$id'>$category_name</option>";
+                                    }
+                                  ?>
+                                 
+
+                                </select>
+                            </div>
+                            </div>
+                            <br>
+                            <div class="form-group col-md-8 offset-md-2">
+                                <?php echo $form->field( $productModel, "amount", "width: 100%; background-color: whitesmoke; border: none;","col-md-12")->number() ?>
+                            </div>
+                            <br>
+                            <div  class="form-group col-md-8 offset-md-2">
+                                <?php echo $form->field( $productModel, "imagePath", "width: 100%; background-color: whitesmoke; border: none;","col-md-12")->file() ?>
+                            </div>
+                            <br>
+                            <div class="form-group col-md-8 offset-md-2">
+                                <div class="form-group">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description"></textarea>
+                                </div>
+                             </div>
+                            <br>
+                        <br>
+                        </div>
+                    </div>
+                    <!--Column 2-->
+            
         </div>
-        <?php \app\core\form\Form::end() ?>
+      </div>      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" onclick="editProduct(productId)" class="btn btn-primary">Edit Product</button>
+      </div>
+      <?php \app\core\form\Form::end() ?>
     </div>
   </div>
 </div>
