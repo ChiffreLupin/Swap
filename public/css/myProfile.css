@@ -1,11 +1,13 @@
 
-section{
-/*    background-color: white; */
-    background-image: url(https://i0.wp.com/getwallpapers.com/wallpaper/full/1/4/a/526791.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size:cover;
+.background-image{
+    background-color: white; 
+/*    background: url() no-repeat center center fixed;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size:  cover; */
+    margin-top: -10%; 
+    /*https://wallpapercave.com/wp/wp4560584.png*/ 
 }
 /*Section*/
 
@@ -64,7 +66,7 @@ section{
  .btn-edit{
     border-radius: 70px;
     border: none;
-    background-color: #9b7c65;
+    background-color: rgb(211, 189, 170);
     width: 65%;
     margin-bottom: 5%;
     color: black;
@@ -165,21 +167,22 @@ section{
 
 .form{
     border: none;
-    box-shadow: 0px 5px 10px rgb(207, 206, 206);
+    box-shadow: 5px 5px 15px rgb(194, 191, 191); 
     border-radius: 10px;
     position:sticky;
     top: 0;
     left: 0;
-    max-height: 700px !important;
-    background-color: rgb(218, 194, 173);
+    max-height: 680px !important;
+    background-color: whitesmoke;
     margin-bottom: 2%;
     max-width: 24%;
-}
+    margin-top: 12%;
+}/**/
  
 
 /*lista e produkteve*/
 .sw-item-flex-end{
-    color: rgb(104, 76, 62);
+    color: black;
     margin-bottom: 2%;
     margin-top: 0;
 }
@@ -187,10 +190,11 @@ section{
     border: none;
 /*    box-shadow: 5px 5px 10px rgb(207, 206, 206); */
     border-radius: 10px;
-    margin-left: 3%;
+    margin-left: 7%;
     justify-content: center;
     background-color: transparent;
     margin-bottom: 3%;
+    margin-top: 12%;
 }
 
  .col-9{
@@ -220,7 +224,9 @@ section{
     padding-top: 10px;
     background-color: whitesmoke;
     margin-bottom: 0;
-    
+}
+.desription{
+    color: white;
 }
 
 .background-whitesmoke{
@@ -242,3 +248,8 @@ section{
     
 }
 
+
+
+.container{
+    margin-left: 4%;
+}

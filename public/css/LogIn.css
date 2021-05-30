@@ -27,7 +27,7 @@
     margin-right: auto;
     border: 1px solid whitesmoke; 
 	width: 320px;
-    height: 350px;
+    height: 380px;
 	padding: 10px;
     border-radius:7px;
     
@@ -50,22 +50,22 @@ input[type="email"], input[type="password"]{
     background-color: whitesmoke;
     padding: 15px;
     position: relative;
-    margin: 0 auto;
+/*    margin: 0 auto; */
     width: 80%;
     height: 25px;
     margin-top: 10px;
     margin-bottom: 5px;
     border-radius: 15px;
+    margin-left: 25px;
+}
+
+a{
+    color: #282828;
 }
 a:hover{
     color: #B79378;
 }
-a:visited{
-    color: #282828;
-}
-
 #LogInButton{
-    margin-top: -10px;
     border-radius: 10px;
     width: 100px;
     height: 40px;
@@ -115,8 +115,7 @@ a:visited{
 .link {
     text-decoration: none;
     text-transform: none;
-    color: #282828;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
 }
 
 #LogInFooter input[type="email"] {

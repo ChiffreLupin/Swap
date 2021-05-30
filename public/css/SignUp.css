@@ -37,10 +37,11 @@ input[type="password"], input[type="email"]{
     margin-top: 20px;
     border-radius: 4px;
 }
-a:hover{
+a{
     color: black;
+    font-size: 0.9rem;
 }
-a:visited{
+a:hover{
     color: #f3cfcf;
 }
 #Block1{

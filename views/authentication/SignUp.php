@@ -13,7 +13,7 @@
                             </div>
                             <br>
                             <div class="form-group col">
-                                <?php echo $form->field( $model, "lastname", "width: 240px; background-color: whitesmoke; border: none;","") ?>
+                                <?php echo $form->field( $model, "lastname", "width: 240px; background-color: whitesmoke; border: none; margin-bottom: 20px","") ?>
                             </div>
                             <br>
                             <div  class="form-group">
