@@ -1,13 +1,13 @@
 
 .background-image{
-    background-color: white; 
-/*    background: url() no-repeat center center fixed;
+   background-color: rgb(251, 251, 251);
+/*    background: url(https://wallpapercave.com/wp/wp4560584.png) no-repeat center center fixed;
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
     background-size:  cover; */
     margin-top: -10%; 
-    /*https://wallpapercave.com/wp/wp4560584.png*/ 
+    /**/ 
 }
 /*Section*/
 
@@ -141,6 +141,7 @@
 
 #product-options{
     background-color: whitesmoke;
+    float:right;
 }
 
 .img-wrapper img{
@@ -176,7 +177,7 @@
     background-color: whitesmoke;
     margin-bottom: 2%;
     max-width: 24%;
-    margin-top: 12%;
+    margin-top: 12%; 
 }/**/
  
 
@@ -252,4 +253,11 @@
 
 .container{
     margin-left: 4%;
+}
+
+
+/**************************User-profile****************************/
+.grey-line{
+    background-color: whitesmoke;
+    height: 2.2%;
 }

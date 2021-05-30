@@ -8,6 +8,7 @@
             <?php echo Application::$app->session->getFlash("success_pass_change") ?>
           </div>
     <?php } ?>
+    <div class="background-image">
         <div class="container">
             <div class="row row-fix">
                 <div class="col-md-5 justify-center width-30 form">
@@ -49,7 +50,7 @@
                         <!--Siper fotos nje buton dropdown me opsionet edit dhe delete-->
                         <div id='product-options'>
                             <div class='input-group-prepend'>
-                                <button class='btn dropdown-toggle' type='button' data-toggle='dropdown'
+                                <button class='btn dropdown' type='button' data-toggle='dropdown'
                                     aria-haspopup='true' aria-expanded='false'><i class='fas fa-ellipsis-h'></i></button>
                                 <div id='list' class='dropdown-menu'>
                                     <input type='radio' name='option' class='dropdown-item' id='productSelected'
@@ -83,6 +84,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </section>
 
 <div class="modal fade" id="editProfileModal"   tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">

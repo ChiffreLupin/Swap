@@ -14,11 +14,23 @@
    
    
    <!--My profile section-->
+   <div class="background-image">
     <section id="user-data-section">
         <div class="container">
             <div class="row row-fix">
                 <div class="col-md-5 justify-center width-30 form">
                     <div class="myprofile">
+                        <div id='product-options'>
+                            <div class='input-group-prepend'>
+                                <button class='btn dropdown' type='button' data-toggle='dropdown'
+                                    aria-haspopup='true' aria-expanded='false'><i class='fas fa-ellipsis-h'></i></button>
+                                <div id='list' class='dropdown-menu'>
+                                    <input type='radio' name='option' class='dropdown-item' id='productSelected'
+                                        value='product' checked ></input>
+                                    <label class='label' for='productSelected'>Report</label>
+                                </div>
+                            </div>
+                        </div>
                         <span class="">My Profile</span>
                     </div>
 
@@ -43,22 +55,7 @@
                         <h5 class="sw-item-flex-end">Latest Post</h5>
                     </div>
                     <div class="col-9 inner-div">
-                        
-                        <!--Deactivate-->
-                        <div id="product-options">
-                            <div class="input-group-prepend">
-                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false" disabled><i class="fas fa-ellipsis-h"></i></button>
-                                <div id="list" class="dropdown-menu">
-                                    <input type="radio" name="option" class="dropdown-item" id="productSelected"
-                                        value="product" checked></input>
-                                    <label class="label" for="productSelected">Edit</label>
-
-                                    <input type="radio" name="option" class="dropdown-item" id="categorySelected"
-                                        value="category"></input>
-                                    <label class="label" for="categorySelected">Delete</label>
-                                </div>
-                            </div>
+                        <div class="grey-line">    
                         </div>
 
                         <!--Imazhi i produktit te postuar-->
@@ -71,22 +68,7 @@
                     </div>
                     
                     <div class="col-9 inner-div">
-                        
-                        <!--Siper fotos nje buton dropdown me opsionet edit dhe delete-->
-                        <div id="product-options">
-                            <div class="input-group-prepend">
-                               <button class="btn dropdown-toggle " type="button" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false" disabled><i class="fas fa-ellipsis-h"></i></button> 
-                                <div id="list" class="dropdown-menu">
-                                    <input type="radio" name="option" class="dropdown-item" id="productSelected"
-                                        value="product" checked></input>
-                                    <label class="label" for="productSelected">Edit</label>
-
-                                    <input type="radio" name="option" class="dropdown-item" id="categorySelected"
-                                        value="category"></input>
-                                    <label class="label" for="categorySelected">Delete</label>
-                                </div>
-                            </div>
+                        <div class="grey-line">   
                         </div>
 
                         <!--Imazhi i produktit te postuar-->
@@ -102,3 +84,4 @@
             </div>
         </div>
     </section>
+</div>
