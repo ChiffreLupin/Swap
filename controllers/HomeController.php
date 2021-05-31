@@ -17,8 +17,15 @@ use app\models\Swap;
 use app\models\RequestNotification;
 use app\models\Password;
 use \PDO;
+use app\core\middlewares\AuthMiddleware;
+use app\core\middlewares\BlockedMiddleware;
 
 class HomeController extends Controller {
+    public function __construct() {
+        $this->registerMiddleware(new AuthMiddleware());
+        $this->registerMiddleware(new BlockedMiddleware());
+    }
+
     public function getProductDetails(Request $req, Response $resp) {
         $this->setLayout("navigation");
         $this->setCurrent("Product Details");
@@ -86,7 +93,7 @@ class HomeController extends Controller {
             $productReceivedName = $swap->productReceived->name;
             $productSentName = $swap->productSent->name;
             $id = $swap->productSent->id;
-            $message.="\n He'd like to know if you are interested in exchanging your $productReceivedName with his $productSentName\n";
+            $message.="\n They'd like to know if you are interested in exchanging your $productReceivedName with his $productSentName\n";
             $message.="<a href='productDetails?productId=$id'>Click here to check his product!</a>";
             $request->swap_id = $swap->id;
             $request->message = $message;
@@ -136,7 +143,26 @@ class HomeController extends Controller {
             $notification  = RequestNotification::findOne(["id" => $notification_id]);
             $approver = User::findOne(["id" => $notification->receiver_id]);
             $approverName = $approver->displayName();
+
          
+            // After swap has been approved we either decrease size of the products with 1 or delete them
+            $swap = Swap::findOne(["id" => $swap_id]);
+            $swap->productSent = Product::findOne(["id" => $swap->product_sent_id]);
+            $swap->productReceived = Product::findOne(["id" => $swap->product_received_id]);
+
+            if($swap->productSent->amount > 1) {
+                Product::updateOne(["id"=>$swap->productSent->id], ["amount" => ($swap->productSent->amount-1)]);
+            }
+            else {
+                Product::deleteOne(["id"=>$swap->productSent->id]);
+            }
+
+            if($swap->productReceived->amount > 1) {
+                Product::updateOne(["id"=>$swap->productReceived->id], ["amount" => ($swap->productReceived->amount-1)]);
+            }
+            else {
+                Product::deleteOne(["id"=>$swap->productReceived->id]);
+            }
 
             $newRequest = new RequestNotification();
             $newRequest->sender_id = $notification->receiver_id;
@@ -320,7 +346,6 @@ class HomeController extends Controller {
             "isPassModalOpen" => false,
             "isProductEditModalOpen" => false,
             "isAddProductModalOpen" => false
-
          ]);
     }
 

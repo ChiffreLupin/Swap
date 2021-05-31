@@ -6,7 +6,7 @@ use app\core\Application;
 use app\controllers\HomeController;
 use app\controllers\AuthController;
 use app\controllers\AboutController;
-
+use app\models\User;
 
 // Any class can be autoloaded using \app\core\
 require_once __DIR__.'/../vendor/autoload.php';
@@ -69,5 +69,15 @@ $app->router->post('/deleteProduct', [HomeController::class, 'postDeleteProduct'
 // the router
 // $app->router->get('/home', 'home');
 // $app->router->get('/home', [HomeController::class, 'getHomeProducts']);
-
+// $admin = new User();
+// $admin->firstname="Lorem";
+// $admin->lastname="Ipsum";
+// $admin->username="admini1";
+// $admin->email="admin1@gmail.com";
+// $admin->password="12345678";
+// $admin->confirmPassword="12345678";
+// $admin->type="admin";
+// $admin->save();
 $app->run();
+
+

@@ -53,6 +53,24 @@ use \PDO;
         return !self::$app->user;
     }
 
+    public static function isAdmin() {
+        if(!self::isGuest()) {
+            if(self::$app->user->type === 'admin') {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static function isBlocked() {
+        if(!self::isGuest()) {
+            if(self::$app->user->blocked === 1)
+                return true;
+        }
+
+        return false;
+    }
+
     public function getController(): \app\core\Controller {
         return $this->controller;
     }
@@ -62,7 +80,14 @@ use \PDO;
     }
 
     public function run() {
+        try {
         echo $this->router->resolve();
+        }
+        catch(\Exception $e) {
+            echo $this->router->displayView("_error", [
+                "exception" => $e
+            ]);
+        }
     }
 
     public function login(DbModel $user) {

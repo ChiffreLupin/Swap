@@ -11,12 +11,12 @@
               <p style=" color:white; margin-left: 35px; margin-top: 15px; font-size: 18px; margin-bottom: -5px;">Reset Password</p>
                 <input type="email" name="email" placeholder="Enter your email" class="txt form-control"><br><br>
                 <?php if(Application::$app->session->getFlash("error")) { ?>
-                <div class="alert alert-danger">
+                <div class="alert alert-danger alert-forgot">
                     <?php echo Application::$app->session->getFlash("error") ?>
                 </div>
                 <?php } ?>
                 <?php if(Application::$app->session->getFlash("recovery")) { ?>
-                <div class="alert alert-success">
+                <div class="alert alert-success alert-forgot">
                     <?php echo Application::$app->session->getFlash("recovery") ?>
                 </div>
                 <?php } ?>

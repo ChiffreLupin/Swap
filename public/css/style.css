@@ -339,5 +339,10 @@ body {
 }
 
  .push-right{
-    margin-left: 5%;
+    margin-left: 10%;
+}
+
+.alert-forgot {
+    display: block;
+    margin: 15px 0;
 }

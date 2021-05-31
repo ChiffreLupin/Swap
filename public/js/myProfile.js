@@ -41,8 +41,7 @@ function deleteProduct(prod_id) {
         data: {product_id: prod_id}
     }).done(function(resp) {
         if(resp) {
-            let toRemove = document.querySelector(`.prod-${prod_id}`);
-            productsContainer.removeChild(toRemove);
+            $(`.prod-${prod_id}`).fadeOut();
         }
     });
 }

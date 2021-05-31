@@ -25,6 +25,11 @@ require '../vendor/autoload.php';
 
 
 class AuthController extends Controller {
+    
+
+    // We can specify access on all the controller or on a specific 
+    // function by specifying it inside the parameters of the middleware
+   
    public function getLogin(Request $req,Response $resp) {
     if(isset($_GET["login"])) {
         $this->setLayout('auth');
@@ -282,6 +287,6 @@ class AuthController extends Controller {
 
     public function logout(Request $req, Response $res) {
         Application::$app->logout();
-        $res->redirect('/');
+        $res->redirect('/login?login=1');
     }
 }

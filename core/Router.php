@@ -5,6 +5,8 @@
  */
 
 namespace app\core;
+use app\core\Controller;
+use app\core\exception\ForbiddenException;
 
 class Router {
     protected array $routes = [];
@@ -40,8 +42,17 @@ class Router {
             return $this->displayView($callback);
         }
         if(is_array($callback)) {
-            $callback[0] = new $callback[0]();
-            Application::$app->controller = $callback[0];
+            /**
+             * @var \app\core\Controller $controller
+             */
+            $controller =new $callback[0]();
+            Application::$app->controller = $controller;
+            $controller->action = $callback[1];
+            $callback[0] = $controller;
+
+            foreach($controller->middlewares as $middleware) {
+                $middleware->execute();
+            }
         }
 
         // Array works same way as function callbacl

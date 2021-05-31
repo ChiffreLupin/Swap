@@ -16,7 +16,7 @@ class m0007_requestNotifications {
             swap_id INT NOT NULL,
             CONSTRAINT sender_reqNotifs_fk FOREIGN KEY (sender_id) REFERENCES User(id) ON DELETE CASCADE,
             CONSTRAINT receiver_reqNotifs_fk FOREIGN KEY (receiver_id) REFERENCES User(id) ON DELETE CASCADE,
-            CONSTRAINT swap_fk FOREIGN KEY (swap_id) REFERENCES Swaps(id) ON DELETE CASCADE
+            CONSTRAINT swap_fk FOREIGN KEY (swap_id) REFERENCES Swaps(id)
             ) ENGINE = INNODB;";
         $db->pdo->exec($SQL);
     }
