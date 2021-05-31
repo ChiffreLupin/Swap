@@ -82,11 +82,11 @@
                             </div>
                         </div> -->
                         <div class="input-group-text" style="background-color: white; border: none; padding-left: 0px; padding-top: 0px; margin-top: 10px;">
-                            <input type="checkbox" style="padding-top: 30px; color: #EBDEDF;">
+                            <input class="terms-checkbox"type="checkbox" style="padding-top: 30px; color: #EBDEDF;">
                             <label style="padding-left: 5px;">I agree to all the Terms and Conditions</label>
                         </div> 
                         <br>
-                         <a href="#"><button id="SignUpButton" type="submit" name="register" value="Register">Register</button></a>
+                         <a href="#"><button class="btn disabled term-cond-btn"id="SignUpButton" type="submit" name="register" value="Register" >Register</button></a>
                          <br>
                          <br>
                         <div class="input-group-text" style="background-color: white; border: none;">
@@ -100,3 +100,4 @@
             <?php \app\core\form\Form::end() ?>
         </div>
     </div>
+
