@@ -64,7 +64,7 @@ public function productItem(Product $product)
                 <a href='/productDetails?productId=$id' name='butoniProdukt' value='$id'>
                     <div class='product-description'>
                         <p class='product-text'>
-                        $description;
+                        $description
                         </p>
                     </div>
                 </a>

@@ -16,6 +16,7 @@ use app\models\Category;
 use app\models\Swap;
 use app\models\RequestNotification;
 use app\models\Password;
+use app\models\EditProfile;
 use \PDO;
 use app\core\middlewares\AuthMiddleware;
 use app\core\middlewares\BlockedMiddleware;
@@ -347,6 +348,7 @@ class HomeController extends Controller {
             "isPassModalOpen" => false,
             "isProductEditModalOpen" => false,
             "isAddProductModalOpen" => false
+            ,"isEditProfileModalOpen" =>false
          ]);
     }
 
@@ -401,6 +403,7 @@ class HomeController extends Controller {
                 "isPassModalOpen" => true,
                 "isProductEditModalOpen" =>false,
                 "isAddProductModalOpen" => false
+                ,"isEditProfileModalOpen" =>false
 
             ]);
         }
@@ -477,6 +480,7 @@ class HomeController extends Controller {
                 "isPassModalOpen" => false,
                 "isProductEditModalOpen" => true,
                 "isAddProductModalOpen" => false
+                ,"isEditProfileModalOpen" =>false
             ]);
         }
         else if(isset($_POST['addProductButton']))
@@ -555,6 +559,43 @@ class HomeController extends Controller {
                 "isPassModalOpen" => false,
                 "isAddProductModalOpen" => true,
                 "isProductEditModalOpen" =>false
+                ,"isEditProfileModalOpen" =>false
+            ]);
+        }
+        else if(isset($_POST['editProfileButton']))
+        {            
+            $body = $req->getBody();            
+            $profileUserModel = new User();
+            $profileModel = new EditProfile();
+            $profileModel->loadData($body);
+            $profileUserModel->loadData($body);            
+            
+            if($profileModel->validate())
+            {                                
+                USER::updateOne(['id'=> $profileUserModel->id],['firstname' => $profileUserModel->firstname,
+                                            'lastname' => $profileUserModel->lastname, 'state' => $profileUserModel->state,
+                                            'city' => $profileUserModel->city, 'street' => $profileUserModel->street,
+                                            'zip' => $profileUserModel->zip, 'description' => $profileUserModel->description]);
+                return $resp->redirect("/myProfile");
+            }            
+            $this->setLayout("navigation");
+            $this->setCurrent("My Profile");
+            $produktModel = new Product();
+            $userModel = Application::$app->user;            
+            $passwordModel = new Password();
+            $categories = Category::findAll(false);
+            $products = Product::find(["user_id" => Application::$app->user->id]);
+
+            return $this->render("my_profile", [
+                "myProducts" => $products,
+                "userModel" => $profileUserModel,
+                "productModel" => $produktModel,
+                "categories" => $categories,
+                "passwordModel" => $passwordModel,
+                "isPassModalOpen" => false,
+                "isAddProductModalOpen" => false,
+                "isProductEditModalOpen" =>false,
+                "isEditProfileModalOpen" =>true
             ]);
         }
     }

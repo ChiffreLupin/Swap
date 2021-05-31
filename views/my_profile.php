@@ -38,7 +38,9 @@
 
                     </div>
                     <div>
-                        <p class="description"></p>
+                    <p class="description">
+                        <?php echo Application::$app->user->description?>
+                        </p>
                     </div>
                 </div>
                 
@@ -93,6 +95,8 @@
     </div>
     </section>
 
+<!--        Edit Profile Modal      -->
+
 <div class="modal fade" id="editProfileModal"   tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -100,12 +104,13 @@
         <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <?php $form = \app\core\form\Form::begin('', 'post') ?>
       <div class="modal-body">
-      <div id="SignUpBox">
-            <?php $form = \app\core\form\Form::begin('', 'post') ?>
+      <div id="SignUpBox">            
                     <div class="form-row">
                         <!--Column 1-->
                         <div id="Block1"> 
+                        <input type="hidden" name="id" value="<?php echo Application::$app->user->id?>"></input>
                             <div class="form-group col-md-8 offset-md-2">
                             <?php echo $form->field( $userModel, "firstname", "width: 100%; background-color: whitesmoke; border: none;","col-md-12") ?>
                             </div>
@@ -113,17 +118,17 @@
                             <div class="form-group col-md-8 offset-md-2">
                                 <?php echo $form->field( $userModel, "lastname", "width: 100%; background-color: whitesmoke; border: none;","col-md-12") ?>
                             </div>
-                            <br>
+                            <!-- <br>
                             <div  class="form-group col-md-8 offset-md-2">
                                 <?php echo $form->field( $userModel, "username", "width: 100%; background-color: whitesmoke; border: none;","col-md-12") ?>
                             </div>
                             <br>
                             <div class="form-group col-md-8 offset-md-2">
                                 <?php echo $form->field( $userModel, "email", "width: 100%; background-color: whitesmoke; border: none;","col-md-12")->email() ?>
-                            </div>
+                            </div> -->
                             <br>
                             <div class="form-group col-md-8 offset-md-2">
-                                <?php echo $form->field( $userModel, "description", "width: 100%; background-color: whitesmoke; border: none;","col-md-12")->email() ?>
+                                <?php echo $form->field( $userModel, "description", "width: 100%; background-color: whitesmoke; border: none;","col-md-12")?>
                             </div>
                             <br>
                             <div class="form-group col-md-8 offset-md-2">
@@ -164,13 +169,14 @@
                     <div id="Block3">
                         <img src="images/undraw_secure_login_pdn4.svg" style="width: 320px; height: 250px;">
                     </div>
-            <?php \app\core\form\Form::end() ?>
+            
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button"  class="btn btn-primary">Edit Profile</button>
+        <button type="submit" value="<?php echo $isEditProfileModalOpen?>" name="editProfileButton"  class="btn btn-primary edit-profile-butn">Edit Profile</button>
       </div>
+      <?php \app\core\form\Form::end() ?>
     </div>
   </div>
 </div>

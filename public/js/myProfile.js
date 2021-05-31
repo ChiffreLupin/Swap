@@ -30,7 +30,10 @@ $(document).ready(() => {
         $('#editProductModal').modal('show');
     }
     if($(".add-product-btn").val()){
-        $('#addProductModal').modal('show');
+        $('#addProductModal').modal('show');    
+    }
+    if($(".edit-profile-butn").val()){        
+        $('#editProfileModal').modal('show');
     }
 });
 
