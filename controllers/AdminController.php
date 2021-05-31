@@ -1,7 +1,7 @@
 <?php
 
 /**
-    Class AboutController
+    Class AdminController
     @package app\controllers
  */
 
@@ -11,7 +11,7 @@ use app\core\middlewares\AdminAuthMiddleware;
 use app\core\middlewares\BlockedMiddleware;
 
 
-class AboutController extends Controller {
+class AdminController extends Controller {
     public function __construct() {
         $this->registerMiddleware(new AdminAuthMiddleware());
         $this->registerMiddleware(new BlockedMiddleware());
@@ -21,7 +21,7 @@ class AboutController extends Controller {
         $this->setLayout("admin");
         $this->setCurrent("Users");
 
-        $this->render("admin/admin_user");
+        return $this->render("admin/admin_user");
     }
     
 }

@@ -31,6 +31,8 @@ $config = [
 // dirname gives directory of current directory specified as arg
 $app = new Application(dirname(__DIR__), $config);
 
+$app->router->get("/admin/users", [AdminController::class, "getAdminUsers"]);
+
 $app->router->get('/login', [AuthController::class, 'getLogin']);
 $app->router->post('/login', [AuthController::class, 'postLogin']);
 
@@ -66,7 +68,6 @@ $app->router->post('/myProfile', [HomeController::class, 'postMyProfile']);
 
 $app->router->post('/deleteProduct', [HomeController::class, 'postDeleteProduct']);
 
-$app->router->get("/admin/users", [AdminController::class, "getAdminUsers"]);
 
 // Should allow passing controllers or views to
 // the router

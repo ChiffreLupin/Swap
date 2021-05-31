@@ -55,10 +55,11 @@ class AuthController extends Controller {
         
         if($loginUser->validate() && $loginUser->login()) {
             $user = User::findOne(["email" => $loginUser->email]);
-       
-            if($user->type === 'admin') {
+            
+            if($user->type == 'admin') {
+              
                 $resp->redirect('/admin/users');
-
+                return;
             }
             $resp->redirect('/home');
             return;
@@ -71,7 +72,6 @@ class AuthController extends Controller {
         $resp->redirect("/");
     }
    }
-
 
     public function getRegister(Request $req,Response $resp) {
         $registerModel = new User();
