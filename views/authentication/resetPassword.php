@@ -10,7 +10,7 @@
                 <input type="hidden" value="<?php echo $selector ?>" name="selector">
                 <input type="hidden" value="<?php echo $validator ?>" name="validator">
                 <input type="password" name="newPassword" placeholder="New Password" class="txt form-control"><br><br>
-                <input type="password" name="confirmNewPassword" placeholder="Confirm  New Password" class="txt form-control" style="margin-top: -20px; margin-bottom: 10px;"><br>
+                <input type="password" name="confirmNewPassword" placeholder="Confirm Password" class="txt form-control" style="margin-top: -10px; margin-bottom: 10px;"><br>
               <br><br>
               <div class="rules">
                 <?php 

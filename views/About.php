@@ -51,7 +51,7 @@
                         Swap speaks your language. Click below to learn how.
                     </p>
                     <p>How to use it?
-                    <a href="/files/L07_Nxjerrja_e_kerkesave.pdf" download rel="noopener noreferrer" target="_blank">
+                    <a href="/files/L07_Nxjerrja_e_kerkesave.pdf" download rel="noopener noreferrer" target="_blank" class="link-about">
                          Click here for Tutorial.
                     </a>
                     </p>

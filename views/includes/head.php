@@ -12,16 +12,22 @@
 
     </head>
     <body>
-        <nav class="navbar navbar-dark justify-center height-55" style="background-color: black;">
-            <div class="container justify-center">
+        <nav class="navbar navbar-dark height-55" style="background-color: black;">
+            <div class="full-width">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="logo-wrapper">
+                    <div class="col-md-3 offset-md-4">
+                        <div class="logo-wrapper about-logo">
                             <img src="images/logo.png" alt="" class="img-fluid">
+                        </div>    
+                    </div>
+                    <div class="col-md-1 offset-md-4">
+                        <div clas="justify-center">
+                            <a href="../login?login=1" class="white">Log In</a>
                         </div>
                     </div>
                 </div>
             </div>
+           
         </nav>
         {{content}}
          <!--Footer-->

@@ -11,6 +11,11 @@
     margin: auto;
 }
 
+/*vtm per faqjen about*/
+.about-logo{
+    margin-left: 50%;
+}
+
 * {
     font-family: 'Montserrat', sans-serif;
 }
@@ -304,4 +309,31 @@ body {
 
 .fill-page {
     min-height: calc(100vh - 405px);
+}
+
+.justify-right{
+    margin-left: auto;
+}
+.white{
+    text-decoration: none;
+    color: white;
+    
+}
+
+.white:hover{
+    color: white;
+    font-weight: bold;
+}
+
+.full-width{
+    width: 100%;
+}
+
+.link-about{
+    text-decoration: none;
+    color: black;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.link-about:hover{
+    color: white;
 }
