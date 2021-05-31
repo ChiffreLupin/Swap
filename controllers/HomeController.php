@@ -45,9 +45,10 @@ class HomeController extends Controller {
                     ]);
                 }
             }
+
         } 
             
-        $resp->redirect("/");
+        return $this->render("_404");
     }
 
     public function getUserProducts(Request $req, Response $resp) {
@@ -436,7 +437,7 @@ class HomeController extends Controller {
                                                                 "imagePath" => $imagePath,
                                                                 "description" => $productModel->description,
                                                                 "category_id" => $productModel->category_id]);
-                                Application::$app->session->setFlash("edited_product_success","Product with id $id has been edited successfully!");
+                                Application::$app->session->setFlash("edited_product_success","Product has been edited successfully!");
                                 $resp->redirect("/myProfile");
                                 
                             } else {

@@ -17,5 +17,8 @@ class AboutController extends Controller {
         $this->registerMiddleware(new BlockedMiddleware());
     }
 
+    public function getAdminUsers() {
+        
+    }
     
 }
