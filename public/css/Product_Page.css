@@ -162,8 +162,6 @@ label.check input:checked+span {
     text-align: center;
     color: black;
     font-weight: 500;
-    margin-right: auto;
-    margin-left: 175px;
     margin-bottom: 30px;
 }
 

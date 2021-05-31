@@ -25,7 +25,7 @@ use app\core\Application;
         <div class="media-right">
           <div>
             <p class="h"><?php echo $model->description ?></p>
-            <div class="row d-flex justify-content-center mt-100" style="visibility:unset; margin-left: -30px;">
+            <!-- <div class="row d-flex justify-content-center mt-100" style="visibility:unset; margin-left: -30px;">
               <div class="col-md-8">
                 <div class="card">
                   <div class="card-body text-center">
@@ -38,8 +38,8 @@ use app\core\Application;
                   </div>
                 </div>
               </div>
-            </div>
-            <div>
+            </div> -->
+            <div class="d-flex justify-content-center">
               <button type="button" id="OfferButton" class="btn btn-primary" data-bs-toggle="button" 
               onclick="loadOffers(<?php echo Application::$app->user->id ?>)"
                   autocomplete="off" name="Offer" value="offer" style="position: relative;">Send an offer</button>

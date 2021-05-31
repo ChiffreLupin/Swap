@@ -39,8 +39,7 @@ class Product extends DbModel {
         return  [
             "name" => [self::RULE_REQUIRED],
             "amount" => [self::RULE_REQUIRED, [self::RULE_MIN, "min" => 1]],
-            "imagePath" => [self::RULE_REQUIRED],
-            "description" => [self::RULE_REQUIRED]
+            "imagePath" => [self::RULE_REQUIRED]
         ];
     }
 

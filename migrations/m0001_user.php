@@ -15,7 +15,7 @@ class m0001_user{
             blocked BOOLEAN DEFAULT 0,
             state VARCHAR(25),
             city VARCHAR(30),
-            street VARCHAR(50),
+            street VARCHAR(150),
             zip VARCHAR(10),
             type ENUM('client','admin'),
             description VARCHAR(255) DEFAULT ''

@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html>
     <head>
-        <title>Example</title>
+        <title>Swap</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="/images/logo-icon.png" />
@@ -17,7 +17,9 @@
                 <div class="row container push-right">
                     <div class="col-md-3 offset-md-4">
                         <div class="logo-wrapper about-logo">
+                            <a href="/">
                             <img src="images/logo.png" alt="" class="img-fluid">
+                            </a>
                         </div>    
                     </div>
                     <div class="col-md-1 offset-md-4">

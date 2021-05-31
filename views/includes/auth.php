@@ -30,7 +30,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="logo-wrapper">
+                            <a href="/">
                             <img src="images/logo.png" alt="" class="img-fluid">
+                            </a>
                         </div>
                     </div>
                 </div>

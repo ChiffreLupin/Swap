@@ -197,8 +197,7 @@
                                 <br>
                                 <div class="form-group col-md-8 offset-md-2">
                                 <div class="col-md-12 %s">
-                                <select name="category" class="custom-select" placeholder="--Select a category" id="inputGroupSelect01" style="width: 100%; background-color: whitesmoke; height: 37px; border-radius: 4px; border-color: #DEDEDE; border: none;">
-                                    <option name="category" value="" disabled selected>Select your option</option>
+                                <select name="category" value="1" class="custom-select" placeholder="--Select a category" id="inputGroupSelect01" style="width: 100%; background-color: whitesmoke; height: 37px; border-radius: 4px; border-color: #DEDEDE; border: none;">
                                     <?php 
                                         foreach($categories as $key => $category) {
                                             $id = $category->category_id;

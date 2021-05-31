@@ -318,7 +318,9 @@ class HomeController extends Controller {
             "categories" => $categories,
             "passwordModel" => $passwordModel,
             "isPassModalOpen" => false,
-            "isProductEditModalOpen" => false
+            "isProductEditModalOpen" => false,
+            "isAddProductModalOpen" => false
+
          ]);
     }
 
@@ -371,7 +373,9 @@ class HomeController extends Controller {
                 "categories" => $categories,
                 "passwordModel" => $passwordModel,
                 "isPassModalOpen" => true,
-                "isProductEditModalOpen" =>false
+                "isProductEditModalOpen" =>false,
+                "isAddProductModalOpen" => false
+
             ]);
         }
         else if(isset($_POST["editModal"])) {
@@ -445,7 +449,8 @@ class HomeController extends Controller {
                 "categories" => $categories,
                 "passwordModel" => $passwordModel,
                 "isPassModalOpen" => false,
-                "isProductEditModalOpen" => true
+                "isProductEditModalOpen" => true,
+                "isAddProductModalOpen" => false
             ]);
         }
         else if(isset($_POST['addProductButton']))
