@@ -57,16 +57,12 @@ class AuthController extends Controller {
             $user = User::findOne(["email" => $loginUser->email]);
        
             if($user->type === 'admin') {
-                $this->setLayout("admin");
-                $this->setCurrent("Users");
-        
-                return $this->render("admin/admin_user");
+                $resp->redirect('/admin/users');
+
             }
             $resp->redirect('/home');
             return;
         }
-
-       
 
         return $this->render('authentication/LogIn', [
             'model' => $loginUser

@@ -18,7 +18,10 @@ class AboutController extends Controller {
     }
 
     public function getAdminUsers() {
-        
+        $this->setLayout("admin");
+        $this->setCurrent("Users");
+
+        $this->render("admin/admin_user");
     }
     
 }
