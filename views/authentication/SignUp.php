@@ -68,7 +68,7 @@
                         <br>
                         <div id="input-group mb-3">
                             <div class="form-outline">
-                                <textarea class="form-control" id="textAreaExample" rows="2" placeholder="Write something about yourself.."></textarea>
+                                <textarea class="form-control" name="description" id="textAreaExample" rows="2" placeholder="Write something about yourself.."></textarea>
                             </div>
                         </div>
                         <!--

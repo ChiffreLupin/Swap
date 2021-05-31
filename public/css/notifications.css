@@ -1,31 +1,38 @@
 body {
-    min-height: 100vh;
-    background-image: url(https://wallpaperaccess.com/full/409768.png);
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    -o-background-size: contain;
-    background-size: contain;
+    min-height: 100vh; 
+    display: block;
+    background: url(https://wallpaperaccess.com/full/409768.png)no-repeat center center fixed ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
+   
 #notifications-section {
     margin: 50px 0;
 }
 
 .user-image-wrapper {
     border-radius: 30px;
-    max-width: 85px;
+    max-width: 80px;
 }
 
 .notification-item {
-    max-width: 550px !important;
-    margin: auto;
+    max-width: 650px !important;
+    margin: auto; 
     align-items: center;
     display: flex;
     margin-bottom: 20px;
+    border-radius: 40px;
+    box-shadow: 5px 5px 15px rgb(180, 179, 179);
+    background-color:transparent;
+    max-height: 150px; 
 }
 
 .notification-item .notification-wrapper p{ 
-    padding-left: 15px;
+    margin-top: 10px;
     margin-bottom: 0px;
+    color: black;
 }
 
 
