@@ -14,7 +14,7 @@
     <body>
         <nav class="navbar navbar-dark height-55" style="background-color: black;">
             <div class="full-width">
-                <div class="row">
+                <div class="row container push-right">
                     <div class="col-md-3 offset-md-4">
                         <div class="logo-wrapper about-logo">
                             <img src="images/logo.png" alt="" class="img-fluid">

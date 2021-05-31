@@ -337,3 +337,7 @@ body {
 .link-about:hover{
     color: white;
 }
+
+.container, .push-right{
+    margin-left: 10%;
+}
