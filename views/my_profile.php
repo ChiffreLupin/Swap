@@ -123,6 +123,10 @@
                             </div>
                             <br>
                             <div class="form-group col-md-8 offset-md-2">
+                                <?php echo $form->field( $userModel, "description", "width: 100%; background-color: whitesmoke; border: none;","col-md-12")->email() ?>
+                            </div>
+                            <br>
+                            <div class="form-group col-md-8 offset-md-2">
                             <?php echo $form->field($userModel, "street", "width: 100%; background-color: whitesmoke; border: none;","col-md-12") ?>
 
                             </div>
@@ -165,7 +169,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" onclick="editProfile()" class="btn btn-primary">Edit Profile</button>
+        <button type="button"  class="btn btn-primary">Edit Profile</button>
       </div>
     </div>
   </div>
@@ -185,7 +189,8 @@
         <div id="SignUpBox">
                         <div class="form-row">
                             <!--Column 1-->
-                            <div id="Block1"> 
+                            <div id="Block1">
+                                <input type="hidden" name="userIdProduct" value="<?php echo Application::$app->user->id?>"> 
                                 <div class="form-group col-md-8 offset-md-2">
                                 <?php echo $form->field( $productModel, "name", "width: 100%; background-color: whitesmoke; border: none;","col-md-12") ?>
                                 </div>
@@ -193,12 +198,12 @@
                                 <div class="form-group col-md-8 offset-md-2">
                                 <div class="col-md-12 %s">
                                 <select name="category" class="custom-select" placeholder="--Select a category" id="inputGroupSelect01" style="width: 100%; background-color: whitesmoke; height: 37px; border-radius: 4px; border-color: #DEDEDE; border: none;">
-                                    <option value="" disabled selected>Select your option</option>
+                                    <option name="category" value="" disabled selected>Select your option</option>
                                     <?php 
                                         foreach($categories as $key => $category) {
-                                            $id = $category->id;
+                                            $id = $category->category_id;
                                             $category_name = $category->category_name;
-                                            echo "<option value='$id'>$category_name</option>";
+                                            echo "<option name='category' value='$id'>$category_name</option>";
                                         }
                                     ?>
                                     
@@ -216,8 +221,8 @@
                                 </div>
                                 <br>
                                 <div class="form-group col-md-8 offset-md-2">
-                                    <div class="form-group">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description"></textarea>
+                                    <div class="form-group">                                    
+                                        <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description"></textarea>                                
                                     </div>
                                 </div>
                                 <br>
@@ -229,9 +234,10 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Add Product</button>
+            <button type="submit" value="<?php echo $isAddProductModalOpen?>" name="addProductButton" class="btn btn-primary add-product-btn">Add Product</button>
         </div>
       <?php \app\core\form\Form::end() ?>
+
     </div>
   </div>
 </div>
@@ -269,7 +275,7 @@
         </div>
        <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" onclick="addProduct()" value="<?php echo $isPassModalOpen ?>" class="btn btn-primary pass-btn">Change Password</button>
+        <button type="submit" value="<?php echo $isPassModalOpen ?>" class="btn btn-primary pass-btn">Change Password</button>
        </div>
        <?php \app\core\form\Form::end() ?>
     </div>

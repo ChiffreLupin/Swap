@@ -188,9 +188,7 @@
         <?php } ?>
         <script src="/js/productDetails.js"></script>
         <script src="/js/notifications.js"></script>
-        <script src="/js/products.js"></script>
-        <!--Ndryshimi im-->
-        <script src="/js/editing.js"></script>
+        <script src="/js/products.js"></script>                
 
     </body>
 

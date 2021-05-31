@@ -87,7 +87,8 @@ class User extends UserModel {
             'state' => 'State',
             'city' => 'City',
             'street' => 'Street',
-            'zip' => 'Zip'
+            'zip' => 'Zip',
+            'description' => 'Description'
         ];
     }
 

@@ -29,6 +29,9 @@ $(document).ready(() => {
     if($(".edit-product-btn").val()) {
         $('#editProductModal').modal('show');
     }
+    if($(".add-product-btn").val()){
+        $('#addProductModal').modal('show');
+    }
 });
 
 function deleteProduct(prod_id) {

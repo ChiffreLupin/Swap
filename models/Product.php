@@ -38,7 +38,7 @@ class Product extends DbModel {
     public function rules(): array {
         return  [
             "name" => [self::RULE_REQUIRED],
-            "amount" => [self::RULE_REQUIRED, [self::RULE_MIN, "min" => 0]],
+            "amount" => [self::RULE_REQUIRED, [self::RULE_MIN, "min" => 1]],
             "imagePath" => [self::RULE_REQUIRED],
             "description" => [self::RULE_REQUIRED]
         ];
@@ -92,10 +92,29 @@ class Product extends DbModel {
     public function labels(): array
     {
         return [
-           "name" => "Name",
+           "name" => "Product Name",
            "amount" => "Amount",
            "imagePath" => "Upload Image",
            "description" => "Description"
         ];
+    }
+
+    public static function createProduct($attributeValues)
+    {        
+        $tableName = static::tableName();
+        $values = array_values($attributeValues);
+        $values2 = array_keys($attributeValues);        
+        $i = 0;
+        foreach($values as $key => $valu){
+        $array[$i] = $valu;
+        $i++;
+        }        
+        $statement = self::prepare("INSERT INTO `product`(`name`, `amount`, `imagePath`, `description`, `category_id`, `user_id`)
+                     VALUES('$array[0]', '$array[1]','', '$array[3]', '$array[2]', '$array[4]')");
+        $statement->execute();
+        $statement = self::prepare("SELECT `id` FROM `product` WHERE `user_id` = '$array[4]' AND `description` = '$array[3]'");
+        $statement->execute();
+        $result = $statement->fetchColumn();
+        return $result;
     }
 }

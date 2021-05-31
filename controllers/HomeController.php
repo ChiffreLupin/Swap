@@ -448,6 +448,84 @@ class HomeController extends Controller {
                 "isProductEditModalOpen" => true
             ]);
         }
+        else if(isset($_POST['addProductButton']))
+        {
+            $body = $req->getBody();                                             
+            $produktModel = new Product();
+            $produktModel->loadData($body);
+
+            $file = $_FILES['imagePath'];
+            $fileName = $_FILES['imagePath']['name'];
+            $fileTmpName = $_FILES['imagePath']['tmp_name'];
+            $fileSize = $_FILES['imagePath']['size'];
+            $fileError = $_FILES['imagePath']['error'];
+            $fileType = $_FILES['imagePath']['type'];
+
+            $produktModel->imagePath = $fileTmpName;            
+            if($produktModel->validate())
+            {
+            $addUserId = $_POST["userIdProduct"];
+            $addName = $_POST["name"];
+            $addCategory = $_POST["category"];
+            $addAmount = $_POST["amount"];
+            $addDescription = $_POST["description"];                                    
+            
+            $fileExt = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExt));
+
+            $allowdUploads = array('jpg', 'jpeg', 'png');
+            
+            if(in_array($fileActualExt, $allowdUploads))
+            {
+                if($fileError === 0)
+                {                    
+                    if($fileSize < 2000000)
+                    {
+                    $produktid = Product::createProduct(['name' => $addName, 'amount' => $addAmount, 'category' => $addCategory,
+                     'description' => $addDescription, 'user_id' => $addUserId]);                       
+                    $fileNameNew = $_POST["name"]."_".$produktid."_".uniqid('',true).".".$fileActualExt;                    
+                    $fileDestination = 'images/products/'.$fileNameNew;
+                    $produkt = Product::updateOne(['id' => $produktid],['imagePath' => $fileDestination]);
+                    move_uploaded_file($fileTmpName, $fileDestination);
+
+                    return $resp->redirect("/myProfile");
+                    }
+                    else
+                    {
+                        $produktModel->addError("imagePath", "Image must have a maximal size of 2MB!");
+                    }
+                }
+                else
+                {
+                    $produktModel->addError("imagePath", "There was some error while uploading your image!");
+                }
+
+            }
+            else
+            {
+                $produktModel->addError("imagePath", "Image type must jpeg, jpg, png or svg!");
+            }            
+        }
+        //duhet bere qe te hapet modalja
+
+        $this->setLayout("navigation");
+            $this->setCurrent("My Profile");
+            $userModel = Application::$app->user;            
+            $passwordModel = new Password();
+            $categories = Category::findAll(false);
+            $products = Product::find(["user_id" => Application::$app->user->id]);
+
+            return $this->render("my_profile", [
+                "myProducts" => $products,
+                "userModel" => $userModel,
+                "productModel" => $produktModel,
+                "categories" => $categories,
+                "passwordModel" => $passwordModel,
+                "isPassModalOpen" => false,
+                "isAddProductModalOpen" => true,
+                "isProductEditModalOpen" =>false
+            ]);
+        }
     }
 
     public function postDeleteProduct(Request $req, Response $resp) {
