@@ -38,8 +38,7 @@
 
                     </div>
                     <div>
-                        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa minus voluptatem fugit labore, hic, natus 
-                            sint atque iusto, libero eius est sed sapiente odio perspiciatis suscipit nisi iure necessitatibus unde.</p>
+                        <p class="description"></p>
                     </div>
                 </div>
                 
