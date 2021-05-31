@@ -144,4 +144,9 @@ option{
     width: 100%;
 }
 
+#textAreaExample{
+    width: 75%;
+    font-size: small;
+}
+
 

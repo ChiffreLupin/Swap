@@ -66,14 +66,12 @@
                             </div>   
                         </div>
                         <br>
-                        <!-- <div id="input-group mb-3">
-                            <select class="custom-select" id="inputGroupSelect01" style="width: 240px; background-color: whitesmoke; height: 37px; border-radius: 4px; border-color: #DEDEDE; border: none;">
-                                <option>Subscription Type</option>
-                                <option value="3">Monthly Subscription</option>
-                                <option value="1">6 Month Subscription</option>
-                                <option value="2">Yearly Subscription</option>
-                            </select>
+                        <div id="input-group mb-3">
+                            <div class="form-outline">
+                                <textarea class="form-control" id="textAreaExample" rows="2" placeholder="Write something about yourself.."></textarea>
+                            </div>
                         </div>
+                        <!--
                         <div id="payment">
                             <input class="form-control" type="text" placeholder="Card number" style="width: 190px; background-color: whitesmoke; height: 35px; margin-top: 20px; border-radius: 4px; border-color: #DEDEDE; border: none; display: inline;">
                             <input class="form-control" type="text" placeholder="PIN" style="width: 50px; border: none; background-color: whitesmoke; height: 35px; border-radius: 4px; text-align: center; margin-right: -20px; display: inline;">
