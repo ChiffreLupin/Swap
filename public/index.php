@@ -6,6 +6,8 @@ use app\core\Application;
 use app\controllers\HomeController;
 use app\controllers\AuthController;
 use app\controllers\AboutController;
+use app\controllers\AdminController;
+
 use app\models\User;
 
 // Any class can be autoloaded using \app\core\
@@ -64,6 +66,7 @@ $app->router->post('/myProfile', [HomeController::class, 'postMyProfile']);
 
 $app->router->post('/deleteProduct', [HomeController::class, 'postDeleteProduct']);
 
+$app->router->get("/admin/users", [AdminController::class, "getAdminUsers"]);
 
 // Should allow passing controllers or views to
 // the router

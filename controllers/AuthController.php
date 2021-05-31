@@ -46,6 +46,7 @@ class AuthController extends Controller {
 
    public function postLogin(Request $req, Response $resp) {
     if(isset($_POST["login"])) {
+        
         $this->setLayout('auth');
         $this->setCurrent('Login');
 
@@ -53,9 +54,19 @@ class AuthController extends Controller {
         $loginUser->loadData($req->getBody());
         
         if($loginUser->validate() && $loginUser->login()) {
+            $user = User::findOne(["email" => $loginUser->email]);
+       
+            if($user->type === 'admin') {
+                $this->setLayout("admin");
+                $this->setCurrent("Users");
+        
+                return $this->render("admin/admin_user");
+            }
             $resp->redirect('/home');
             return;
         }
+
+       
 
         return $this->render('authentication/LogIn', [
             'model' => $loginUser
@@ -286,6 +297,7 @@ class AuthController extends Controller {
     }
 
     public function logout(Request $req, Response $res) {
+        clearstatcache();
         Application::$app->logout();
         $res->redirect('/login?login=1');
     }
