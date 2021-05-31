@@ -47,7 +47,13 @@ function deleteProduct(prod_id) {
 function setIdForModal(id, product) {
     console.log(product);
     $("#EditBox input[name = name]").val(product.name);
-    $("#EditBox input[name = category_id]").val(product.categoy_id);
+    $("#EditBox select").val(product.category_id);
+    let select = document.querySelector("#EditBox select");
+    const options = Array.from(select.options);
+    console.log(options);
+    options.forEach((option, i) => {
+    if (option.value === product.category_id) select.selectedIndex = i+1;
+    });
     $("#EditBox input[name = amount]").val(product.amount);
     $(".prod-description").val(product.description);    
     

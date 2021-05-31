@@ -405,7 +405,8 @@ class HomeController extends Controller {
                                 Product::updateOne(["id" => $id], ["name" => $productModel->name,
                                                                 "amount" => $productModel->amount,
                                                                 "imagePath" => $imagePath,
-                                                                "description" => $productModel->description]);
+                                                                "description" => $productModel->description,
+                                                                "category_id" => $productModel->category_id]);
                                 Application::$app->session->setFlash("edited_product_success","Product with id $id has been edited successfully!");
                                 $resp->redirect("/myProfile");
                                 
@@ -423,7 +424,8 @@ class HomeController extends Controller {
                 else {
                     Product::updateOne(["id" => $id], ["name" => $productModel->name,
                                                                 "amount" => $productModel->amount,
-                                                                "description" => $productModel->description]);
+                                                                "description" => $productModel->description,
+                                                                "category_id" => $productModel->category_id]);
                     Application::$app->session->setFlash("edited_product_success","Product with id $id has been edited successfully!");
                     $resp->redirect("/myProfile");
                 }
