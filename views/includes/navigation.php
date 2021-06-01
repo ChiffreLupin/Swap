@@ -162,7 +162,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6 text-Inter terms-cond">
-                        <a href="/views/files/terms and conditions.pdf" download rel="noopener noreferrer" target="_blank" style="color: white;">
+                        <a href="Files/terms and conditions.pdf" download rel="noopener noreferrer" target="_blank" style="color: white;">
                             TERMS & CONDITIONS POLICY
                         </a>
                     </div>
