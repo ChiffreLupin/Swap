@@ -8,15 +8,15 @@ class m0007_requestNotifications {
         $db = \app\core\Application::$app->db;
         $SQL = "CREATE TABLE requestNotifications(
             id INT AUTO_INCREMENT PRIMARY KEY,
-            sender_id INT NOT NULL,
-            receiver_id INT NOT NULL,
+            sender_id INT ,
+            receiver_id INT ,
             sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             message VARCHAR(255),
             isSeen BOOLEAN  DEFAULT 0,
-            swap_id INT NOT NULL,
-            CONSTRAINT sender_reqNotifs_fk FOREIGN KEY (sender_id) REFERENCES User(id) ON DELETE CASCADE,
-            CONSTRAINT receiver_reqNotifs_fk FOREIGN KEY (receiver_id) REFERENCES User(id) ON DELETE CASCADE,
-            CONSTRAINT swap_fk FOREIGN KEY (swap_id) REFERENCES Swaps(id)
+            swap_id INT,
+            CONSTRAINT sender_reqNotifs_fk FOREIGN KEY (sender_id) REFERENCES User(id) ON DELETE SET NULL,
+            CONSTRAINT receiver_reqNotifs_fk FOREIGN KEY (receiver_id) REFERENCES User(id) ON DELETE SET NULL,
+            CONSTRAINT swap_fk FOREIGN KEY (swap_id) REFERENCES Swaps(id) ON DELETE SET NULL
             ) ENGINE = INNODB;";
         $db->pdo->exec($SQL);
     }

@@ -13,13 +13,13 @@ class m0005_swaps{
             receiver_id INTEGER,
             isApprovedByReceiver BOOLEAN,
             isDeclineddByReceiver BOOLEAN,
-            CONSTRAINT fk_swaps_prod_rec_id FOREIGN KEY (product_received_id) REFERENCES product(id),
-            CONSTRAINT fk_swaps_prod_sent_id FOREIGN KEY (product_sent_id) REFERENCES product(id),
+            CONSTRAINT fk_swaps_prod_rec_id FOREIGN KEY (product_received_id) REFERENCES product(id) ON DELETE SET NULL,
+            CONSTRAINT fk_swaps_prod_sent_id FOREIGN KEY (product_sent_id) REFERENCES product(id) ON DELETE SET NULL,
             CONSTRAINT fk_swaps_receiver_id FOREIGN KEY (receiver_id) REFERENCES user(id)
-            ON DELETE CASCADE
+            ON DELETE SET NULL
             ON UPDATE CASCADE,
             CONSTRAINT fk_swaps_sender_id FOREIGN KEY (sender_id) REFERENCES user(id)
-            ON DELETE CASCADE
+            ON DELETE SET NULL
             ON UPDATE CASCADE
             )  ENGINE = INNODB;";     
         $db->pdo->exec($SQL);

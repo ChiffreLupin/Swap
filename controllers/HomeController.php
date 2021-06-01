@@ -31,10 +31,17 @@ class HomeController extends Controller {
         $this->setLayout("navigation");
         $this->setCurrent("Product Details");
 
+
         $product_id = $req->getParam("productId") ?? false;
+
+
 
         if($product_id) {
             $product = Product::findOne(["id" => $product_id]);
+
+            
+        if($product->user_id === Application::$app->user->id)
+          return $this->render("_404");
 
             if($product) {
                 $user = User::findOne(["id" => $product->user_id]);

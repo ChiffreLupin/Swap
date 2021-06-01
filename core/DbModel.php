@@ -50,7 +50,7 @@ abstract class DbModel extends Model
         return $statement->fetchObject(static::class);
     }
 
-    public static function findAll($lim, $descending = false) {
+    public static function findAll($lim = false, $descending = false) {
         $tableName = static::tableName();
         // SELECT * FROM $tableName WHERE email = :email AND firstname = :firstname
         $limit = $lim ? "LIMIT $lim": "";
@@ -97,6 +97,7 @@ abstract class DbModel extends Model
         foreach($where as $key => $item) {
             $statement->bindValue(":$key", $item);
         }
+
         $statement->execute();
 
         // Kthe objekt sipas tipit te klases

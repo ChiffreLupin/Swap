@@ -37,6 +37,13 @@ class AuthController extends Controller {
 
         $loginUser = new LoginUser();
 
+        if(!Application::isGuest() && !Application::isBlocked()) {
+            if(Application::isAdmin()) {
+                $resp->redirect("/admin/users");
+            }
+            else $resp->redirect("/home");
+        }
+
         return $this->render('authentication/LogIn', [
             'model' => $loginUser
         ]);

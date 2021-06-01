@@ -12,12 +12,12 @@ class RequestNotification extends DbModel {
     public const  IS_NOT_SEEN = 0;
    
     public int $id = 0;
-    public int $sender_id = -1;
-    public int $receiver_id = -1;
+    public ?int $sender_id = -1;
+    public ?int $receiver_id = -1;
     public string $sent_at;
     public string $message = "";
     public int $isSeen = self::IS_NOT_SEEN;
-    public int $swap_id = -1;
+    public ?int $swap_id = -1;
 
     public ?Swap $swap = null;
     public ?User $sender = null;

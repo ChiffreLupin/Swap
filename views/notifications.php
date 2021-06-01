@@ -101,7 +101,7 @@
                         <p>
                             <?php echo $notif->message ?>
                         </p>
-                        <?php if($notif->swap->isApprovedByReceiver === 0 && $notif->swap->isDeclinedByReceiver === 0) { ?>
+                        <?php if($notif->swap && $notif->swap->isApprovedByReceiver === 0 && $notif->swap->isDeclinedByReceiver === 0) { ?>
                             <div class="notification-action actions-<?php echo $notif->id?>">
                                 <button class="btn btn-accept" onclick="acceptSwap(<?php echo $notif->swap_id ?>, <?php echo $notif->id ?>)">
                                     Accept

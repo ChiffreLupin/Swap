@@ -32,6 +32,11 @@ $config = [
 $app = new Application(dirname(__DIR__), $config);
 
 $app->router->get("/admin/users", [AdminController::class, "getAdminUsers"]);
+$app->router->get("/getUsers", [AdminController::class, "loadMoreUsers"]);
+
+$app->router->post("/toggleBlocked", [AdminController::class, "toggleBlockedUser"]);
+$app->router->post("/deleteUser", [AdminController::class, "deleteUser"]);
+
 
 $app->router->get('/login', [AuthController::class, 'getLogin']);
 $app->router->post('/login', [AuthController::class, 'postLogin']);

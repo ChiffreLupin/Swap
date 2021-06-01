@@ -1,4 +1,1 @@
-RewriteEngine on
-RewriteCond %{HTTP_REFERER} !^$
-RewriteCond %{HTTP_REFERER} !^http://(www\.)?mydomain.com/.*$ [NC]
-RewriteRule \.(gif|jpg|js|css)$ - [F]
+Optional Indexes

@@ -38,9 +38,7 @@
 
                     </div>
                     <div>
-                    <p class="description">
-                        <?php echo Application::$app->user->description?>
-                        </p>
+                        <p class="description"><?php echo Application::$app->user->description?></p>
                     </div>
                 </div>
                 
